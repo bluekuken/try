@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>笨鸟先飞</title>
+	<script type="text/javascript" src="tween.js"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul,li{
+		list-style: none;
+	}
+	#wrap{
+		width: 320px;
+		height: 480px;
+		margin: auto;
+	}
+	#main{
+		width: 320px;
+		height: 480px;
+		position: absolute;
+		background: url(img/bg.jpg);
+		overflow: hidden;
+	}
+	#bird{
+		position: absolute;
+		left: 80px;
+		top: 150px;
+		z-index: 1;
+	}
+	#scord{
+		position: absolute;
+		top: 70px;
+		left: 146px;
+		z-index: 3;
+		display: none;
+	}
+	#head{
+		position: absolute;
+		top: 200px;
+		left: 42px;
+	}
+	#butn{
+		width: 220px;
+		position: absolute;
+		left: 50px;
+		overflow: hidden;
+		top: 300px;
+	}
+	#butn img:nth-child(1){
+		float: left;
+		cursor: pointer;
+	}
+	#butn img:nth-child(2){
+		float: right;
+		cursor: pointer;
+	}
+	#bottom{
+		width: 320px;
+		position: absolute;
+		top: 422px;
+		overflow: hidden;
+		z-index: 4;
+	}
+	#banner{
+		width: 686px;
+	}
+	#pipe{
+		position: absolute;
+		height: 430px;
+		left: 320px;
+	}
+	#up_outer{
+		width: 62px;
+		height: 100px;
+		background: url(img/up_mod.png);
+		position: absolute;
+		top: 0px;
+	}
+	#up_inner{
+		width: 62px;
+		height: 60px;
+		background: url(img/up_pipe.png);
+		position: absolute;
+		bottom: 0px;
+	}
+	#down_outer{
+		width: 62px;
+		height: 100px;
+		background: url(img/down_mod.png);
+		position: absolute;
+		bottom: 0px;
+	}
+	#down_inner{
+		width: 62px;
+		height: 60px;
+		background: url(img/down_pipe.png);
+	}
+	#gameover{
+		width: 320px;
+		text-align: center;
+		position: absolute;
+		top: 120px;
+		display: none;
+	}
+	.submit{
+		cursor: pointer;
+	}
+	#scord1{
+		width: 50px;
+		height: 20px;
+		text-align: center;
+		position: absolute;
+		top: 85px;
+		right: 50px;
+		color: white;
+		text-shadow: 3px 1px black;
+		font-size: 20px;
+		font-weight: bold;
+		/*border: 1px solid black;*/
+	}
+	#best{
+		width: 50px;
+		height: 20px;
+		text-align: center;
+		position: absolute;
+		top: 130px;
+		right: 50px;
+		color: white;
+		text-shadow: 3px 1px black;
+		font-size: 20px;
+		font-weight: bold;
+		/*border: 1px solid black;		*/
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="main">
+			<img id="bird" src="img/bird0.png" alt="">
+			<img id="scord" src="img/0.png" alt="">
+			<img id="head" src="img/head.jpg" alt="">
+			<div id="butn">
+				<img id="start" src="img/start.jpg" alt=""><img src="img/submit.jpg" alt="">
+			</div>
+			<div id="bottom">
+				<div id="banner">
+					<img src="img/banner.jpg" alt=""><img src="img/banner.jpg" alt="">
+				</div>
+			</div>
+			<div id="pipe_wrap">
+<!-- 				<div id='pipe'>
+					<div id='up_outer'>
+						<div id='up_inner'></div>
+					</div>
+					<div id='down_outer'>
+						<div id='down_inner'></div>
+					</div>
+				</div> -->
+			</div>
+			<div id="gameover">
+				<img src="img/game_over.jpg" alt="">
+				<img src="img/message.jpg" alt="">
+				<div class="submit">
+					<img id="ok" src="img/ok.jpg" alt="">
+					<img src="img/score.jpg" alt="">
+				</div>
+				<div id="scord1"></div>
+				<div id="best"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oMain = document.getElementById('main');
+	var oHead = document.getElementById('head');
+	var oButn = document.getElementById('butn');
+	var oScord = document.getElementById('scord');
+	var oBanner = document.getElementById('banner');
+	var oBottom = document.getElementById('bottom');
+	var oBird = document.getElementById('bird');
+	var oPipe = document.getElementById('pipe_wrap');
+	var pipes = oPipe.children;
+	var oUp_otuer = document.getElementById('up_outer');
+	var oDown_outer = document.getElementById('down_outer');
+	var oStart = document.getElementById('start');
+	var oGame = document.getElementById('gameover');
+	var oScord1 = document.getElementById('scord1');
+	var oBest = document.getElementById('best');
+	var ok = document.getElementById('ok');
+
+	//开始界面
+	//1-小鸟
+	oBird.flag = true;//控制挥翅膀
+	oBird.mark = true;//控制上下
+	var num = oBird.offsetTop;//控制初始页面小鸟的上下运动距离
+
+	oBird.timer = setInterval(function(){
+		//挥翅膀
+		if (oBird.flag) {
+			oBird.src = 'img/bird1.png';
+			oBird.flag = false;
+		}else {
+			oBird.src = 'img/bird0.png';
+			oBird.flag = true;
+		};
+
+		//上下运动
+		if (oBird.mark) {
+			num -= 4;
+			if (num < 100) {
+				oBird.mark = false;
+			};
+		}else {
+			num += 4;
+			if (num >= 200) {
+				oBird.mark = true;
+			};
+		};
+		oBird.style.top = num + 'px';	
+	}, 100);
+
+	//2-banner无缝滚动
+	oBanner.timer = setInterval(function(){
+		oBottom.scrollLeft++;
+		if (oBottom.scrollLeft == 320) {
+			oBottom.scrollLeft = 0;
+		};
+	}, 10);
+
+	//游戏界面
+	//pipe
+	function fnPipeMove() {
+		var index = 0;
+		var arrA = new Array();//pipe 的定位
+		var arrB = new Array();//计时器
+		var pipe_left;
+		
+		arrA[0] = 320;
+
+		oPipe.innerHTML += "<div id='pipe'><div id='up_outer'><div id='up_inner'></div></div><div id='down_outer'><div id='down_inner'></div></div></div>";
+
+		var height = fnRound(60,230);
+
+		pipes[0].children[0].style.height = height + 'px';
+		pipes[0].children[1].style.height = 290 - height + 'px';
+		pipes[0].style.left = 320 + 'px';
+
+		oPipe.timer = setInterval(function(){
+			
+			for (var i = 0; i < arrA.length; i++) {
+				arrA[i]--;
+			};
+			for (var i = 0; i < pipes.length; i++) {
+				pipes[i].style.left = arrA[i] + 'px';
+			};
+
+			if (arrA[index] == 128) {
+				oPipe.innerHTML += "<div id='pipe'><div id='up_outer'><div id='up_inner'></div></div><div id='down_outer'><div id='down_inner'></div></div></div>";
+
+				arrA.push(320);
+
+				var height = fnRound(60,230);
+
+				pipes[pipes.length-1].children[0].style.height = height + 'px';
+				pipes[pipes.length-1].children[1].style.height = 290 - height + 'px';
+
+				pipes[pipes.length-1].style.left = 320 + 'px';
+
+				index++;
+			};
+		}, 10);
+	}
+
+	oStart.onclick = function(e) {
+		var e = e || window.event;
+		if (e && e.preventDefault) {
+			e.stopPropagation();
+		}else {
+			window.event.cancelBubble = true;
+		};
+
+		oHead.style.display = 'none';
+		oButn.style.display = 'none';
+		oScord.style.display = 'block';
+
+		clearInterval(oBird.timer);
+		fnDownFly();
+		fnPipeMove();
+		fnCount();
+
+		oMain.onclick = fnUpFly;
+	}
+
+	//鼠标点击时候，小鸟往上飞
+	function fnUpFly(){
+		clearInterval(oBird.timer);
+		clearInterval(oBird.time_d_swing);
+
+		oBird.src = 'img/up_bird1.png';
+		var top = parseInt(getComputedStyle(oBird,null).top);
+		oBird.style.top = top - 70 + 'px';
+		oBird.src = 'img/bird0.png';
+
+		fnDownFly();
+	}
+
+	//开始后，无动作时小鸟落下
+	function fnDownFly() {
+		var swing_d = true;
+		oBird.time_d_swing = setInterval(function(){
+			if (swing_d) {
+				oBird.src = 'img/down_bird1.png';
+				swing_d = false;
+			}else {
+				oBird.src = 'img/down_bird0.png';
+				swing_d = true;
+			};
+		}, 150);
+
+		var top = parseInt(getComputedStyle(oBird,null).top);
+		var i = 0;
+		oBird.timer = setInterval(function() {
+			i++;
+			top += 3*i;
+			oBird.style.top = top + 'px';
+		}, 100);
+	}
+
+	var max = 0;
+	//计分函数，
+	function fnCount() {
+		var count = 0;
+		
+		oPipe.timerScord = setInterval(function(){
+			var b_top = parseInt(getComputedStyle(oBird,null).top);
+			var limit_up = parseInt(getComputedStyle(pipes[count].children[0],null).height);
+			var limit_dowm = limit_up + 114;
+			var p_left = parseInt(getComputedStyle(pipes[count],null).left);
+
+			if (p_left > 18 && p_left < 80 && b_top > limit_up && b_top < limit_dowm) {
+				count++;
+				oScord.src = 'img/' + count + '.jpg';
+			};
+
+			if ((p_left >= 18 && p_left <= 120 && b_top <= limit_up) || (p_left >= 18 && p_left <= 120 && b_top >= limit_dowm)) {
+				oMain.onclick = null;
+				clearInterval(oPipe.timerScord);
+				clearInterval(oBird.timer);
+				oBird.timer = null;
+				clearInterval(oPipe.timer);
+
+				var top = parseInt(getComputedStyle(oBird,null).top);
+				var i = 0;
+				console.log(oBird.timer);
+
+				oBird.timer = setInterval(function(){
+					i++;
+					top += 3*i;
+					if (top >= 430) {
+						clearInterval(oBird.timer);
+						oBird.style.top = top + 'px';
+						fnDownFly = null;
+					};
+					oBird.style.top = top + 'px';
+				}, 50);
+
+				oGame.style.display = 'block';
+				oScord1.innerHTML = count;
+				
+				if (max <= count) {
+					max = count;
+				};
+				oBest.innerHTML = max;
+			}
+		}, 10);
+	}
+
+	//重新开始
+	ok.onclick = function(){
+		document.location.reload();
+	}
+
+	//清除浏览器默认事件
+	oMain.onmousedown = function(e) {
+		var e = e || window.event;
+		if (e && e.preventDefault) {
+			e.preventDefault();
+		};
+	}
+
+	//生成范围在[m,n]的随机数
+	function fnRound(m,n) {
+		var r = Math.round(Math.random()*(n-m) + m);
+
+		return r;
+	}
+</script>
+</html>
