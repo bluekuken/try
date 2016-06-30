@@ -1,0 +1,309 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+.wrap{
+	width: 70.3%;
+	/*min-width: 320px;*/
+	height: 100%;
+	margin: auto;
+}
+.header img{
+	width: 100%;
+}
+.content{
+	width: 100%;
+}
+.activity{
+	width: 81%;
+	margin: 44px auto;
+	text-indent: 2em;/*最好用em，更改字体大小不用重新设置*/
+	line-height: 48px;
+	font-size: 27px;
+	/*border: 1px solid black;*/
+}
+.activity span{
+	color: #e75617;
+}
+.activity img{
+	vertical-align: middle;
+}
+.down{
+	margin: 50px auto 78px auto;
+	width: 60%;
+}
+.down a img{
+	vertical-align: top;
+	width: 49.5%;
+}
+.img1{
+	margin-right: 1%;
+}
+.sign{
+	width: 60%;
+	min-width: 320px;
+	height: 65px;
+	line-height: 65px;
+	margin: 0 auto;
+	font-size: 19px;
+	text-align: center;
+}
+.sign span{
+	color: #eb9317;
+	font-size: 26px;
+}
+.line{
+	width: 100%;
+	height: 2px;
+	margin: auto;
+	margin-bottom: 20px;
+	background: -webkit-linear-gradient(left,rgba(255,255,255,0.1),rgba(245,175,48,0.5) 50%,rgba(255,255,255,0.1));
+}
+form{
+	width: 100%;
+	/*border: 1px solid black;*/
+}
+form input{
+	/*width: 35.9%;*/
+	width: 353px;
+	height: 39px;
+	display: block;
+	margin: auto;
+	font-size: 21px;
+	color: #c0cbdf;
+	padding-left: 6px;
+	background: #f9fafe;
+	border: 1px solid #dce5f6;
+	margin-bottom: 17px;
+}
+form div{
+	margin: auto;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.code{
+	/*width: 24.6%;*/
+	width: 240px;
+	display: inline;
+	margin-right: 1px;
+	margin-bottom: 0px;
+}
+.code_1{
+	/*width: 11.3%;*/
+	width: 112px;
+	height: 41px;
+	font-size: 20px;
+	padding-left: 0px;
+	text-align: center;
+	color: #feb12d;
+	display: inline;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+.signup{
+	display: -webkit-box;
+	margin-left: 39%;
+}
+.signup div{
+	font-size: 18px;
+	color: #626262;
+	width: 145px;
+	text-indent: 3px;
+	margin-right: 8px;
+}
+.signup div em{
+	color: #ff0902;
+	/*font-size: 18px;*/
+	padding-left: 3px;
+	padding-right: 6px;
+}
+.share{
+	border: 1px solid #edb057;
+	width: 354px;
+	height: 42px;
+	background: #f8f9d7;
+	color: #e69215;
+	font-size: 20px;
+	text-align: center;
+	line-height: 42px;
+	margin-left: 32%;
+	margin-top: 22px;
+	margin-bottom: 29px;
+}
+.share span{
+	font-size: 24px;
+	color: #ed5611;
+}
+.share em{
+	font-size: 28px;
+	font-style: italic;
+}
+.footer{
+	width: 100%;
+	height: 76px;
+	font-size: 22px;
+	background: #e89316;
+	color: white;
+	text-align: center;
+	padding-top: 24px;
+}
+.footer p:nth-child(1){
+	margin-bottom: 12px;
+}
+
+/*活动详情activity.html------------start*/
+
+
+
+
+/*活动详情activity.html------------end*/
+
+@media screen and (min-width: 640px) and (max-width: 960px){
+	.wrap{
+		width: 46.9%;
+		min-width: 640px;
+	}
+	.header img{
+		width: 100%;
+	}
+	.content{
+		width: 100%;
+	}
+
+	.activity{
+		width: 82%;
+		text-indent: 52px;
+		line-height: 48px;
+		font-size: 26px;
+		/*border: 1px solid black;*/
+	}
+	.down{
+		margin: 50px auto 78px auto;
+		width: 79%;
+	}
+	.down a img{
+		vertical-align: top;
+		width: 49.5%;
+	}
+	.img1{
+		margin-right: 1%;
+	}
+	.signup{
+		display: -webkit-box;
+		margin-left: 34%;
+	}
+	.share{
+		margin-left: 23%;
+	}
+}
+@media screen and (max-width: 640px){
+	.wrap{
+		width: 23.4%;
+		min-width: 320px;
+	}
+	.header img{
+		width: 100%;
+	}
+	.content{
+		width: 100%;
+	}
+	.activity{
+		width: 81.3%;
+		text-indent: 28px;
+		line-height: 24px;
+		font-size: 14px;
+		margin: 27px auto 24px auto;
+	}
+	.activity img{
+		width: 56px;
+	}
+	.down{
+		margin: 0 auto;
+		width: 85.6%;
+	}
+	.down a img{
+		vertical-align: top;
+		width: 49.3%;
+	}
+	.img1{
+		margin-right: 1.4%;
+	}
+	.sign{
+		width: 60%;
+		height: 34px;
+		line-height: 34px;
+		margin: 45px auto 10px auto;
+		font-size: 12px;
+	}
+	.sign span{
+		font-size: 16px;
+	}
+	form input{
+		width: 168px;
+		height: 16px;
+		margin: auto;
+		font-size: 12px;
+		padding-left: 6px;
+		margin-bottom: 10px;
+	}
+	form div{
+		margin: auto;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	.code{
+		width: 103px;
+		margin-bottom: 0px;
+	}
+	.code_1{
+		width: 65px;
+		height: 18px;
+		font-size: 12px;
+		padding-left: 0px;
+		margin-bottom: 0px;
+	}
+	.signup{
+		margin-left: 25%;
+	}
+	.signup div{
+		font-size: 12px;
+		width: 100px;
+		margin-right: 4px;
+	}
+	.signup div em{
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+	.signup img{
+		width: 64px;
+		padding-top: 3px;
+	}
+	.share{
+		width: 176px;
+		height: 22px;
+		font-size: 12px;
+		line-height: 22px;
+		margin-left: 21.9%;
+		margin-top: 9px;
+		margin-bottom: 15px;
+	}
+	.share span{
+		font-size: 13px;
+		color: #ed5611;
+	}
+	.share em{
+		font-size: 15px;
+	}
+	.footer{
+		width: 100%;
+		height: 40px;
+		font-size: 13px;
+		background: #e89316;
+		color: white;
+		text-align: center;
+		padding-top: 10px;
+	}
+	.footer p:nth-child(1){
+		margin-bottom: 4px;
+	}
+}

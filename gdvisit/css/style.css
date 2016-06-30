@@ -1,0 +1,145 @@
+html,body{
+	width: 100%;
+	/*height: 100%;*/
+}
+body{
+	background: url(../images/bk1.jpg) no-repeat fixed;
+}
+.wrap{
+	width: 59.7%;
+	display: -webkit-box;
+	margin: 188px auto 113px auto;
+	position: relative;
+	min-width: 640px;
+}
+.logo  img:nth-child(1){
+	position: absolute;
+	top: -57px;
+	left: -97px;
+	/*min-width: 288px;*/
+	/*border: 1px solid black;*/
+}
+.logo img:nth-child(2){
+	vertical-align: bottom;
+	margin-left: 10px;
+	position: absolute;
+	top: -37px;
+	left: -12px;
+}
+.left{
+	width: 52.8%;
+	/*min-width: 454px;*/
+}
+.left a:nth-child(1) img{
+	margin-right: 3%;
+	width: 61%;
+}
+.left a:nth-child(2) img{
+	width: 36%;
+}
+.right{
+	width: 47.2%;
+	/*min-width: 406px;*/
+}
+.right a:nth-child(1) img{
+	margin-left: 0.2%;
+	margin-right: 0.2%;
+	width: 40.2%;
+}
+.right a:nth-child(2) img{
+	width: 59.2%;
+}
+
+.date{
+	position: absolute;
+	top: 35px;
+	right: 35px;
+	width: 194px;
+	color: white;
+	height: 105px;
+	min-height: 105px;
+
+}
+.dat1{
+	text-align: right;
+	font-size: 30px;
+	color: white;
+	height: 38px;
+	min-width: 194px;
+}
+.dat1 span{
+	line-height: 52px;
+	margin-right: 4px;
+}
+.dat2{
+	display: -webkit-box;
+	text-align: right;
+	padding-top: 12px;
+}
+.dat2>div div:nth-child(1){
+	padding-bottom: 2px;
+}
+.dat2_1 div:nth-child(2){
+	text-align: left;
+	padding-left: 3px;
+}
+.dat2_2{
+	padding-left: 23px;
+}
+.dat3{
+	margin-left: 3px;
+	padding-top: 11px;
+}
+.footer{
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	padding-bottom: 18px;
+	font-family: '微软雅黑';
+	color: #606677;
+}
+/*媒体查询*/
+@media screen and (max-width: 640px){
+	.wrap{
+		width: 59.7%;
+		-webkit-box-orient: vertical;
+		margin: 188px auto 113px auto;
+		min-width: 320px;
+		/*position: relative;*/
+	}
+	.logo  img:nth-child(1){
+		position: absolute;
+		top: -95px;
+		left: 0px;
+	}
+	.left{
+		width: 100%;
+		/*min-width: 450px;*/
+	}
+	.left a:nth-child(1) img{
+		margin-right: 2.3%;
+		width: 61.5%;
+	}
+	.left a:nth-child(2) img{
+		width: 36.2%;
+	}
+	.right{
+		padding-top: 2.3%;
+		width: 100%;
+		/*min-width: 450px;*/
+	}
+	.right a:nth-child(1) img{
+		margin-left: 0%;
+		margin-right: 2.1%;
+		width: 39.5%;
+	}
+	.right a:nth-child(2) img{
+		width: 58.4%;
+	}
+	.footer{
+		width: 100%;
+		text-align: center;
+		margin: auto ;
+		// padding-bottom: 30px;
+	}
+}
