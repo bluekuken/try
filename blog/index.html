@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	body{
+		background: #E8F2F7;
+	}
+	#main{
+		width: 470px;
+		margin: 10px auto;
+		background-color: rgba(255,255,255,0.8);
+		padding: 20px 10px 10px 10px;
+	}
+	#title{
+		height: 50px;
+		text-align: center;
+		font-size: 30px;
+		color: silver;
+	}
+	input,textarea{outline: none;}
+	#input{
+		width: 400px;
+		height: 24px;
+		vertical-align: middle;
+		background-color: rgba(255,255,255,0.8);
+	}
+	#text{
+		width: 402px;
+		height: 150px;
+		vertical-align: top;
+		background-color: rgba(255,255,255,0.8);
+	}
+	#butn{
+		width: 50px;
+		height: 25px;
+		line-height: 25px;
+		color: gray;
+		float: right;
+		cursor: pointer;
+	}
+	.way_first{
+		width: 100%;
+		overflow: hidden;
+	}
+	.way_second{
+		background-color: rgba(255,255,255,0.8);
+		width: 450px;
+		padding: 10px;
+		margin-bottom: 5px;
+	}
+	.name{
+		padding-left: 48px;
+		float: left;
+	}
+	.delete{
+		padding-right: 10px;
+		float: right;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="title">分享身边的新鲜事</div>
+		<div>
+			<span>姓名：</span><input type="text" id="input">
+		</div>
+		<div style="margin-top:10px;">
+			<span>内容：</span><textarea name="" id="text" placeholder="#这一刻你的想法#"></textarea>
+		</div>
+		<div style="padding:10px 0 10px 48px;">
+			<input id="butn" type="button" value="发布">
+		</div>
+		<span style="font-size:20px;font-weight:bold;">显示留言</span>
+	</div>
+</body>
+<script type="text/javascript">
+	var oMain = document.getElementById('main');
+	var oName = document.getElementById('input');
+	var oContent = document.getElementById('text');
+	var obutn = document.getElementById('butn');
+
+	var timer = null;
+	var h = 0;//获取oDiv的高度
+	var h1 = 0;//获取删除时候oDiv的高度
+	var time2 = null;
+	var page = 0;
+
+
+
+	obutn.onclick = function(){
+
+		if (oName.value.length > 0 && oContent.value.length > 0) {
+			// console.log('x');
+			var oDiv = document.createElement('div');
+			oDiv.setAttribute('class','way_first');
+
+			var oCont = document.createElement('div');
+			oCont.setAttribute('class','way_second');
+
+			var oSpan = document.createElement('span');
+			oSpan.setAttribute('class','name');
+
+			var oDelete = document.createElement('a');
+			oDelete.setAttribute('class','delete');
+			oDelete.innerText = '删除';
+
+			oCont.innerText = oContent.value;
+			oSpan.innerText = oName.value;
+
+			oContent.value = null;
+			oName.value = null;
+
+			oDiv.appendChild(oCont);
+			oDiv.appendChild(oSpan);
+			oDiv.appendChild(oDelete);
+
+			oMain.appendChild(oDiv);
+
+			//弹性生成
+			var step = 0;
+			var stepMax = 30;
+			var startPos = 0;
+			var change = parseInt(getComputedStyle(oDiv,null).height);
+
+			timer = setInterval(function() {
+				step++;
+				oDiv.style.height = Tween.Bounce.easeOut(step,startPos,change,stepMax) + 'px';
+				if (step == stepMax) {
+					oDiv.offsetHeight = h + 'px';
+					clearInterval(timer);
+					timer = null;
+				};
+			}, 30);
+
+
+			//改进：
+			/*
+			改写删除函数
+			*/
+			//弹性删除
+			oDelete.onclick = function() {
+				var step = 0;
+				var startPos = this.parentNode.offsetHeight;
+				var endPos = 0;
+				var change = -startPos;
+				var stepMax = 30;
+				var obj = this;
+
+				timer = setInterval(function(){
+					step++;
+					if (step >= stepMax) {
+						obj.parentNode.offsetHeight = 0 + 'px';
+						clearInterval(timer);
+						timer = null;
+						obj.parentNode.parentNode.removeChild(obj.parentNode);
+					};
+					obj.parentNode.style.height = Tween.Bounce.easeOut(step,startPos,change,stepMax) + 'px';
+				}, 30);
+			}
+
+
+			//tween类
+			var Tween = {
+				Bounce: {
+					easeIn: function(t,b,c,d){
+						return c - Tween.Bounce.easeOut(d-t, 0, c, d) + b;
+					},
+					easeOut: function(t,b,c,d){
+						if ((t/=d) < (1/2.75)) {
+							return c*(7.5625*t*t) + b;
+						} else if (t < (2/2.75)) {
+							return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+						} else if (t < (2.5/2.75)) {
+							return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+						} else {
+							return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+						}
+					},
+					easeInOut: function(t,b,c,d){
+						if (t < d/2) return Tween.Bounce.easeIn(t*2, 0, c, d) * .5 + b;
+						else return Tween.Bounce.easeOut(t*2-d, 0, c, d) * .5 + c*.5 + b;
+					}
+				}
+			}
+		}else {
+			alert("不能发布空消息！");
+		};
+	}
+
+
+	
+</script>
+</html>
