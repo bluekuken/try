@@ -1,0 +1,97 @@
+#wrap{
+	width: 320px;
+	height: 480px;
+	margin: auto;
+	background: url(../images/game_bg.jpg) no-repeat;
+	position: relative;
+}
+#score{
+	color: #cfdcfc;
+	font-size: 19px;
+	position: absolute;
+	left: 60px;
+	top: 13px;
+}
+#progress{
+	position: absolute;
+	left: 63px;
+	top:66px;
+	overflow: hidden;
+	height: 16px;
+	width: 180px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+#inner{
+	width: 180px;
+	height: 20px;
+	background: #ff4900;
+}
+ul li:nth-child(1){
+	position: absolute;
+	top: 117px;
+	left: 98px;
+}
+ul li:nth-child(2){
+	position: absolute;
+	top: 143px;
+	left: 188px;
+}
+ul li:nth-child(3){
+	position: absolute;
+	top: 161px;
+	left: 19px;
+}
+ul li:nth-child(4){
+	position: absolute;
+	top: 193px;
+	left: 104px;
+}
+ul li:nth-child(5){
+	position: absolute;
+	top: 222px;
+	left: 14px;
+}
+ul li:nth-child(6){
+	position: absolute;
+	top: 213px;
+	left: 199px;
+}
+ul li:nth-child(7){
+	position: absolute;
+	top: 296px;
+	left: 30px;
+}
+ul li:nth-child(8){
+	position: absolute;
+	top: 275px;
+	left: 119px;
+}
+ul li:nth-child(9){
+	position: absolute;
+	top: 297px;
+	left: 207px;
+}
+ul li{
+	width: 108px;
+	height: 101px;
+	overflow: hidden;
+	position: relative;
+}
+ul li img{
+	position: absolute;
+	display: none;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+}
+
+#start{
+	color: #537990;
+	font-size: 50px;
+	position: absolute;
+	top: 215px;
+	left: 60px;
+}
