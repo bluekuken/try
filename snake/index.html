@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪食蛇</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	#main{
+		width: 600px;
+		height: 600px;
+		border: 1px solid black;
+		background: #ccc;
+		margin: auto;
+		position: relative;
+		background: url(bk.jpg);
+	}
+	#div{
+		display: none;
+		background: green;
+	}
+	#div img{
+		width: 100%;
+		height: 100%;
+	}
+	.div{
+		position: absolute;
+		z-index: 5;
+		border: 1px solid black;
+		width: 18px;
+		height: 18px;
+		background: orange;
+	}
+	#food{
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		background: purple;
+		display: none;
+		border: 1px solid black;
+	}
+	#butn_start{
+		width: 50px;
+		height: 30px;
+		color: #ccc;
+		font-size: 20px;
+		font-family: "微软雅黑";
+		border-radius: 5px;
+		position: absolute;
+		left: 275px;
+		top: 285px;
+		cursor: pointer;
+		text-align: center;
+		background: orange;
+	}
+	#footer{
+		position: absolute;
+		width: 100%;
+		margin-top: 10px;
+		top: 610px;
+		transition: 1s;
+	}
+	#out{
+		background: orange;
+		width: 200px;
+		height: 20px;
+		margin: auto;
+		border: 1px solid black;
+		border-radius: 5px;
+		font-size: 12px;
+		color: white;
+		font-weight: bold;
+		text-align: center;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.win{
+		-webkit-animation: shake .5s;
+	}
+	#title{
+		line-height: 20px;
+	}
+	#level{
+		margin-left: 10px;
+	}
+	@keyframes shake{
+		0%{-webkit-transform:scale(1.2,1.2);}
+		20%{-webkit-transform:scale(1,1);}
+		40%{-webkit-transform:scale(1.2,1.2);}
+		60%{-webkit-transform:scale(1,1);}
+		80%{-webkit-transform:scale(1.2,1.2);}
+		100%{-webkit-transform:scale(1,1);}
+	}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="wrap"><div id="div" class="div"></div></div>
+		<div id="food" class="food"></div>
+		<div id="butn_start">start</div>
+		<div id="footer"><div id="out"><span id="title">等级:</span><span id="level"></span></div></div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var oMain = document.getElementById('main');
+	var oWrap = document.getElementById('wrap');
+	var kids = oWrap.children;
+	var oDiv = document.getElementById('div');
+	var oStart = document.getElementById('butn_start');
+	var oFood = document.getElementById('food');
+	var oLevel = document.getElementById('level');
+	var ofooter = document.getElementById('footer');
+
+	//蛇的初始运动
+	var num;//蛇的初始位置
+	var step_t;//蛇的初始位置
+	var step_l;//蛇的初始位置
+	var mark = false;//控制蛇不反向运动
+	var flag = true;//生成食物
+	oDiv.flag = true;//蛇的竖直方向运动，true-向下，false-向上
+	oDiv.mark = true;//蛇的水平方向运动，true-向右，false-向左
+
+	//升级
+	var level_time = 500;
+	var level_count = 0;
+	var level = 1;
+
+	oLevel.innerText = level;
+
+	var L1,L2,R1,R2,T1,T2,B1,B2;//用于判断吃食物，即碰撞
+
+	oStart.onclick = function(){
+
+		oStart.style.display = 'none';
+
+		//获取蛇的坐标，为20的倍数，与步伐同步
+		var ok = true;
+		while(ok){
+			num = fnRound(60,600);
+			if (num % 20 == 0) {
+				ok = false;
+			};
+		}
+		oDiv.style.left = num + 'px';
+		oDiv.style.top = num + 'px';
+
+		step_t = num;//设置蛇的初始位置
+		step_l = num;//设置蛇的初始位置
+
+		oDiv.style.display = 'block';
+
+		fnMove_y();//蛇的初始运动
+
+ 		//生成食物
+ 		var timer = setInterval(function(){
+
+	 		if (flag) {
+
+	 			oFood.style.display = 'block';
+
+	 			var ok = true;
+	 			while(ok){
+	 				num = fnRound(20,480);
+	 				if (num % 20 == 0) {
+	 					ok = false;
+	 				};
+	 			}
+
+	 			food_left = food_top = num;
+
+	 			oFood.style.left = food_left + 'px';
+	 			oFood.style.top = food_top + 'px';
+
+	 			flag = false;
+	 		};
+
+	 		L2 = food_left
+	 		R2 = L2 + 20;
+	 		T2 = food_top
+	 		B2 = T2 + 20;
+		},level_time);
+ 	}
+
+	//竖直方向运动
+	function fnMove_y() {
+
+		oDiv.timer_y = setInterval(function(){
+			if (oDiv.flag) {
+				step_t += 20;
+
+				//检测碰撞-吃食物
+	 			L1 = step_l;
+	 			R1 = L1 + 20;
+				T1 = step_t;
+				B1 = T1 + 20;
+
+				if (L1 < R2 && R1 > L2 && T1 < B2 && B1 > T2) {
+					oFood.style.display = 'none';
+
+					var div = document.createElement('div');
+					div.setAttribute('class', 'div')
+
+					oWrap.appendChild(div);
+
+					kids[kids.length-1].style.left = getComputedStyle(kids[kids.length-2],null).left;
+					kids[kids.length-1].style.top = parseInt(getComputedStyle(kids[kids.length-2],null).top) - 20 + 'px';
+
+					flag = true;//食物吃掉了，重置生成条件
+
+					//升级
+					fnLevel();
+				};
+			}else {
+				step_t -= 20;
+
+	 			L1 = step_l;
+	 			R1 = L1 + 20;
+				T1 = step_t;
+				B1 = T1 + 20;
+
+				if (L1 < R2 && R1 > L2 && T1 < B2 && B1 > T2) {
+					oFood.style.display = 'none';
+
+					var div = document.createElement('div');
+					div.setAttribute('class', 'div')
+
+					oWrap.appendChild(div);
+
+					kids[kids.length-1].style.left = getComputedStyle(kids[kids.length-2],null).left;
+					kids[kids.length-1].style.top = parseInt(getComputedStyle(kids[kids.length-2],null).top) + 20 + 'px';
+
+					flag = true;//食物吃掉了，重置生成条件
+
+					//升级
+					fnLevel();
+				};
+			}
+
+			//如影随形：蛇的身体跟随头部前进；获取的是头部的旧的定位值
+ 	 		if (kids.length > 1) {
+ 	 			var left = getComputedStyle(kids[0],null).left;
+				var top = getComputedStyle(kids[0],null).top;
+
+	 	 		for (var i = 1; i < kids.length; i++) {
+
+	 	 			var temp_l = left;
+	 	 			left = getComputedStyle(kids[i],null).left;
+	 	 			kids[i].style.left = temp_l;
+
+	 	 			var temp_t = top;
+	 	 			top = getComputedStyle(kids[i],null).top;
+	 	 			kids[i].style.top = temp_t;
+				};
+ 	 		};
+
+ 	 		//头部更新定位值
+ 	 		oDiv.style.top = step_t + 'px';
+
+ 	 		//判断临界值
+ 	 		if (step_t >= 580 || step_t <= 0) {
+ 	 			// oDiv.innerHTML += "<img src='bom.png'/>";
+ 	 			// oDiv.style.backgroundColor = '#ccc';
+ 	 			// oDiv.style.border = 'none';
+ 	 			clearInterval(oDiv.timer_x);
+ 	 			clearInterval(oDiv.timer_y);
+
+ 	 			//结束
+ 	 			fnEnd();
+ 	 		};
+		}, level_time);
+	}
+
+	//疑问：如果直接在if(flage){}里面使用 oFood.innerHTML += "<div id='food'></div>",则oDiv不能动了？
+
+	//水平方向运动
+	function fnMove_x() {
+		oDiv.timer_x = setInterval(function(){
+			if (oDiv.mark) {
+				step_l += 20;
+
+	 			L1 = step_l;
+	 			R1 = L1 + 20;
+				T1 = step_t;
+				B1 = T1 + 20;
+
+				if (L1 < R2 && R1 > L2 && T1 < B2 && B1 > T2) {
+					oFood.style.display = 'none';
+
+					var div = document.createElement('div');
+					div.setAttribute('class', 'div')
+
+					oWrap.appendChild(div);
+
+					kids[kids.length-1].style.top = getComputedStyle(kids[kids.length-2],null).top;
+					kids[kids.length-1].style.left = parseInt(getComputedStyle(kids[kids.length-2],null).left) - 20 + 'px';
+
+					flag = true;//食物吃掉了，重置生成条件
+
+					//升级
+					fnLevel();
+				};
+			}else {
+				step_l -= 20;
+
+	 			L1 = step_l;
+	 			R1 = L1 + 20;
+				T1 = step_t;
+				B1 = T1 + 20;
+
+				if (L1 < R2 && R1 > L2 && T1 < B2 && B1 > T2) {
+					oFood.style.display = 'none';
+
+					var div = document.createElement('div');
+					div.setAttribute('class', 'div')
+
+					oWrap.appendChild(div);
+
+					kids[kids.length-1].style.top = getComputedStyle(kids[kids.length-2],null).top;
+					kids[kids.length-1].style.left = parseInt(getComputedStyle(kids[kids.length-2],null).left) + 20 + 'px';
+
+					flag = true;//食物吃掉了，重置生成条件
+
+					//升级
+					fnLevel();
+				};
+			}
+
+			//如影随形：蛇的身体跟随头部前进；获取的是头部的旧的定位值
+			if (kids.length>1) {
+				var left = getComputedStyle(kids[0],null).left;
+				var top = getComputedStyle(kids[0],null).top;
+
+	 	 		for (var i = 1; i < kids.length; i++) {
+	 	 			var temp_l = left;
+	 	 			left = getComputedStyle(kids[i],null).left;
+	 	 			kids[i].style.left = temp_l;
+
+	 	 			var temp_t = top;
+	 	 			top = getComputedStyle(kids[i],null).top;
+	 	 			kids[i].style.top = temp_t;
+				};
+			};
+
+			//头部更新定位值
+			oDiv.style.left = step_l + 'px';
+
+			//判断临界值
+ 	 		if (step_l >= 580 || step_l <= 0) {
+ 	 			clearInterval(oDiv.timer_x);
+ 	 			clearInterval(oDiv.timer_y);
+
+ 	 			//结束
+ 	 			fnEnd();
+ 	 		};
+		}, level_time);
+	}
+
+	document.onkeydown = fnKeybordControl;
+	//键盘控制方向
+	function fnKeybordControl(e) {
+		var e = e || window.event;
+
+		if (e.keyCode == 38 || e.keyCode == 40) {
+			clearInterval(oDiv.timer_x);
+		};
+		if (e.keyCode == 37 || e.keyCode == 39) {
+			clearInterval(oDiv.timer_y);
+		};
+
+		//判断当前
+		if (mark) {
+			switch(e.keyCode) {
+				case 38:{
+					oDiv.flag = false;
+					fnMove_y();
+					mark = false;
+					break;
+				}
+				case 40:{
+					oDiv.flag =true;
+					fnMove_y();
+					mark = false;
+					break;
+				}
+			}
+		}else {
+			switch(e.keyCode) {
+				case 37:{
+					oDiv.mark =false;
+					fnMove_x();
+					mark = true;
+					break;
+				}
+				case 39:{
+					oDiv.mark =true;
+					fnMove_x();
+					mark = true;
+					break;
+				}
+			}
+		};
+	}
+
+	//生成随机数，作为蛇的坐标
+	function fnRound(m,n) {
+		var r = Math.round(Math.random()*(n-m) + m);
+		return r;
+	}
+
+
+	//升级
+	function fnLevel(){
+		level_count++;
+		if (level_count % 5 == 0) {
+			level++;
+			level_time -= 10*level;
+			oLevel.innerText = level;
+
+			ofooter.children[0].setAttribute('class', 'win');
+			ofooter.children[0].timer = setTimeout(function(){
+				ofooter.children[0].setAttribute('class', 'ok');
+			}, 1000);
+		};
+	}
+
+
+	function fnEnd(){
+	 	document.onkeydown = null;
+
+	 	//结束游戏界面
+	 	var mark = true;
+	 	ofooter.style.top = "290px";
+	 	ofooter.style.transform = "scale(2,2)";
+
+	 	ofooter.timer = setInterval(function(){
+	 			if (mark) {
+	 				ofooter.children[0].style.background = "white";
+	 				ofooter.children[0].style.color = "orange";
+
+	 				mark = false;
+	 			}else {
+	 				ofooter.children[0].style.background = "orange";
+	 				ofooter.children[0].style.color = "white";
+
+	 				mark = true;
+	 			};
+	 	}, 500);
+	}
+</script>
+</html>
