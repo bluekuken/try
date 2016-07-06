@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>iDaily</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		em,strong{
+			list-style: none;
+			font-style: normal;
+			font-weight: normal;
+		}
+		#main{
+			min-width: 320px;
+			position: relative;
+		}
+		#header{
+			width: 100%;
+			height: 45px;
+			margin-top: 20px;
+			background: #FAFAFA;
+			position: relative;
+		}
+		#header em{
+			float: left;
+			margin-left: 15px;
+			line-height: 45px;
+		}
+		#header em a{
+			text-decoration: none;
+			color: #0777FA;
+		}
+		#header strong{
+			display: inline-block;
+			width: 240px;
+			text-align: center;
+			line-height: 45px;
+		}
+		#header span{
+			float: right;
+			margin-right: 15px;
+			margin-top: 7px;
+
+		}
+		.picture{
+			display: inline-block;
+			font-size: 0;
+			width: 30px;
+			height: 30px;
+			border: 1px solid gray;
+			border-radius: 100%;
+			background-size: 100%;
+		}
+		#contlist{
+			width: 100%;
+			border-top: 1px solid silver;
+			padding: 10px 0;
+		}
+		#contlist li{
+			width: 100%;
+			display: -webkit-box;
+			margin-bottom: 10px;
+			border-bottom: 1px solid silver;
+		}
+		#contlist li span{
+			margin-left: 10px;
+		}
+		#contlist li div{
+			-webkit-box-flex:1;
+			padding: 0 5px 10px 5px;
+		}
+		#contlist li .content span{
+			margin-left: 5px;
+		}
+		#contlist li .content div{
+			padding: 5px 0 0 5px;
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+		.content strong{
+			font-size: 12px;
+			margin-left: 5px;
+			color: gray;
+		}
+		.content em{
+			margin: 0 10px 0 5px;
+			float: right;
+		}
+		.content em img{
+			vertical-align: middle;
+		}
+		#contlist li .content .admire{
+			padding: 0;
+			margin-top: 5px;
+		}
+		.admire span a{
+			text-decoration: none;
+		}
+		#more{
+			text-align: center;
+			cursor: pointer;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			color: gray;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<em><a href="###">≡</a></em>
+			<strong>kuken</strong>
+			<span id="picture" class="picture"></span>
+		</div>
+		<ul id="contlist">
+			<!-- <li>
+				<span class="picture" style="background:url(http://ibrowser-public.stor.sinaapp.com/uploads/2016-07-04/1467612333_1211705029.png)"></span>
+				<div class="content">
+					<span>kuken</span>
+					<div>我是一个粉刷匠，粉刷本领强,我要把那新房子刷得更漂亮</div>
+					<strong>1分钟前 来自红米</strong><em><img src="image/admire.png" alt=""></em><br>
+					<div class="admire"><span><a href="###">kuken</a></span></div>
+				</div>
+			</li> -->
+		</ul>
+		<div id="more">点击加载更多···</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oMore = document.getElementById('more');
+	var oList = document.getElementById('contlist');
+	var oPicture = document.getElementById('picture');
+
+	var xhr = new XMLHttpRequest();
+	var page = 1;
+	var count = 2;
+	var obj;
+
+	publicTimeline();
+
+	function publicTimeline(){
+		var url = "http://3.ibrowser.applinzi.com/index.php/Home/API/public_timelines?page=" + page + "&count=" + count;
+		xhr.open('get',url,true);
+		xhr.send(null);
+
+		xhr.onload = function(){
+			var jsonStr = xhr.responseText;
+			obj = JSON.parse(jsonStr);
+
+			console.log(obj);
+			// console.log(xhr.responseText);
+
+			for (var i = 0; i <= obj.length - 1; i++) {
+				var cont = obj[i].content;
+				var picUrl = obj[i].pics;
+				var date = obj[i].createtime;
+				var arr = date.split(" ");
+				var arr1 = arr[0].split("-");
+
+				var day = arr1[1] + "月" + arr1[2] + "日";
+				var time = arr[1];
+
+				// console.log(picUrl);
+				var name = obj[i].name;
+				var picture = obj[i]
+
+				var str = '<li><span class="picture" style="background-image:url('+picUrl+')"></span><div class="content"><span>kuken</span><div>'+cont+'</div><strong>1分钟前 来自红米</strong><em><img src="image/admire.png" alt=""></em><br><div class="admire"><span><a href="###">kuken</a></span></div></div></li>';
+
+				oList.innerHTML += str;
+			};
+		}
+	}
+
+	oMore.onclick = function(){
+		page++;
+
+		publicTimeline();
+	}
+</script>
+</html>

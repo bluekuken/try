@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>iDaily</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		em,strong{
+			font-style: normal;
+			font-weight: normal;
+		}
+		#main{
+			min-width: 320px;
+			min-height: 568px;
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			/*子元素竖向排列*/
+		}
+		#header{
+			padding: 20px;
+			text-align: center;
+			background: #FAFAFA;
+			position: relative;
+		}
+		#header div:nth-child(2){
+			height: 100px;
+			position: relative;
+		}
+		#header div:nth-child(2) div{
+			width: 70px;
+			height: 70px;
+			border: 1px solid black;
+			border-radius: 100%;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: url('image/picture_bk.png');
+			background-size: 100%;
+		}
+		#header div:nth-child(3){
+			font-weight: bolder;
+			line-height: 35px;
+			height: 35px;
+		}
+		#header span{
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+		#header span a{
+			text-decoration: none;
+			color: #0777FA
+		}
+		#timeline{
+			/*width: 100%;*/
+			border: 1px solid black;
+			-webkit-box-flex:1;
+			background: #FFFFFF;
+			
+			overflow-y: scroll;
+		}
+		#timeline ul li{
+			display: -webkit-box;
+		}
+		#timeline ul li em{
+			-webkit-box-flex:1;
+			margin: 0 10px 0 10px;
+			text-align: center;
+			line-height: 80px;
+			font-size: 12px;
+		}
+		#timeline ul li div{
+			-webkit-box-flex:1;
+		}
+		#timeline ul li>div>div{
+			position: relative;
+			padding-left: 10px;
+			border-left: 1px solid black;
+			padding-top: 30px;
+		}
+		#timeline #poit{
+			width: 10px;
+			height: 10px;
+			border: 1px solid black;
+			border-radius: 100%;
+			/*background: #50E3C2;*/
+			position: absolute;
+			top: 32px;
+			left: -7px;
+		}
+		#timeline .msg{
+			padding: 10px 0;
+			color: #ccc;
+			font-size: 12px;
+		}
+		#timeline .msg strong{
+			margin-right: 10px;
+		}
+		#more{
+			text-align: center;
+			line-height: 50px;
+			height: 50px;
+			font-size: 12px;
+			color: gray;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div>Profile</div>
+			<div><div id="picture"></div></div>
+			<div id="name">Kallen</div>
+			<div>这家伙很懒，什么也没说</div>
+			<span><a>≡</a></span>
+		</div>
+		<div id="timeline">
+			<ul id="contlist">
+				<!-- <li>
+					<em>3月9日</em>
+					<div>
+						<div>
+							<div>dd</div>
+							<div id="poit"></div>
+							<div class="msg"><strong>22:10:10</strong><span>来自红米</span></div>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+			<div id="more">更早的当年···</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	//获取对象
+	var oPic = document.getElementById('picture');
+	var oName = document.getElementById('name');
+	var oMore = document.getElementById('more');
+	var oList = document.getElementById('contlist');
+	var oLine = document.getElementById('timeline');
+
+	var page = 1;
+	var count = 2;
+	var obj;
+
+	var h = oLine.offsetHeight;
+	oLine.style.height = h + 'px';
+
+	var xhr = new XMLHttpRequest();
+	myTimeLine();
+
+	function myTimeLine(){
+		
+		var url = "http://3.ibrowser.applinzi.com/index.php/Home/API/mytimelines?page=" + page + "&count=" + count;
+
+		xhr.open('get',url,true);
+		xhr.send(null);
+
+		xhr.onload = function(){
+			var jsonStr = xhr.responseText;
+			obj = JSON.parse(jsonStr);
+
+			console.log(obj);
+			// console.log(obj[0].createtime);
+			for (var i = 0; i <= obj.length - 1; i++) {
+				// console.log(obj[i].createtime);
+				var cont = obj[i].content;
+
+				var date = obj[i].createtime;
+				var arr = date.split(" ");
+				var arr1 = arr[0].split("-");
+
+				var day = arr1[1] + "月" + arr1[2] + "日";
+				var time = arr[1];
+				// console.log(day);
+				//时间轴的随机颜色
+				var color = getRandomColor();
+
+				var str = '<li><em>'+ day +'</em><div><div><div>'+ cont +'</div><div id="poit" style="background:' + color +'"></div><div class="msg"><strong>'+ time +'</strong><span>来自红米</span></div></div></div></li>';
+
+				oList.innerHTML += str;
+			};
+		}
+	}
+
+	oMore.onclick = function(){
+		page += 1;
+
+		// console.log('x');
+		myTimeLine();
+	}
+
+
+		//产生随机颜色
+	var getRandomColor = function(){ 
+		// console.log('hh');
+	  	return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6); 
+	}
+</script>
+</html>

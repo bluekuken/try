@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>iDaily</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			min-width: 320px;
+			min-height: 568px;
+			position: relative;
+		}
+		.picture_out{
+			width: 100%;
+			height: 25%;
+			position: absolute;
+			top: 15%;
+		}
+		#picture{
+			width: 60px;
+			height: 60px;
+			border: 1px solid gray;
+			border-radius: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			background: url(image/picture_bk.png);
+			background-size: 100%;
+		}
+		#sign_up{
+			width: 100%;
+			position: absolute;
+			top: 235px;
+		}
+		#sign_up div{
+			width: 100%;
+			border-top: 1px solid silver;
+			height: 30px;
+			line-height: 30px;
+		}
+		#sign_up div:nth-child(4){
+			border-bottom: 1px solid silver;
+		}
+		#sign_up div span{
+			padding: 10px;
+		}
+		#sign_up div input{
+			border: none;
+			outline: none;
+			height: 25px;
+			width: 65%;
+		}
+		#sign_up .picture_out{
+			width: 100%;
+			height: 25%;
+			position: absolute;
+			top: -100px;
+			border: none;
+		}
+		#picture{
+			width: 60px;
+			height: 60px;
+			border: 1px solid gray;
+			border-radius: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			background: url(image/picture_bk.png);
+			background-size: 100%;
+			overflow: hidden;
+		}
+		#picture .picture{
+			height: 60px;
+			opacity: 0;
+			width: 60px;
+			/*border: 1px solid black;*/
+		}
+		#sign_up .signup_out{
+			position: absolute;
+			top: 115px;
+			border: none;
+
+		}
+		#sign_up #signup{
+			width: 90%;
+			background: #0777FA;
+			border: none;
+			outline: none;
+			height: 30px;
+			border-radius: 6px;
+			color: white;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0;
+			margin: auto;	
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<form id="sign_up" enctype="multipart/form-data">
+			<div class="picture_out"><a id="picture"><input class="picture" type="file" name="icon"></a></div>
+			<div><span>用 户 名</span><input id="username" type="text" name="username"></div>
+			<div><span>密　　码</span><input id="pwd" type="password" name="pwd"></div>
+			<div><span>确认密码</span><input type="password"></div>
+			<div class="signup_out"><input id="signup" type="button" value="立即注册"></div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	//获取对象
+	var oSing_up = document.getElementById('sign_up');
+	var oButn = document.getElementById('signup');
+	// var formData = new FormData(oSing_up);
+	var url = "http://3.ibrowser.applinzi.com/index.php/Home/API/register";
+
+	oButn.onclick = function(){
+		var formData = new FormData(oSing_up);
+
+		console.log(formData.values());
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST',url,true);
+		xhr.send(formData);
+
+		xhr.onload = function(){
+			var jsonStr = xhr.responseText;
+			var msg = JSON.parse(jsonStr);
+
+			// if(msg.message === "注册成功"){
+			// 	location.href = 'index.html';
+			// }
+
+			console.log(msg.message);		
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>iDaily</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			min-width: 320px;
+			min-height: 568px;
+			position: relative;
+		}
+
+		#sign_in{
+			width: 100%;
+			position: absolute;
+			top: 235px;
+		}
+		#sign_in div{
+			width: 100%;
+			border-top: 1px solid silver;
+			border-bottom: 1px solid silver;
+			height: 30px;
+			line-height: 30px;
+		}
+		#sign_in div:nth-child(1){
+			border-bottom: none;
+		}
+		#sign_in div span{
+			padding: 20px;
+		}
+		#sign_in div input{
+			border: none;
+			outline: none;
+			height: 25px;
+			width: 70%;
+		}
+		#sign_in .picture_out{
+			width: 100%;
+			height: 25%;
+			position: absolute;
+			top: -100px;
+			border: none;
+		}
+		#picture{
+			width: 60px;
+			height: 60px;
+			border: 1px solid gray;
+			border-radius: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			background: url(image/picture_bk.png);
+			background-size: 100%;
+			overflow: hidden;
+		}
+		.picture{
+			height: 60px;
+			opacity: 0;
+		}
+		#sign_in .login_out{
+			position: absolute;
+			top: 80px;
+			border: none;
+
+		}
+		#sign_in #login{
+			width: 90%;
+			background: #0777FA;
+			border: none;
+			outline: none;
+			height: 30px;
+			border-radius: 6px;
+			color: white;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0;
+			margin: auto;	
+		}
+		#sign_up{
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		#sign_up a{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<form id="sign_in">
+			<div><span>用户名</span><input id="username" type="text" name="name"></div>
+			<div><span>密　码</span><input id="pwd" type="password" name="password"></div>
+			<div class="picture_out"><a id="picture"><input class="picture" type="file"></a></div>
+			<div class="login_out"><input id="login" type="button" value="登　录"></div>
+		</form>
+		<span id="sign_up"><a href="signup.html">立即注册</a></span>
+	</div>
+</body>
+<script type="text/javascript">
+	var oLogin = document.getElementById('login');
+	var oSign_in = document.getElementById('sign_in');
+	var url = "http://3.ibrowser.applinzi.com/index.php/Home/API/login";
+
+
+	oLogin.onclick = function(){
+		var formData = new FormData(oSign_in);
+
+		// console.log(formData.keys());
+		// var data = 'name='+username.value+'&'+'password='+pwd.value;
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST',url,true);
+		xhr.send(formData);
+
+		xhr.onload = function(){
+			var jsonStr = xhr.responseText;
+			var obj = JSON.parse(jsonStr);
+			console.log(obj);
+			if (obj.code == 1) {
+				location.href = "content.html";
+			};
+		}
+	}
+</script>
+</html>
