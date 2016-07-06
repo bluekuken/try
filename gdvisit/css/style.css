@@ -6,18 +6,18 @@ body{
 	background: url(../images/bk1.jpg) no-repeat fixed;
 }
 .wrap{
-	width: 59.7%;
+	width: 63.7%;
 	display: -webkit-box;
 	margin: 188px auto 113px auto;
 	position: relative;
 	min-width: 640px;
 }
-.logo  img:nth-child(1){
+
+/*logo*/
+.logo img:nth-child(1){
 	position: absolute;
 	top: -57px;
 	left: -97px;
-	/*min-width: 288px;*/
-	/*border: 1px solid black;*/
 }
 .logo img:nth-child(2){
 	vertical-align: bottom;
@@ -26,30 +26,92 @@ body{
 	top: -37px;
 	left: -12px;
 }
-.left{
-	width: 52.8%;
-	/*min-width: 454px;*/
+/*main*/
+#main:after{
+	content: '';
+	height: 0;
+	display: block;
+	clear: both;
+	zoom: 1;
 }
-.left a:nth-child(1) img{
+#main img{
+	position: relative;
+}
+/*left*/
+.left{
+	float: left;
+	margin-right: 2px;
+	width: 52.5%;
+}
+.left>div{
+	width: 100%;
+	margin-bottom: 2px;
+}
+.left div img:nth-child(1){
 	margin-right: 3%;
 	width: 61%;
 }
-.left a:nth-child(2) img{
+.left>div>img:nth-child(2){
 	width: 36%;
 }
+
+/*left 动画*/
+#l_one img:nth-child(1):hover{
+	-webkit-animation: shakeX 0.5s linear;
+}
+#l_one img:nth-child(2):hover{
+	-webkit-animation: scale 0.5s linear;
+}
+#l_two img:nth-child(1):hover{
+	-webkit-animation: shakeY 0.5s linear;
+}
+#l_two img:nth-child(2):hover{
+	-webkit-animation: scale 0.5s linear;
+}
+#l_three img:nth-child(1):hover{
+	-webkit-animation: scale 0.5s linear;
+}
+#l_three img:nth-child(2):hover{
+	-webkit-animation: shakeX 0.5s linear;
+}
+/*right*/
 .right{
-	width: 47.2%;
-	/*min-width: 406px;*/
+	float: left;
+	width: 47%;
 }
-.right a:nth-child(1) img{
-	margin-left: 0.2%;
-	margin-right: 0.2%;
-	width: 40.2%;
+.right>div{
+	margin-bottom: 2px;
+	width: 100%;
 }
-.right a:nth-child(2) img{
-	width: 59.2%;
+.right>div>img:nth-child(1){
+	margin-right: 0.4%;
+	width: 40.3%;
+}
+.right>div>img:nth-child(2){
+	width: 59.3%;
 }
 
+
+/*right 动画*/
+#r_one img:nth-child(1):hover{
+ 	-webkit-animation: shakeX 0.5s linear;
+}
+#r_one img:nth-child(2):hover{
+	-webkit-animation: scale 0.5s linear;
+}
+#r_two img:nth-child(1):hover{
+	-webkit-animation: shakeY 0.5s linear;
+}
+#r_two img:nth-child(2):hover{
+	-webkit-animation: shakeX 0.5s linear;
+}
+#r_three img:nth-child(1):hover{
+	-webkit-animation: scale 0.5s linear;
+}
+#r_three img:nth-child(2):hover{
+	-webkit-animation: shakeY 0.5s linear;
+}
+/*date*/
 .date{
 	position: absolute;
 	top: 35px;
@@ -58,7 +120,6 @@ body{
 	color: white;
 	height: 105px;
 	min-height: 105px;
-
 }
 .dat1{
 	text-align: right;
@@ -98,14 +159,13 @@ body{
 	font-family: '微软雅黑';
 	color: #606677;
 }
-/*媒体查询*/
+
 @media screen and (max-width: 640px){
 	.wrap{
 		width: 59.7%;
 		-webkit-box-orient: vertical;
 		margin: 188px auto 113px auto;
 		min-width: 320px;
-		/*position: relative;*/
 	}
 	.logo  img:nth-child(1){
 		position: absolute;
@@ -114,32 +174,50 @@ body{
 	}
 	.left{
 		width: 100%;
-		/*min-width: 450px;*/
-	}
-	.left a:nth-child(1) img{
-		margin-right: 2.3%;
-		width: 61.5%;
-	}
-	.left a:nth-child(2) img{
-		width: 36.2%;
 	}
 	.right{
-		padding-top: 2.3%;
+		padding-top: 1.3%;
 		width: 100%;
-		/*min-width: 450px;*/
-	}
-	.right a:nth-child(1) img{
-		margin-left: 0%;
-		margin-right: 2.1%;
-		width: 39.5%;
-	}
-	.right a:nth-child(2) img{
-		width: 58.4%;
 	}
 	.footer{
 		width: 100%;
 		text-align: center;
 		margin: auto ;
-		// padding-bottom: 30px;
+		padding-bottom: 30px;
 	}
 }
+
+@-webkit-keyframes shakeX{
+	0%{-webkit-transform:translateX(0px);}
+	10%{-webkit-transform:translateX(-10px);}
+	20%{-webkit-transform:translateX(0px);}
+	30%{-webkit-transform:translateX(10px);}
+	40%{-webkit-transform:translateX(0px);}
+	50%{-webkit-transform:translateX(-10px);}
+	60%{-webkit-transform:translateX(0px);}
+	70%{-webkit-transform:translateX(10px);}
+	80%{-webkit-transform:translateX(0px);}
+}
+@-webkit-keyframes shakeY{
+	0%{-webkit-transform:translateY(0px);}
+	20%{-webkit-transform:translateY(-20px);}
+	40%{-webkit-transform:translateY(0px);}
+	60%{-webkit-transform:translateY(-20px);}
+	80%{-webkit-transform:translateY(0px);}
+}
+@-webkit-keyframes scale{
+	0%{-webkit-transform: scale(1.2,1.2);}
+	10%{-webkit-transform: scale(1,1);}
+	20%{-webkit-transform: scale(0.8,0.8);}
+	30%{-webkit-transform: scale(1,1);}
+	40%{-webkit-transform: scale(1.2,1.2);}
+	50%{-webkit-transform: scale(1,1);}
+	60%{-webkit-transform: scale(0.8,0.8);}
+	70%{-webkit-transform: scale(1,1);}
+	80%{-webkit-transform: scale(1.2,1.2);}
+	90%{{-webkit-transform: scale(1,1);}
+}
+
+/*媒体查询*/
+
+
