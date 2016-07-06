@@ -139,11 +139,11 @@
 			var jsonStr = xhr.responseText;
 			var msg = JSON.parse(jsonStr);
 
-			// if(msg.message === "注册成功"){
-			// 	location.href = 'index.html';
-			// }
+			if(msg.message === "注册成功"){
+				location.href = 'index.html';
+			}
 
-			console.log(msg.message);		
+			// console.log(msg.message);		
 		}
 	}
 </script>
