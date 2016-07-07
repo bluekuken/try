@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#outer{
+		position: relative;
+		/*border: 1px solid black;*/
+	}
+	#l_arrow,#r_arrow{
+		color: white;
+		z-index: 1;
+		font-size: 80px;
+		/*font-weight: bold;*/
+		position: absolute;
+		top: 205px;
+		cursor: pointer;
+	}
+	#l_arrow{
+		left: 0px;
+	}
+	#r_arrow{
+		right: 0px;
+	}
+	#butn_num{
+		position: absolute;
+		left: 563px;
+		bottom: 15px;
+		z-index: 1;
+		width: 240px;
+		height: 20px;
+		/*background: red;*/
+		overflow: hidden;
+	}
+	#butn_num>div{
+		float: left;
+		width: 30px;
+		margin-right: 10px;
+		position: absolute;
+		bottom: 10px;
+	}
+	
+	#butn_num>div div{
+		position: absolute;	
+		cursor: pointer;
+	}
+
+	#butn_num>div div:nth-child(1){
+		width: 28px;
+		height: 18px;
+		color: #ccc;
+		border: 1px solid #ccc;
+		text-align: center;
+		line-height: 18px;
+		display: none;
+		bottom: -10px;
+		
+	}
+	#butn_num>div div:nth-child(2){
+		width: 30px;
+		height: 2px;
+		background-color: #ccc;		
+	}
+
+	#butn_num>div:nth-child(1){
+		left: 0px;
+	}
+	#butn_num>div:nth-child(2){	
+		left: 40px;
+	}
+	#butn_num>div:nth-child(3){	
+		left: 80px;
+	}
+	#butn_num>div:nth-child(4){		
+		left: 120px;
+	}
+	#butn_num>div:nth-child(5){	
+		left: 160px;
+	}
+	#butn_num>div:nth-child(6){	
+		left: 200px;
+	}
+
+
+	#wrap{
+		width: 1366px;
+		height: 500px;
+		overflow: hidden;
+		position: relative;
+	}
+	#pic{
+		position: absolute; 
+		top: 0px; 
+		width: 15360px; 
+		height: 500px; 
+		position: absolute;
+		left: -277px;
+	}
+	#pic img{
+		float: left;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="outer">
+		<div id="l_arrow">&lt;</div>
+		<div id="r_arrow">&gt;</div>
+		<div id="butn_num">
+			<div>
+				<div class="num1">1</div>
+				<div class="num2" style="background-color:#053A9B"></div>
+			</div>
+			<div>
+				<div class="num1">2</div>
+				<div class="num2"></div>
+			</div>
+			<div>
+				<div class="num1">3</div>
+				<div class="num2"></div>
+			</div>
+			<div>
+				<div class="num1">4</div>
+				<div class="num2"></div>
+			</div>
+			<div>
+				<div class="num1">5</div>
+				<div class="num2"></div>
+			</div>
+			<div>
+				<div class="num1">6</div>
+				<div class="num2"></div>
+			</div>
+		</div>
+		<div id="wrap">
+			<div id="pic">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+			<img src="images/5.jpg" alt="">
+			<img src="images/6.jpg" alt="">
+			<img src="images/1.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var time1 = null;
+	var oWrap = document.getElementById('wrap');
+	var oPic = document.getElementById('pic');
+	var oPics = oPic.children;
+
+	//实现自动播放的变量
+	var autoNum = 0;
+	var autoNum1 = 0;
+	var time2 = null;//autoMove的计时器
+
+	//butn_num随图播放
+	var butn = document.getElementById('butn_num');
+	var butns_1 = butn.getElementsByClassName("num1");//底部跳转——数字
+	var butns_2 = butn.getElementsByClassName("num2");//底部跳转——横条
+	var butns = butn.children;//底部跳转——数字+横条
+
+
+	//控制鼠标移上暂停轮播、左右控制跳转
+	var oOuter = document.getElementById('outer');
+	var oL_arrow = document.getElementById('l_arrow');
+	var oR_arrow = document.getElementById('r_arrow');
+
+	//
+	window.onload = clock;
+
+	function moveTo(startPos,endPos){
+
+		var step = 0;//当前步伐数
+		var stepMax = 15;//整个运动的最大步伐数
+		var startPos = startPos;//运动的起点位置
+		var endPos = endPos;//运动的终点位置
+		var everystep = (endPos - startPos) / stepMax;//每一步需要移动的距离
+
+		if(time1){
+			clearInterval(time1);
+		}
+
+
+		function move(){
+			step++;
+			oWrap.scrollLeft += everystep;//实现移动并表现出来
+			// oWrap.scrollLeft=Tween.Bounce.easeOut(step,startPos,endPos-startPos,stepMax);
+			if(step == stepMax){
+				clearInterval(time1);
+				oWrap.scrollLeft = endPos;
+			}
+		}
+
+		time1 = setInterval(move, 50);//50毫秒调用过一次move，即50*15=750毫秒完成一次跳转，停留3秒跳转下一张图片
+	}
+
+	// moveTo(0, 1920);
+	//自动播放
+	function autoMove(){
+
+		autoNum++;
+		autoNum1++;//控制轮播条
+
+		// console.log(autoNum);
+		if(autoNum == oPics.length){
+			autoNum = 1;
+			oWrap.scrollLeft = 0;
+		}
+
+		for (var i = 0; i < butns.length; i++) {
+				butns_2[i].style.backgroundColor = "#ccc";
+			};
+		if(autoNum1 > 5){
+			autoNum1 = 0;
+		}
+
+		butns_2[autoNum1].style.backgroundColor = "#053A9B";
+
+		moveTo(oWrap.scrollLeft, autoNum*1920);//调用移动函数
+	}
+
+	//激活计时器，开始轮播
+	function clock(){
+		time2 = setInterval(autoMove,3000);//每3秒轮播一次
+	}
+
+	//鼠标移上暂停轮播,移出继续轮播
+	oOuter.onmouseover = function(){
+		clearInterval(time2);
+	}
+
+	oOuter.onmouseout = function(){
+		clock();
+	}
+
+	//箭头控制随图轮播
+	oL_arrow.onclick = function(){
+
+		autoNum -= 2;
+		autoNum1 -= 2;
+		if (autoNum < -1) {
+			autoNum = 4;
+		};
+		if (autoNum1 < -1) {
+			autoNum1 = 4;
+		};
+		autoMove();	
+	}
+
+	oR_arrow.onclick = function(){
+		autoMove();
+	}
+
+	//底部autoNum1点击跳转
+	for(var i = 0; i < butns.length; i++){
+		butns[i].onclick = function(){
+			for (var i = 0; i < butns.length; i++) {
+				if(this == butns[i]){
+					autoNum = i - 1;
+					autoNum1 = i - 1;
+					autoMove();
+				}
+			};
+		}
+	}
+
+	//butn_num的onmouseover事件
+	for (var i = 0; i < butns.length; i++) {
+		butns[i].onmouseover = function(){
+			for (var j = 0; j < butns.length; j++) {
+				if (this == butns[j]) {
+					butns_1[j].style.display = 'block';
+					butns_1[j].style.backgroundColor = "#646464";
+					butns_2[j].style.display = 'none';
+				};
+			};
+		}
+	};
+
+	for (var i = 0; i < butns.length; i++) {
+		butns[i].onmouseout = function(){
+			for (var j = 0; j < butns.length; j++) {
+				if (this == butns[j]) {
+					butns_1[j].style.display = 'none';
+					butns_2[j].style.display = 'block';
+				};
+			};
+		}
+	};
+
+
+
+
+
+	//tween类
+	var Tween = {
+		Bounce: {
+			easeIn: function(t,b,c,d){
+				return c - Tween.Bounce.easeOut(d-t, 0, c, d) + b;
+			},
+			easeOut: function(t,b,c,d){
+				if ((t/=d) < (1/2.75)) {
+					return c*(7.5625*t*t) + b;
+				} else if (t < (2/2.75)) {
+					return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+				} else if (t < (2.5/2.75)) {
+					return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+				} else {
+					return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+				}
+			},
+			easeInOut: function(t,b,c,d){
+				if (t < d/2) return Tween.Bounce.easeIn(t*2, 0, c, d) * .5 + b;
+				else return Tween.Bounce.easeOut(t*2-d, 0, c, d) * .5 + c*.5 + b;
+			}
+		}
+	}
+
+</script>
+</html>
+
