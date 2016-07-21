@@ -85,8 +85,11 @@
 	#butn_num>div:nth-child(6){	
 		left: 200px;
 	}
-
-
+	.mouse_over{
+		height: 25px;
+		background: none;
+		color: #ccc;
+	}
 	#wrap{
 		width: 1366px;
 		height: 500px;
@@ -166,7 +169,7 @@
 	var butn = document.getElementById('butn_num');
 	var butns_1 = butn.getElementsByClassName("num1");//底部跳转——数字
 	var butns_2 = butn.getElementsByClassName("num2");//底部跳转——横条
-	var butns = butn.children;//底部跳转——数字+横条
+	var butns = butn.children;
 
 
 	//控制鼠标移上暂停轮播、左右控制跳转
@@ -191,6 +194,7 @@
 
 
 		function move(){
+			// console.log('move');
 			step++;
 			oWrap.scrollLeft += everystep;//实现移动并表现出来
 			// oWrap.scrollLeft=Tween.Bounce.easeOut(step,startPos,endPos-startPos,stepMax);
@@ -216,18 +220,21 @@
 			oWrap.scrollLeft = 0;
 		}
 
+		// console.log(autoNum);
+		// console.log('<br/>');
 		for (var i = 0; i < butns.length; i++) {
 				butns_2[i].style.backgroundColor = "#ccc";
 			};
 		if(autoNum1 > 5){
 			autoNum1 = 0;
 		}
-
+		// console.log(autoNum);
 		butns_2[autoNum1].style.backgroundColor = "#053A9B";
 
 		moveTo(oWrap.scrollLeft, autoNum*1920);//调用移动函数
 	}
 
+	// var a = 3000;
 	//激活计时器，开始轮播
 	function clock(){
 		time2 = setInterval(autoMove,3000);//每3秒轮播一次
@@ -327,4 +334,3 @@
 
 </script>
 </html>
-
