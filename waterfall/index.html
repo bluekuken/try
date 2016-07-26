@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#main{
+		position: relative;
+		margin: 0px auto;
+	}
+	#main div{
+		position: absolute;
+		width: 200px;
+		background-color: #bbb;
+		transition: .5s;
+
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+
+		var oMain = document.getElementById('main');
+		var divs = [];//字面量，快速构建一个对象。用于缩小页面时重新排版div
+		var heights = [];//存储每一列的元素的高度，每一次找最小的那个加入新元素，然后更新高度
+
+		create(0,20);
+		//create div-s in mmain
+		function create(n1,n2){
+			for (var i = n1; i < n2; i++) {
+				var oDiv = document.createElement('div');
+				oDiv.innerHTML = i;
+				oDiv.style.height = fnRand(100,300) + 'px';
+				oDiv.style.background = getRandomColor();
+				oMain.appendChild(oDiv);
+				divs[i] = oDiv;//记录div,用于更改页面时重新排版
+			};
+
+			arrange();//排版函数
+		}
+
+		//生成div随机高度[m,n]
+		function fnRand(m,n){
+			var r = Math.round(Math.random() * (n - m) + m);
+
+			return r;
+		}
+
+		//div排版
+		function arrange(){
+			var screenWidth = document.body.offsetWidth;
+			var lf = 0;//排版的left值
+			var tp = 0;
+			var MainWidth = 0;//main 的宽度
+			var isFirst = true;//第一行的div不用计算高度，直接全部放在第一行
+			
+			//遍历divs
+			for (var i = 0; i < divs.length; i++) {
+
+				if (lf+divs[i].offsetWidth >= screenWidth) {
+					MainWidth = lf;
+					lf = 0;
+					isFirst = false;
+				}
+
+				if (isFirst) {
+					divs[i].style.top = tp + 'px';
+					divs[i].style.left = lf +'px';
+					heights[i] = divs[i].offsetHeight;
+				}
+				else{
+					var tempArray = [];
+
+					for (var j = 0; j < heights.length; j++) {
+						tempArray[j] = heights[j];
+						//tempArray.push(heights[j]);
+					};
+
+					fnSort(tempArray);
+					var min = tempArray[0];
+
+					for (var k = 0; k < heights.length; k++) {
+						if (min == heights[k]) {
+							divs[i].style.left = k*(200 + 10) + 'px';
+							divs[i].style.top = min + 10 + 'px';
+
+							//更新高度
+							heights[k] += divs[i].offsetHeight + 10;
+							break;
+						};
+					};
+				}
+				
+				lf += divs[i].offsetWidth+10;
+			}
+
+			oMain.style.width = MainWidth + 'px';
+		}
+
+
+		//排序，求最大值，最小值
+		function fnSort(array){
+			//控制比较的趟数：n个数，比较n-1趟
+			for (var i = 0; i < array.length-1; i++) {
+				//控制每趟比较的次数：次数j与趟数i满足关系：i+j=比较的数的个数-1，即：i+j=array.length-1
+				for (var j = 0; j < array.length-1-i; j++) {
+
+					var temp = 0;
+
+					if (array[j] > array[j+1]) {
+						temp = array[j];
+						array[j] = array[j+1];
+						array[j+1] = temp;
+					};
+
+				};
+			};
+		}
+
+
+		//调整浏览器时自适应
+		window.onresize = function(){
+			//清空数组
+			//结构：splice(index,count);从0开始，删除count个元素
+			heights.splice(0,heights.length);
+			arrange();
+		}
+
+		//load on demand 按需加载
+		window.onscroll = function(){
+			var scrollTop = document.body.scrollTop;
+			var clientHeight = document.documentElement.clientHeight;
+
+			// method 1
+			// var tmpArr = [];
+			// for (var i = 0; i < heights.length; i++) {
+			// 	tmpArr.push(heights[i]);
+			// }
+			// fnSort(tmpArr);
+			// var max = tmpArr[tmpArr.length-1];
+
+			//method 2
+			var max = Math.max.apply(null,heights);//获取最大值
+			var num = divs.length;
+
+			if (scrollTop + clientHeight >= max - 100) {//记录底部还剩30的时候加载新的
+				create(num,num+20);
+			};
+		}
+
+
+		//产生随机颜色
+			function getRandomColor(){ 
+			  	return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6); 
+			}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+</body>
+</html>
