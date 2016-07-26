@@ -36,7 +36,10 @@
 		left: 146px;
 		z-index: 3;
 		display: none;
+		width: 56px;
+		text-align: center;
 	}
+	#scord img{float: left;vertical-align: top;}
 	#head{
 		position: absolute;
 		top: 200px;
@@ -132,7 +135,6 @@
 		text-shadow: 3px 1px black;
 		font-size: 20px;
 		font-weight: bold;
-		/*border: 1px solid black;		*/
 	}
 	</style>
 </head>
@@ -140,7 +142,10 @@
 	<div id="wrap">
 		<div id="main">
 			<img id="bird" src="img/bird0.png" alt="">
-			<img id="scord" src="img/0.png" alt="">
+			<div id="scord">
+				<img id="sd_img1" src="" alt="">
+				<img id="sd_img2" src="img/0.png" alt="">
+			</div>
 			<img id="head" src="img/head.jpg" alt="">
 			<div id="butn">
 				<img id="start" src="img/start.jpg" alt=""><img src="img/submit.jpg" alt="">
@@ -178,6 +183,8 @@
 	var oHead = document.getElementById('head');
 	var oButn = document.getElementById('butn');
 	var oScord = document.getElementById('scord');
+	var oSdimg1 = document.getElementById('sd_img1');
+	var oSdimg2 = document.getElementById('sd_img2');
 	var oBanner = document.getElementById('banner');
 	var oBottom = document.getElementById('bottom');
 	var oBird = document.getElementById('bird');
@@ -329,7 +336,12 @@
 		}, 100);
 	}
 
-	var max = 0;
+	//如果第一次玩，没有存有成绩，则存入成绩，这样避免每次刷新页面最好成绩都重置
+	if (!fnGetScore()) {
+		var max = 0;
+		fnSetScore(max);
+	};
+
 	//计分函数，
 	function fnCount() {
 		var count = 0;
@@ -342,7 +354,18 @@
 
 			if (p_left > 18 && p_left < 80 && b_top > limit_up && b_top < limit_dowm) {
 				count++;
-				oScord.src = 'img/' + count + '.jpg';
+
+				//判断分数是否两位数
+				if (count >= 10) {
+					var ten = parseInt(count / 10);
+					var unit = count % 10;
+
+					oSdimg1.src = 'img/' + ten + '.jpg';
+				}else {
+					var unit = count;
+				};
+
+				oSdimg2.src = 'img/' + unit + '.jpg';
 			};
 
 			if ((p_left >= 18 && p_left <= 120 && b_top <= limit_up) || (p_left >= 18 && p_left <= 120 && b_top >= limit_dowm)) {
@@ -354,7 +377,6 @@
 
 				var top = parseInt(getComputedStyle(oBird,null).top);
 				var i = 0;
-				console.log(oBird.timer);
 
 				oBird.timer = setInterval(function(){
 					i++;
@@ -370,9 +392,14 @@
 				oGame.style.display = 'block';
 				oScord1.innerHTML = count;
 				
+				// 获取当前游戏的最佳成绩，与本次游戏的成绩比较，如果本次更佳，则存储本次成绩
+				max = fnGetScore();
 				if (max <= count) {
 					max = count;
+
+					fnSetScore(max);
 				};
+
 				oBest.innerHTML = max;
 			}
 		}, 10);
@@ -396,6 +423,25 @@
 		var r = Math.round(Math.random()*(n-m) + m);
 
 		return r;
+	}
+
+	//set localStorage
+	function fnSetScore(num){
+		var store = window.localStorage;
+	    if (store) {
+	        store.setItem('score',num);
+	    };
+	}
+
+	//get localStorage
+	// console.log(fnGetScore());
+	function fnGetScore(){
+		var store = window.localStorage;
+		if (store) {
+			var score = store.getItem('score');
+		};
+		
+		return score;
 	}
 </script>
 </html>
