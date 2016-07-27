@@ -94,8 +94,8 @@ body{
 
 /*right 动画*/
 #r_one img:nth-child(1):hover{
-	-webkit-animation: shakeX 0.5s linear;
- 	// -webkit-animation: rotateX 2s linear;
+	// -webkit-animation: shakeX 0.5s linear;
+ 	-webkit-animation: turnX 2s linear;
 }
 #r_one img:nth-child(2):hover{
 	-webkit-animation: scale 0.5s linear;
@@ -125,10 +125,10 @@ body{
 	-webkit-animation: scale 0.5s linear;
 }
 .animation4{
-	-webkit-animation: rotateX 2s linear;
+	-webkit-animation: turnX 2s linear;
 }
 .animation5{
-	-webkit-animation: rotateY 2s linear;
+	-webkit-animation: turnY 2s linear;
 }
 /*date*/
 .date{
@@ -206,6 +206,7 @@ body{
 	}
 }
 
+
 @-webkit-keyframes shakeX{
 	0%{-webkit-transform:translateX(0px);}
 	10%{-webkit-transform:translateX(-10px);}
@@ -217,6 +218,7 @@ body{
 	70%{-webkit-transform:translateX(10px);}
 	80%{-webkit-transform:translateX(0px);}
 }
+
 @-webkit-keyframes shakeY{
 	0%{-webkit-transform:translateY(0px);}
 	20%{-webkit-transform:translateY(-20px);}
@@ -224,6 +226,7 @@ body{
 	60%{-webkit-transform:translateY(-20px);}
 	80%{-webkit-transform:translateY(0px);}
 }
+
 @-webkit-keyframes scale{
 	0%{-webkit-transform: scale(1.2,1.2);}
 	10%{-webkit-transform: scale(1,1);}
@@ -234,23 +237,22 @@ body{
 	60%{-webkit-transform: scale(0.8,0.8);}
 	70%{-webkit-transform: scale(1,1);}
 	80%{-webkit-transform: scale(1.2,1.2);}
-	90%{{-webkit-transform: scale(1,1);}
+	90%{-webkit-transform: scale(1,1);}
 }
-@-webkit-keyframes rotateX{
-	0%{-webkit-transform: rotate3d(1,0,0,0deg);}
-	20%{-webkit-transform: rotate3d(1,0,0,60deg);}
-	40%{-webkit-transform: rotate3d(1,0,0,180deg);}
-	60%{-webkit-transform: rotate3d(1,0,0,240deg);}
-	80%{-webkit-transform: rotate3d(1,0,0,300deg);}
-	100%{-webkit-transform: rotate3d(1,0,0,360deg);}
+@-webkit-keyframes turnX{
+	0%{-webkit-transform: rotateX(0deg);}
+	20%{-webkit-transform: rotateX(60deg);}
+	40%{-webkit-transform: rotateX(180deg);}
+	60%{-webkit-transform: rotateX(240deg);}
+	80%{-webkit-transform: rotateX(300deg);}
+	100%{-webkit-transform: rotateX(360deg);}
 }
-@-webkit-keyframes rotateY{
-	0%{-webkit-transform: rotate3d(0,1,0,0deg);}
-	20%{-webkit-transform: rotate3d(0,1,0,60deg);}
-	40%{-webkit-transform: rotate3d(0,1,0,180deg);}
-	60%{-webkit-transform: rotate3d(0,1,0,240deg);}
-	80%{-webkit-transform: rotate3d(0,1,0,300deg);}
-	100%{-webkit-transform: rotate3d(0,1,0,360deg);}
+@-webkit-keyframes turnY{
+	20%{-webkit-transform: rotateY(60deg);}
+	40%{-webkit-transform: rotateY(180deg);}
+	60%{-webkit-transform: rotateY(240deg);}
+	80%{-webkit-transform: rotateY(300deg);}
+	100%{-webkit-transform: rotateY(360deg);}
 }
 
 
