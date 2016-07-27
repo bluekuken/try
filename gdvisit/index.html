@@ -11,7 +11,10 @@
 </head>
 <body>	
 	<div class="wrap">
-		<div class="logo"><img src="images/logo.png" alt=""><img src="images/title.png" alt=""></div>	
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+			<img src="images/title.png" alt="">
+		</div>	
 		<div id="main">
 			<div class="left">
 				<div id="l_one"><img src="images/visit.png"><img src="images/contract.png"></div>
@@ -52,7 +55,7 @@
 <script type="text/javascript">
 	var oMain = document.getElementById('main');
 	var oimg = oMain.getElementsByTagName('img');
-	var classArr = new Array('animation1','animation2','animation3');
+	var classArr = new Array('animation1','animation2','animation3','animation4','animation5');
 
 	//产生一个随机数座位下标给元素添加动画,如果当前元素有动画则跳过，没有则添加
 	var fnAnimation = function(){
@@ -72,7 +75,7 @@
 		if (otimer) {
 			clearInterval(otimer);
 		};
-		var otimer = setInterval(fnAnimation, 1000);
+		var otimer = setInterval(fnAnimation, 2500);
 	})();
 	
 
@@ -91,7 +94,7 @@
 
 		if (mark) {
 			//随机数字函数产生数字当作下标获取到相应的动画类
-			var num = fnRandom(0,2);
+			var num = fnRandom(0,4);
 			var myclass = classArr[num];
 
 			obj.setAttribute('class', myclass);
