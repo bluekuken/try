@@ -56,7 +56,7 @@ body{
 
 /*left 动画*/
 #l_one img:nth-child(1):hover{
-	-webkit-animation: shakeX 0.5s linear;
+	-webkit-animation: turnX 2s linear;
 }
 #l_one img:nth-child(2):hover{
 	-webkit-animation: scale 0.5s linear;
@@ -65,7 +65,7 @@ body{
 	-webkit-animation: shakeY 0.5s linear;
 }
 #l_two img:nth-child(2):hover{
-	-webkit-animation: scale 0.5s linear;
+	-webkit-animation: turnY 2s linear;
 }
 #l_three img:nth-child(1):hover{
 	-webkit-animation: scale 0.5s linear;
@@ -111,7 +111,7 @@ body{
 	-webkit-animation: scale 0.5s linear;
 }
 #r_three img:nth-child(2):hover{
-	-webkit-animation: shakeY 0.5s linear;
+	-webkit-animation: turnY 2s linear;
 }
 
 /*动画的类*/
