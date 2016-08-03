@@ -334,7 +334,7 @@ html{font-family: "微软雅黑";}
 .gift strong{display: block;color: #707070;display: block;margin-bottom: 10px;}
 .gift a div{width: 23px;height: 23px;background: url(images/submit.jpg)}
 /*right-3*/
-.advert{width: 238px;height: 178px;border: 1px solid silver;border-radius: 5px;}
+.advert{width: 238px;height: 178px;border: 1px solid silver;border-radius: 5px;backgroud:url(images/advert.png) no-repeat;background-size: 100% 100%;}
 .advert img{width: 100%;height: 100%;}
 /*right-4*/
 .coupons{padding: 10px;border: 1px solid silver;width: 218px;height: 218px;border-radius: 5px;}
