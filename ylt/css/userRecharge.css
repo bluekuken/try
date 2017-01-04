@@ -1,0 +1,28 @@
+/*recom_member.html 与 recom_remote.html 共有*/
+
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #aeaeae;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{background: #fff;}
+.message{background: #E6E6E6;padding: 1rem 0;}
+.message div{font-size: 2rem;background: #fff;padding: 1rem;}
+.item{padding-bottom: 1rem;}
+.message div em{margin-right: 2.5rem;}
+.message div span{color: #8B8B8B;}
+h4{margin: 1.5rem 0 1.5rem 1rem;}
+.content #payment{margin: 0 .5rem 0 1rem;width: 3rem;height: 3rem;vertical-align: middle;}
+.content label{margin: 0 1rem 0 0;font-size: 2rem;vertical-align: middle;}
+.content .item span{font-size: 2rem;vertical-align: middle;}
+.butn_code{text-align: center;margin-top: 1.5rem;}
+.butn_code button{width: 80%;background: #44bb5c;color: #fff;line-height: 2.5rem;font-size: 2rem;border-radius: 8px;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}
+.modal-header{font-size: 2.5rem;}
+.modal-header i{color: #44BB5C;}
+.modal-content{width: 80%;margin: auto;padding: 15px;}
+.modal-body input{width: 100%;box-sizing: border-box;height: 3.5rem;text-align: center;outline: none;border-radius: 5px 5px;border: 1px solid #BECBD4;font-size: 2rem;}
+.modal-footer {text-align: center !important;border-top: none !important;padding-top: 0;}

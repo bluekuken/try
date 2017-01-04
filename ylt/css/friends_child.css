@@ -1,0 +1,33 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;color: white;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header a{overflow: hidden;}
+.header i{color: #ADACAC;font-size: 3.5rem;    line-height: 4rem;margin-left: .8rem;}
+.header div{text-align: center;margin-left: 2rem;margin: 0 5rem;}
+.header div input{width: 15rem;background: #f0f0f0;border-radius: 5px;padding-left: 1rem;border: none;outline: none;height: 2.5rem;line-height: 2.5rem;color: #000;}
+.header button{background: #fff;color: #333;border: none;outline: none;height: 4rem;margin-right: 1rem;width: 4rem;font-size: 1rem;padding: 0;}
+/*content*/
+.content{background: #f0f0f0;border-top: 1px solid #f0f0f0;overflow: scroll;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}
+
+
+
+/*friends子页面-tutor*/
+.item{background: #fff;height: 5rem;line-height: 5rem;padding: 0 1rem;-webkit-user-select: none;}
+.item{font-size: 1.5rem;border-bottom: 1px solid #959595;overflow: hidden;}
+.item i,.item span{font-size: 2rem;}
+.item i{display: inline-block;width: 1.5rem;}
+.item em{color: #EE9A69;margin-right: .2rem;font-size: 2rem;}
+.item strong{font-weight: normal;color: #959595;}
+.item small{color: #606060;}
+.item_first{padding-left: 1rem;}
+.item_second{padding-left: 2rem;}
+.item_third{padding-left: 3rem;}
+
+/*模态框*/
+
+.modal-content{width: 70%;margin: auto;padding: 10px;font-size: 1.5rem;}
+.modal-header{font-size: 2rem;color: #2AA8FE;border-bottom: none;margin-bottom: 0;text-align: center;}
+.modal-body{margin-bottom: 0;}
+.modal-body div{margin-bottom: 5px;overflow: hidden;padding-left: .5rem;}
+.modal-body div span{margin-right: .5rem;}

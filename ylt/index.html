@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="wrap">
+		<!--轮播-->
+		<div class="header">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide">
+			            <img src="images/ad2_icon.png"  alt="" />
+			        </div>
+			        <div class="swiper-slide">
+			            <img src="images/ad_icon.png"  alt="" />
+			        </div>
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<!--轮播-->
+
+		<div class="content">
+			<!--八幅图片-->
+			<div class="ylw_box">
+				<div class="row">
+					<ul class="clearfloat col-xs-12">
+						<li class="">
+							<a href="#">
+								<img src="images/guahao_icon.png">
+								<p class="ylw_header">挂号</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/jiankangshiping_icon.png">
+								<p class="ylw_header">医疗视频</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/yuanchengwenzhen_icon.png">
+								<p class="ylw_header">远程问诊</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/yishengshangmen_icon.png">
+								<p class="ylw_header">医生上门</p>
+							</a>
+						</li>
+					</ul>
+					<ul class="clearfloat col-xs-12 last">
+						<li class="">
+							<a href="#">
+								<img src="images/dingzhijiankang_icon.png">
+								<p class="ylw_header">健康定制</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/zaixianyaodian_icon.png">
+								<p class="ylw_header">在线药店</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/zhuantijiangzuo_icon.png">
+								<p class="ylw_header">专题讲座</p>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<img src="images/zhinengzhuzhen_icon.png">
+								<p class="ylw_header">智能助阵</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--八幅图片-->
+		</div>
+		<div class="footer clear">
+			<div class="foot_left fl selected">
+				<i class="icon-home"></i><br>
+				<span>服务大厅</span>
+			</div>
+			<div class="foot_right fr">
+				<i class="icon-user"></i><br>
+				<span>我的</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript">
+	//大图滚动
+	var mySwiper = new Swiper ('.header .swiper-container', {
+	    autoplayDisableOnInteraction : false,
+	    autoplay: 2000,
+	    loop: true,
+	    pagination : '.swiper-pagination',
+	    paginationElement : 'li'
+	});
+</script>
+<script type="text/javascript">
+	//获取页面信息，自动填写--针对用户返回“上一级”的情况
+	function fnSplit(){
+	    var str = document.referrer;
+	    arr = str.split("/");
+
+	    return (arr[arr.length-1])?arr[arr.length-1]:"";
+	}
+
+	var url = fnSplit();
+
+	$(".foot_right").click(function(){
+
+		if (url == "memberMine.html") {
+			window.location.href = url;
+		}else {
+			window.location.href = "userMine.html";
+		}
+	});
+</script>
+</html>

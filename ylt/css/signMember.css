@@ -1,0 +1,18 @@
+body{background: url("../images/tishi_icon.png") no-repeat;background-size: 100% 100%;}
+
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{color: #AEAEAE;font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{padding-top: 15rem;font-size: 3rem;font-weight: bold;}
+.content div{margin-left: 30%;}
+
+
+/*footer*/
+.footer{text-align: center;padding-bottom: 1rem;}
+.footer button{width: 46%;height: 3.5rem;font-size: 1.5rem;color: #fff;border-radius: 8px;}
+.agree{margin-right: .5rem;background: #44BB5C;color: #fff;}
+.refuse{background: rgba(0,0,0,.3);}

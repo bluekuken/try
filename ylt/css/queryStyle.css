@@ -1,0 +1,57 @@
+/*header*/
+.header{margin-bottom:1rem;background: #fff;height: 4rem;text-align: center;color: white;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #ADACAC;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+
+.wrap{background-color: #F0F1F1;}
+/*** 修改银行账户 ***/
+
+.content{position: relative;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+/*修改成功公共样式*/
+.content .out .reset_success{font-size:1.5rem;background-color: #656565;width: 45%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;}
+/*修改成功公共样式*/
+
+
+.content .bank_number {
+    font-size: 1.6rem;
+    /*border: 1px solid #D0D0D0;*/
+    border-top:1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    background-color: #fff;
+    overflow: hidden;
+    line-height: 5rem;
+}
+.content .bank_number img{
+    width: 5rem;
+    vertical-align: middle;
+    /*margin: 1rem 0;*/
+    margin-left: 3rem;
+    float: left;
+    height: 5rem;
+    margin-top: .3rem;
+}
+.content .bank_number>div{
+   /* margin-left: 5rem;
+    font-size: 2rem;
+    vertical-align: middle;*/
+   /* display: block;*/
+    margin-left: 4rem;
+    font-size: 2rem;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 8rem;
+    margin-top: .5rem;
+}
+.content .bank_number i{
+    font-size: 3.5rem;
+   /* position: absolute;
+    left: .5rem;
+    top: .4rem;*/
+    color: #D0D0D0;
+    width: 3rem;
+    vertical-align: middle;
+    margin: 1.1rem 0;
+}
+

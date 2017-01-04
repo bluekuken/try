@@ -1,0 +1,17 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .8rem;top: .4rem;color: #AEAEAE;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+.header a{color: #000;}
+
+/*content*/
+.content{background-color: #f0f0f0;padding-top: 1.5rem;}
+.item{padding-left: 1rem;background: #fff;height: 4rem;line-height: 4rem;margin-bottom: 0.5rem;overflow: hidden;display: -webkit-box;}
+.item span{font-size: 2rem;color: #444;}
+.item div{-webkit-box-flex: 1;}
+.item input{border: none;font-size: 1.8rem;height: 4rem;width: 100%;}
+.submit-btn{width: 95%;margin-left: 2.5%;box-sizing: border-box;border: none;height: 3.5rem;line-height: 3.5rem;color: white;border-radius: 5px 5px;margin-top: 1rem;font-size: 1.6rem;outline: none;}
+/*warning message*/
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/userMine.css">
+
+	<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/commen.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="mine_detail">
+				<a href="">详细信息</a>
+			</div>
+
+			<div class="message">
+				<div class="photo">
+					<img src="images/zhanghu_default_icon.jpg" alt="头像">
+				</div>
+				<div id="user_name"></div>
+				<div id="identify"></div>				
+				<div id="login"><a href="userLogin.html">立即登录</a></div>
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="info"></div>
+			</div>
+
+			<script type="text/javascript">
+				// 验证登录信息，已登录就切换登录头像
+				if( fnGetCookie("starttime") ){
+					$(".photo img").attr('src', 'images/user_avatar_01_icon.png');
+
+					//登录成功
+					//取消页面“立即登录”
+					$("#login").css('display', 'none');
+					//请求用户信息写入页面
+
+					//获取登录key
+					var accessKey = fnGetCookie("accessKey");
+					var dynamicKey = fnGetCookie("dynamicKey");
+
+					$.ajax({
+						url: _url + _getUserInfo,
+						data:{
+								"accessKey": accessKey,
+								"dynamicKey": dynamicKey,
+								"mark":"wpage"
+							},
+						type:"post",
+						async: false,
+						success: function(data){
+							var obj_data = $.parseJSON(data);
+							// console.log(obj_data);
+							// var _data = obj_data.data[0];
+
+							if (obj_data.revertCode != 0) {
+								$(".out .info").html(obj_data.statusHint);
+								//动态显示，1.5s后消失
+								fnInfo();
+
+								return;//不继续往下执行了，结果码那个不再执行。
+							}
+
+							if (obj_data.statusCode == 0) {//结果码
+
+								//将 isMember 写入cookie，“memberLogin.html”中的“志愿者充值”跳转判断依据
+								fnSetCookie("isMember",obj_data.isMember);
+
+
+								if (obj_data.data) {
+									var _data = obj_data.data[0];
+									if (obj_data.isMember == 1) {
+										//普通会员
+										$("#user_name").html(_data.userName);
+									}else{
+										//普通用户
+										$("#user_name").html(_data.mobile);
+									}
+
+									$(".mine_detail a").attr('href', 'userInfo.html');
+									$("#identify").html("普通用户");
+								}
+
+							}else {
+								$(".out .info").html(obj_data.statusHint);
+
+								//登录超时则显示登录入口
+								$("#login").css('display', 'block');
+								$(".photo img").attr('src', 'images/zhanghu_default_icon.jpg');
+								$(".mine_detail a").attr('href', 'userLogin.html');
+
+								//动态显示，1.5s后消失
+								fnInfo();
+							}
+						}
+					});
+				}else{
+					$(".mine_detail a").attr('href', 'userLogin.html');
+					$("#login").css('display', 'block');
+				}
+			</script>
+			<!-- 登录信息处理-end -->
+
+				<div class="item member">
+					<img src="images/zhiyuanzhe_icon.png" alt="item_logo">
+					<span>志愿者</span>
+				</div>
+
+				<div id="setting" class="item setting">
+					<img src="images/set_icon.png" alt="item_logo">
+					<span>系统设置</span>
+				</div>
+
+		</div>
+
+		<div class="footer clear">
+
+			<div class="foot_left fl">
+				<i class="icon-home"></i><br>
+				<span>服务大厅</span>
+			</div>
+
+			<div class="foot_right fr selected">
+				<i class="icon-user"></i><br>
+				<span>我的</span>
+			</div>
+
+		</div>
+
+	</div>
+</body>
+
+<script type="text/javascript">
+
+	fnSkip(".member","backgroundColor","#C4C4C4","#fff","memberLogin.html");
+	fnSkip(".setting","backgroundColor","#C4C4C4","#fff","setting.html");
+
+	var _isMember = fnGetCookie("isMember");
+	if (_isMember == "0") {
+		var _str = "";
+			_str = '\
+				<div class="item invitationRecord">\
+					<img src="images/yaoqingjilu_icon.png" alt="item_logo">\
+					<span>邀请记录</span>\
+				</div>';
+
+		$(".setting").before(_str);
+
+		fnSkip(".invitationRecord","backgroundColor","#C4C4C4","#fff","invitationRecord.html");
+	}
+
+	//点击"服务大厅"提示信息
+	// $(".foot_left").on('click', function(event) {
+ //  		$(".out .info").html("暂未开放此功能");
+ //  		//动态显示，1.5s后消失
+ //  		fnInfo();
+	// });
+
+
+	$(".foot_left").click(function(){
+		window.location.href = "index.html";
+	});
+</script>
+</html>

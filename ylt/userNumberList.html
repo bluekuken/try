@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/userNumberList.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<a href="javascript:history.go(-1)"><i class="icon-angle-left fl"></i></a>
+			<em>志愿者编号</em>
+		</div>
+
+		<div class="content">
+			<div class="col-xs-12  volunteer">
+				<div class="col-xs-3 text-center" style="padding: 0;">志愿者</div>
+				<div class="col-xs-3 text-center" id="memberNumber" style="padding: 0;">志愿者编号</div>
+				<div class="col-xs-3 text-center" style="padding: 0;">注册时间</div>
+				<div class="col-xs-3 text-center" style="padding: 0;">备注</div>
+			</div>
+
+			<div class="col-xs-12  vol_message" id="vol_message">
+				<!--动态获取数据-->
+			</div>
+
+			<!--点击弹出单号登录-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="col-xs-12">
+								<div class="col-xs-12" id="number_login">是否用此会员单号进行登录</div>
+							</div>
+							<div class="col-xs-12" id="yes_no">
+								<div class="col-xs-6 pull-left" id="yes">是</div>
+								<div class="col-xs-6 pull-left" id="no">否</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--点击弹出单号登录-->
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript" src="js/userNumberList.js"></script>
+</html>

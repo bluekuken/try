@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/resetPwd.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="header clear">
+			<a href="userMine.html"><i class="icon-angle-left fl"></i></a>
+			<em>修改登录密码</em>
+		</div>
+
+		<div class="content">
+			<div class="item">
+				<span>手机号码：</span>
+				<div><input id="phoneNum" type="text" placeholder="请输入手机号码" maxlength="11"></div>
+			</div>
+			<div class="item">
+				<span>旧&nbsp;&nbsp;密&nbsp;&nbsp;码：</span>
+				<div><input id="oldPwd" type="password" placeholder="请输入旧密码" maxlength="6"></div>
+			</div>
+			<div class="item">
+				<span>新&nbsp;&nbsp;密&nbsp;&nbsp;码：</span>
+				<div><input id="newPwd" type="password" placeholder="请输入新密码" maxlength="6"></div>
+			</div>
+			<div class="item">
+				<span>确认密码：</span>
+				<div><input id="surePwd" type="password" placeholder="请输确认密码" maxlength="6"></div>
+			</div>
+
+			<button class="submit-btn user-btn-color">确认修改</button>
+
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="info"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/security.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript" src="js/userResetPwd.js"></script>
+</html>

@@ -1,0 +1,49 @@
+/*recom_member.html 与 recom_remote.html 共有*/
+body{background: #f1f1f1;}
+// body{background: #FAF7EA;}
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #aeaeae;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{padding: 1rem 1.5rem;display: -webkit-box;-webkit-box-orient: vertical;text-align: center;}
+.identify>div{text-align: center;margin-bottom: 1rem;font-size: 2rem;font-weight: bold;}
+.identify img{width: 5rem;height: 5rem;}
+.message{
+	-webkit-box-flex: 1;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 1rem 1.5rem;
+	overflow-y: hidden;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	background: #fff;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: scroll;
+}
+h5{margin-bottom: 1rem;}
+.message ul{-webkit-box-flex: 1;overflow: scroll;}
+.message li{
+	line-height: 2rem;
+	text-indent: 2.0rem;
+	margin-bottom: 1rem;
+	margin-bottom: 0;
+}
+.warning{text-align: center;font-style: italic;margin-top: 1rem;}
+.proto{height: 2rem;line-height: 2rem;margin-bottom: 1rem;}
+.proto input{vertical-align: middle;padding: 0;margin: 0;}
+.proto label{vertical-align: middle;margin: 0;padding: 0;}
+
+/*滚动条*/
+::-webkit-scrollbar{width:2px;}
+
+.butn{margin-bottom: 2rem;}
+.wrap .content .butn button{width: 40%;font-size: 1.5rem;line-height: 2rem;color: #fff;outline: none;border: none;}
+.butn button:nth-child(1){margin-left: 5%;}
+.butn button:nth-child(2){margin-right: 5%;}
+.btn:hover,.btn:focus,.btn:active,.btn:visited {color: #fff;text-decoration: none;}
+#agree{background: #ccc;}
+#refuse{background: rgb(92,184,92);}

@@ -1,0 +1,15 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #adacac;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+.header a{color: #fff;}
+
+/*content*/
+.content{background: #F1F1F1;padding-top: 2rem;}
+.content>div{padding: 1.5rem 1rem;background: #fff;margin-bottom: 2rem;}
+.cl_cache{padding-bottom: 1.5rem;border-bottom: 1px solid #ccc;}
+.push{padding-top: 1rem;line-height: 2.5rem;}
+.butn_push{width: 4.5rem;height: 2.6rem;line-height: 2.6rem;background: #C0FFC0;padding: 0;border: 1px solid #C0FFC0;}
+.version{padding-bottom: 1rem;border-bottom: 1px solid #ccc;}
+.about{padding-top: 1rem;}

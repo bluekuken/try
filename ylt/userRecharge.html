@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/userRecharge.css">
+</head>
+<body>
+    <div class="wrap">
+		<div class="header clear">
+			<a href="rechargeSelf.html"><i class="icon-angle-left fl"></i></a>
+			<em>用户充值</em>
+		</div>
+
+		<div class="content">
+			<div class="message">
+				<!--动态获取数据-->
+
+				<div id="remote" class="item">
+					<em>推荐人:</em>
+					<span id="referee"></span>
+				</div>
+
+			</div>
+
+			<h4>请选择套餐进行充值：</h4>
+			<div id="selection">
+				<!--动态获取数据-->
+			</div>
+
+			<div class="butn_code">
+				<button id="send" class="btn">确认支付</button>
+			</div>
+
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="info"></div>
+			</div>
+
+			<!-- 一次模态框，密码确认 -->
+			<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				    <div class="modal-content">
+					    <div class="modal-header" style="padding: 0">
+					    	<i class="icon-exclamation-sign"></i>
+					        <span class="modal-title" id="myModalLabel">请输入充值人姓名</span>
+					    </div>
+					    <div class="modal-body">
+				     		<input type="text" maxlength="6" id="name" placeholder=""/>
+					    </div>
+					    <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" id="btn_submit">确定</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/security.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/userRecharge.js"></script>
+</html>

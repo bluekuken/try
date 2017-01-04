@@ -1,0 +1,66 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;color: white;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #ADACAC;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+.header a{color: #fff;}
+
+/*content*/
+.content{background: #f0f0f0;padding-top: 1.5rem;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}
+
+/**** 业绩明细 ****/
+.detail,.detail_box{margin-bottom: 1.5rem}
+.detail li,.detail_box li{background-color:#fff;height: 3rem;line-height: 3rem;padding: 0 1rem 0 1rem;}
+.detail li em,.detail_box li em{font-size: 1.6rem;}
+.detail li span,.detail_box li span{color: #777;font-size: 1.6rem;margin-left: 3rem;}
+.lisData{overflow: scroll;-webkit-box-flex: 1;/*background: skyblue;*/}
+/**** 资金明细 ****/
+/*
+.achieve li span{color: #757575;}
+.lis_title{background-color: #fff;border-bottom: 1px solid #E0E0E0;}
+.detail li .shouru{margin-left: .9rem;}
+.bill_content{font-size: 1.6rem;padding: 0 .8rem;text-align:center;/*background-color:#fff;height: 5rem;line-height: 5rem;border-bottom: 1px solid #E0E0E0;}
+.bill_content>div,.cumulative>div{height: 1.5rem;line-height: 3.5rem;}
+.total{padding: 0 15px;}
+.cumulative>div:last-child{text-align: center;}
+.cumulative{font-size: 1.6rem;padding: 0 .8rem;background-color: #fff;height: 5rem;line-height: 5rem;}
+.bill_dady{padding: 0 1rem;}
+.start_end li span{margin-left: 1rem;}
+*/
+/*@media (min-width: 321px) {
+    .detail li{padding: 0 2rem;}
+    .bill_dady {
+        padding: 0 2rem;
+    }
+    .bill_box{ padding: 0 1.1rem;}
+    .cumulative{ padding: 0 1.15rem;}
+    .cumulative_box{padding: 0 1.5rem 2rem;}
+    .total{padding: 0 2rem;}
+    .start_end li span{margin-left:0.5rem;}
+}*/
+.query_detail{overflow: scroll;-webkit-box-flex: 1;}
+.query_title{box-sizing:border-box;background: #fff;display: -webkit-box;height: 5rem;border-bottom: 1px solid #E0E0E0;}
+.query_title>div{width:16%;background: #fff;-webkit-box-flex: 1;text-align: center;font-size: 1.6rem;padding-top: 0.413rem;}
+.query_title .ling-height{width:21%;line-height: 5rem;padding-top: 0;}
+.query_title .cumulative{width:16%;}
+.data_tail{
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-box-flex: 1;
+    /*background: #fff;*/
+}
+.data_special{
+    overflow-y: scroll;
+    -webkit-box-flex: 1;
+    text-align: center;
+}
+.start_end li span{margin: 0;}
+
+/*** 业绩明细 ***/
+.time_cumula{margin-bottom: 1.5rem;}
+.time_cumula li{background-color:#fff;height: 3rem;line-height: 3rem;/*border-bottom: 1px solid #E0E0E0;*/padding: 0 1rem 0 1rem;}
+.time_cumula li em{font-size: 1.6rem;}
+.time_cumula li span{color: #777;font-size: 1.6rem;margin-left: 3rem;}
+.detail_content{background-color:#fff;height: 3rem;line-height: 3rem;text-align: center;border-bottom: 1px solid #E0E0E0;}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/city-picker.css"/>
+	<link rel="stylesheet" href="css/improveData.css">
+</head>
+<body>
+    <div class="wrap">
+		<div class="header clear">
+			<a href="rechargeSelf.html"><i class="icon-angle-left fl"></i></a>
+			<em>完善你的资料</em>
+		</div>
+
+		<div class="content">
+			<div class="item">
+				<span>用户名</span>
+				<input id="userName" type="text" placeholder=""/>
+			</div>
+
+			<div class="item">
+				<span>邮&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+				<input id="email" type="text" placeholder=""/>
+				<em id="geshi">格式不对</em>
+			</div>
+
+			<div class="item region">
+				<span>所在地</span>
+				<input id="location" type="text" value="" placeholder="" readonly="readonly"/>
+				<em class="pull-right choose">请选择</em>
+			</div>
+
+			<div class="item">
+				<input id="address" type="text" placeholder="详细地址（不少于5个字）"/>
+				<em id="length">不少于5个字</em>
+			</div>
+
+			<div class="col-xs-12">
+				<div class="butn_code col-xs-6">
+					<button id="jump" class="btn">跳过</button>
+				</div>
+				<div class="butn_code col-xs-6">
+					<button id="next" class="btn">下一步</button>
+				</div>
+			</div>
+
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="info"></div>
+			</div>
+
+			<!--跳过的模态框-->
+			<div id="jumpModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="padding: 0">
+							<span class="modal-title tiaoguo">是否跳过此步骤</span>
+						</div>
+						<div class="modal-body">
+							<div class="detail_tiaoguo">跳过后可在登录志愿者后详细信息里进行完善</div>
+							<div class="wanshang">(注：进行提现操作前必须完善信息)</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary fl" id="yes">是</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--模态框-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header selectCity" style="padding: 0">
+					    	<span class="address"></span>
+					    </div>
+						<div class="modal-body" style="z-index: 100">
+							<div class="docs-methods">
+								<form class="form-inline">
+									<div id="distpicker">
+										<div class="form-group">
+											<div style="position: relative;">
+												<input id="city-picker3" placeholder="" class="form-control" readonly type="text" value="" data-toggle="city-picker">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer" style="z-index: 10">
+							<button type="button" class="btn btn-primary col-xs-4 pull-left" id="btn_sure">确定</button>
+							<button type="button" class="btn btn-default col-xs-4 pull-right" id="cancel"  data-dismiss="modal">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--模态框-->
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/security.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script src="js/city-picker.data.js"></script>
+<script src="js/city-picker.js"></script>
+<script type="text/javascript" src="js/improveData.js"></script>
+</html>

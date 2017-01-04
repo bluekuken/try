@@ -1,0 +1,60 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #adacac;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+
+.wrap{background-color: #fff;}
+
+.content{position: relative; border: none;}
+.content .volunteer , .content .vol_message{
+    height: 3.5rem;
+    line-height: 3.5rem;
+    padding: 0;
+}
+.content .volunteer{
+    background-color: #f0f0f0;
+}
+.content .volunteer>div,.content .vol_message{
+    font-size: 1.5rem;
+    color: #000;
+}
+.content .col-xs-12{padding: 0;}
+.content .item{
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+/****弹出模态框***/
+.modal-content {
+    width: 70%;
+    margin: auto;
+    border-radius: 0;
+}
+.modal-body {
+    padding: 0;
+    padding-bottom: 1rem;
+    overflow: hidden;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#number_login{
+    font-size: 1.5rem;
+    color: #595959;
+    line-height: 5rem;
+}
+#yes_no{
+    padding: 0;
+    color: #40A9E7;
+    /*color: #FBBF23;*/
+    height: 3rem;
+    line-height: 3rem;
+    border-top: 1px solid #D0D0CF;
+}
+#yes,#no{
+    height: 4rem;
+    line-height: 4rem;
+}
+/****弹出模态框***/
+
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;}

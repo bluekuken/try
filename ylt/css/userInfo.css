@@ -1,0 +1,26 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #AEAEAE;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+.header a{color: #000;}
+
+/*content*/
+.content{background-color: #f0f0f0;padding-top: 1.5rem;}
+.detail{margin-bottom: }
+.detail_li{margin: 1.5rem 0;}
+.detail li{padding: 0 1.3rem;height: 4rem;line-height: 4rem;;background-color: #fff;}
+
+/***  邮箱、身份证、银行账号  ***/
+.detail_mail{height: 4rem;line-height: 4rem;background-color: #fff;}
+.detail li:nth-child(5){border-bottom: none;}
+.detail_mail{overflow: hidden;padding: 0 1.3rem;}
+.detail li em ,.detail_mail em{float: left;color: #7f7f7f;font-size: 1.6rem;}
+.detail li span ,.detail_mail span{float: right;color: #7f7f7f;font-size: 1.6rem;}
+.content .detail_box{background-color: #fff;}
+.detail_num{border-top: 1px solid #C0C0C0;border-bottom: 1px solid #C0C0C0;}
+
+/*** 退出登录 ***/
+.exit-btn{background: #ee8f00;width: 95%;margin-left: 2.5%;box-sizing: border-box;border: none;height: 3.5rem;line-height: 3.5rem;color: white;border-radius: 5px 5px;margin-top: 1rem;font-size: 1.6rem;outline: none;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}

@@ -1,0 +1,38 @@
+/*recom_member.html 与 recom_remote.html 共有*/
+
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;color: white;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;height: 4rem;line-height: 4rem;color: #ADACAC;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{background: #f0f0f0;padding-top: 1rem;}
+.item{background: #fff;padding: 0 1.2rem;border-top: 1px solid #ccc;height: 5rem;line-height: 5rem;}
+.item em{font-size: 1.5rem;margin-right: 1rem;}
+.item input{color:#000;border: none;outline: none;font-size: 1.5rem;width: 12rem;line-height: 3rem;background: transparent;}
+#tutor,#remote{vertical-align: middle;margin: 0;padding: 0;width: 1.5rem;height: 1.5rem;}
+.item label{vertical-align: middle;margin: 0;padding: 0;font-size: 1.5rem;margin-top: .1rem;}
+.last{border-bottom: 1px solid #ccc;}
+#telNum{width: 100%;}
+.butn_code{text-align: center;margin-top: 1.5rem;}
+.butn_code button{width: 90%;background: #44BB5C;color: #fff;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}
+#send{outline: none;}
+/*模态框*/
+.container {padding: 0;}
+.modal-header{font-size: 2.5rem;}
+.modal-header i{color: #44BB5C;}
+.modal-content{width: 80%;margin: auto;padding: 15px;}
+.modal-body input{width: 100%;box-sizing: border-box;height: 3.5rem;text-align: center;outline: none;border-radius: 5px 5px;border: 1px solid #BECBD4;font-size: 2rem;}
+.modal-footer {text-align: center !important;border-top: none !important;padding-top: 0;}
+/*远程邀请*/
+#invite .modal-content{border: none;box-shadow: none;overflow: hidden;background: transparent;padding: 0;width: 22.5rem;height: 35rem;}
+#invite .modal-content .modal-body{width: 22.5rem;height: 35rem;position: relative;overflow: hidden;background: transparent;}
+#imgs{width: 157.5rem;height: 35rem;position: absolute;left: 0;top: 0;}
+#imgs img{width: 22.5rem;height: 35rem;float: left;}
+/*二维码*/
+#code img{
+	width: 100%;
+}

@@ -1,0 +1,22 @@
+body{background: url(../images/bg_icon.png);background-repeat: no-repeat;background-size: 100% 100%;}
+/*header*/
+.header{height: 4rem;text-align: center;color: #000;line-height: 4rem;font-size: 1.5rem;position: relative;background: transparent;}
+.header i{color: #ccc;font-size: 5rem;position: absolute;left: .5rem;top: .4rem;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{position: relative;}
+.login{padding: 3rem;}
+.content input,.content a{width: 100%;height: 3.5rem;line-height: 3.5rem;font-size: 2rem;margin-bottom: 1.5rem;}
+.content input{border: none;outline: none;background: transparent;padding-left: 1rem;border-bottom: 1px solid #D29E89;}
+.content a{display: block;text-align: center;color: #fff;}
+#login{background: #EE9A69;}
+#recharge{background: #C0A062;}
+#remote{background: #957F66;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}
+
+
+
+

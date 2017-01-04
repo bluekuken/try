@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/memberMine.css">
+
+	<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/commen.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+
+			<div class="mine_detail">
+				<a href="memberInfo.html">详细信息</a>
+			</div>
+
+			<div class="message">
+				<div class="photo">
+					<img src="images/zhanghu_default_icon.jpg" alt="头像">
+				</div>
+				<div id="user_name"></div>
+				<div id="identify"></div>
+			</div>
+
+		</div>
+		<div class="content">
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="info"></div>
+			</div>
+
+			<!--位置要求在这里：解决头像加载问题，若登录成功即不显示默认头像-->
+			<script type="text/javascript">
+				// 验证登录信息，已登录就切换登录头像
+				if( fnGetCookie("starttime_m") ){
+					$(".photo img").attr('src', 'images/user_avatar_01_icon.png');
+
+					//获取登录key
+					var accessKey = fnGetCookie("accessKey_m");
+					var dynamicKey = fnGetCookie("dynamicKey_m");
+
+					$.ajax({
+					    url: _url + _getMemberInfo,
+					    data:{
+					            "accessKey": accessKey,
+					            "dynamicKey": dynamicKey,
+					            "mark":"wpage"
+					        },
+					    type:"post",
+					    async: false,
+					    success: function(data){
+					        var obj_data = $.parseJSON(data);
+
+					        if (obj_data.revertCode != 0) {
+					            $(".out .info").html(obj_data.statusHint);
+					            //动态显示，1.5s后消失
+					            fnInfo();
+
+					            return;//不继续往下执行了，结果码那个不再执行。
+					        }
+
+					        if (obj_data.statusCode == 0) {//结果码
+					        	var _data = obj_data.data[0];
+					        	// console.log(_data)
+
+				        		$("#user_name").html(_data.userName);
+				        		$(".mine_detail a").attr('href', 'memberInfo.html');
+					        	$("#identify").html("志愿者");
+
+					        	//将 会员号memberNum：_data.memberNumber 写入cookie,用于业绩查询、资金明细
+					        	fnSetCookie("_memberNum",_data.memberNumber);
+
+					        }else {
+					        	$(".photo img").attr('src', 'images/zhanghu_default_icon.jpg');
+					            $(".info").html(obj_data.statusHint);
+					            //动态显示，1.5s后消失
+					            fnInfo();
+					        }
+					    }
+					});
+				}else{
+					$(".out .info").html("请先登录！");
+					//动态显示，1.5s后消失
+					fnInfo();
+
+					$(".mine_detail a").attr('href', 'userLogin.html');
+				}
+			</script>
+			<!-- 登录信息处理-end -->
+
+			<div class="item item_user">
+				<img src="images/huiyuanchongzhi_icon2.png" alt="item_logo">
+				<span>志愿者充值</span>
+			</div>
+
+			<div class="item item_recomend">
+				<img src="images/tuijianhuiyuan_icon.png" alt="item_logo">
+				<span>推荐志愿者</span>
+			</div>
+
+			<div class="item item_accound">
+				<img src="images/zhanghu_icon.png" alt="item_logo">
+				<span>我的账户</span>
+			</div>
+
+			<div class="item item_friends">
+				<img src="images/xiajihuiyuan_icon.png" alt="item_logo">
+				<span>我的小伙伴</span>
+			</div>
+
+			<div class="item item_query">
+				<img src="images/chaxunliushui_icon.png" alt="item_logo">
+				<span>资金明细</span>
+			</div>
+
+			<div class="item item_achieve">
+				<img src="images/yejichaxun_icon.png" alt="item_logo">
+				<span>业绩查询</span>
+			</div>
+
+			<div class="item item_search">
+				<img src="images/query.png" alt="item_logo">
+				<span>查询</span>
+			</div>
+
+		</div>
+
+		<div class="footer clear">
+			<div class="foot_left fl">
+				<i class="icon-home"></i><br>
+				<span>服务大厅</span>
+			</div>
+			<div class="foot_right fr selected">
+				<i class="icon-user"></i><br>
+				<span>我的</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	fnSkip(".item_user","backgroundColor","#C4C4C4","#fff","rechargeProto_m.html");
+	fnSkip(".item_recomend","backgroundColor","#C4C4C4","#fff","recommend_m.html");
+	fnSkip(".item_accound","backgroundColor","#C4C4C4","#fff","mineAccount.html");
+	fnSkip(".item_friends","backgroundColor","#C4C4C4","#fff","friends.html");
+	fnSkip(".item_query","backgroundColor","#C4C4C4","#fff","queryDetail.html");
+	fnSkip(".item_achieve","backgroundColor","#C4C4C4","#fff","queryStyle.html");
+	fnSkip(".item_search","backgroundColor","#C4C4C4","#fff","querySearch.html");
+
+	//点击"服务大厅"提示信息
+	$(".foot_left").on('click', function(event) {
+  		$(".out .info").html("暂未开放此功能");
+  		//动态显示，1.5s后消失
+  		fnInfo();
+	});
+</script>
+</html>

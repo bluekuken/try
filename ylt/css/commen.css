@@ -1,0 +1,27 @@
+html,body{width: 100%;height: 100%;}
+body{/*background: url("../images/bg_icon.png");*/background-size: 100%;}
+a:hover,a:link,a:focus,a:visited,a:active{text-decoration: none;}
+.btn:hover, .btn:focus,{color: #fff;text-decoration: none;}
+.clear{zoom: 1;}
+.clear:after{content: '';height: 0;display: block;clear: both;overflow: hidden;}
+.fl{float: left;}
+.fr{float: right;}
+.wrap{width: 100%;height: 100%;display: -webkit-box;-webkit-box-orient: vertical;}
+.header{background: #fff;color: #000;}
+.header i{color: #AEAEAE;height: 4rem;line-height: 4rem;top: 0 !important;}
+.content{-webkit-box-flex: 1;border-top: 1px solid transparent;}
+.modal-footer button{background: #44BB5C;color: #fff;}
+.btn-primary:hover,.btn-primary:active,.btn-primary:focus,.btn-primary:visited{
+	background: #44BB5C;
+}
+.btn:hover, .btn:focus, .btn.focus {color: #fff;}
+.mem-btn-color{background: #44bb5c;}
+.user-btn-color{background: #ee8f00;}
+/*适应iPhone*/
+@media screen and (max-width: 320px) {
+	html{font-size: 8px;}
+}
+
+@media screen and (min-width:768px){
+	html{font-size: 20px;}
+}

@@ -1,0 +1,48 @@
+/*header*/
+.header{margin-bottom:1rem;background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #aeaeae;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+.wrap{background-color: #F0F1F1;}
+/*** 修改银行账户 ***/
+
+.content{position: relative;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+/*修改成功公共样式*/
+.content .out .reset_success{font-size:1.5rem;background-color: #656565;width: 45%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;}
+/*修改成功公共样式*/
+
+
+.bank_number{
+    font-size: 1.6rem;
+    border-top: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+.bank_number em,.bank_number input{
+    margin:0 2.5%;
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+.bank_number em{
+    color: #BEBEBE;
+}
+.bank_number input{
+    border: none;
+    margin: 0;
+}
+
+.send-btn{
+    /*background: #2AA8FE;*/
+    background: #C4C4C4;
+    width: 95%;
+    margin-left: 2.5%;
+    box-sizing: border-box;
+    border: none;
+    height: 2.8rem;
+    color: white;
+    border-radius: 5px 5px;
+    font-size: 1.6rem;
+}

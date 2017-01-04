@@ -1,0 +1,14 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;color: white;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{font-size: 3.5rem;position: absolute;left: .5rem;top: .4rem;color: #ADACAC;}
+.header em{font-size: 2rem;margin: auto;color: #333;}
+.header span{position: absolute;right: .8rem;}
+.header a{color: #fff;}
+
+/*content*/
+.content{background: #fff;border-top: 1px solid #ccc;}
+.detail li{height: 4rem;line-height: 4rem;border-bottom: 1px solid #ccc;padding: 0 1rem 0 1rem;}
+.detail li em{float: left;font-size: 1.6rem;}
+.detail li span{float: right;font-size: 1.6rem;}
+.content .out{position: absolute;bottom: 0;text-align: center;width: 100%;margin-bottom: 4rem;z-index: 999;transition:1s;opacity: 0;}
+.content .out .info{background-color: #656565;width: 80%;border-radius: 2.25rem;margin: auto;color: #fff;text-align: center;padding: .5rem;font-size: 1.5rem;}

@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/rechargeWay.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="header clear">
+			<a href="memberLogin.html"><i class="icon-angle-left fl"></i></a>
+			<em>选择充值方式</em>
+		</div>
+
+		<div class="content">
+			<div class="item scan">
+				<img src="images/user_scan.png" alt="item_logo">
+				<span>面对面扫码充值</span>
+				<i class="icon-angle-right fr"></i>
+			</div>
+
+			<div class="item memberNum">
+				<img src="images/user_recharge_sefl.png" alt="item_logo">
+				<span>自我充值</span>
+				<i class="icon-angle-right fr"></i>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/security.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript">
+	//用户充值点击效果，扫一扫充值未完成
+	fnSkip(".scan","backgroundColor","#C4C4C4","#fff");
+	//推荐用户点击效果
+	fnSkip(".memberNum","backgroundColor","#C4C4C4","#fff","rechargeSelf.html");
+
+	/*清除 improveData 系列内容*/
+	var store = window.localStorage;
+	if (store) {
+	    store.removeItem("memberInfo");
+	    store.removeItem("nodeId");
+	    store.removeItem("objInfo");
+	}	
+</script>
+<script type="text/javascript">
+	var accessKey = fnGetCookie("accessKey");
+	var modulus = "", exponent = "", sessionId= "";
+
+	$.ajax({
+	    url: _url + _getPublicKey,
+	    type: 'post',
+	    dataType: 'json',
+	    async : false,
+	    data: {
+	        "accessKey": accessKey,
+	        "mark":"wpage"
+	    }
+	})
+	    .done(function(result) {
+
+	        modulus = result.modulus;
+	        exponent = result.publicExponent;
+	        sessionId = result.sessionId;
+
+	        fnRequest();
+        })
+
+    function fnRequest() {
+     	var map = {
+	        "webPage": "rechargeWay",
+			"accessKey": accessKey,
+     	    "mark":"wpage"
+     	};
+
+     	var ciphertext = RSAUtils.createCiphertext(map,exponent,modulus);
+
+     	$.ajax({
+     	    url: _url + _webAuthorization,
+     	    data:{"mark":"wpage","ciphertext":ciphertext,"sessionId":sessionId},
+     	    type:"post",
+     	    async: false,
+     	    success: function(data){
+
+     	        var obj_data = $.parseJSON(data);
+
+     	        if (obj_data.revertCode != 0) {
+     	            alert(obj_data.statusHint);
+     	            return;//不继续往下执行了，结果码那个不再执行。
+     	        }
+
+     	        if (obj_data.statusCode == 0) {//结果码
+     	        	var finalData = obj_data.data[0];
+
+     	        	//扫一扫
+     	        	wx.config({
+     	        	      debug: false,
+     	        	      appId: finalData.appId,
+     	        	      timestamp: finalData.timestamp,
+     	        	      nonceStr: finalData.noncestr,
+     	        	      signature: finalData.signature,
+     	        	      jsApiList: ['scanQRCode']
+     	        	});
+
+     	        	//点击“扫一扫”调用扫一扫接口
+     	        	$(".scan").on('click', function(event) {
+     	        		fnWXScan();
+     	        	});
+     	        	
+
+     	        }else {
+     	            alert(obj_data.statusHint);
+     	        }
+     	    }
+     	});
+    }
+    //微信扫一扫
+    function fnWXScan() {
+    	wx.scanQRCode({
+    	    needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+    	    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+    	    success: function (res) {
+    	    	// 当needResult 为 1 时，扫码返回的结果
+
+    	    	//处理扫描结果
+    	    	var accessKey = fnGetCookie("accessKey");
+    	    	var dynamicKey = fnGetCookie("dynamicKey");
+
+	    		$.ajax({
+	    		    url: _url + _getMemberName,
+	    		    type: 'post',
+	    		    dataType: 'json',
+	    		    async : false,
+	    		    data: {
+	    		        "accessKey": accessKey,
+	    		        "dynamicKey": dynamicKey,
+	    		        "nodeId": res.resultStr,
+	    		        "mark":"wpage"
+	    		    }
+	    		})
+	    		    .done(function(data) {
+						var _data = data.data[0];
+				
+	    		    	//返回：invitationName ，introducerName ，nodeId ,写入cookie。跳转userRecharge.html支付
+	    		    	if (data.revertCode != 0) {
+	    		    	    alert(data.statusHint);
+	    		    	    return;//不继续往下执行了，结果码那个不再执行。
+	    		    	}
+
+	    		    	if (data.statusCode == 0) {//结果码
+
+	    		    		var tutorInfo = {
+	    		    			invitationName: _data.invitationName,
+	    		    			introducerName: _data.introducerName,
+	    		    			nodeId: _data.nodeId
+	    		    		}
+
+	    		    		fnSetStorage('tutorInfo',JSON.stringify(tutorInfo));
+
+	    		    		window.location.replace("userRecharge.html");
+	    		    	}
+	    			})
+    	    }
+    	});
+    }
+</script>
+</html>

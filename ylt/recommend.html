@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/recommend.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="header clear">
+			<a href="memberLogin.html"><i class="icon-angle-left fl"></i></a>
+			<em>选择推荐方式</em>
+		</div>
+
+		<div class="content">
+			<div class="item scan">
+				<img src="images/facetoface_qrcode.png" alt="item_logo">
+				<span>面对面推荐</span>
+				<i class="icon-angle-right fr"></i>
+			</div>
+
+			<div class="item memberNum">
+				<img src="images/yuanchen_qrcode.png" alt="item_logo">
+				<span>远程推荐</span>
+				<i class="icon-angle-right fr"></i>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript">
+	//用户充值点击效果，扫一扫充值未完成
+	fnSkip(".scan","backgroundColor","#C4C4C4","#fff","recomMember.html");
+	//推荐用户点击效果
+	fnSkip(".memberNum","backgroundColor","#C4C4C4","#fff","recomRemote.html");
+</script>
+</html>

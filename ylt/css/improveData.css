@@ -1,0 +1,77 @@
+/*header*/
+.header{background: #fff;height: 4rem;text-align: center;line-height: 4rem;font-size: 1.5rem;position: relative;}
+.header i{color: #aeaeae;font-size: 3.5rem;position: absolute;left: .5rem;height: 4rem;line-height: 4rem;}
+.header em{font-size: 2rem;margin: auto;}
+.header span{position: absolute;right: .8rem;}
+
+/*content*/
+.content{background: #EFEFEF;border-top: 1px solid #EFEFEF;padding-top: 1rem;}
+.item{background: #fff;padding: 1rem;border-bottom: 1px solid #ccc;}
+#geshi,#length{float: right;color: red;opacity: 0;}
+.item span{line-height: 3rem;font-size: 1.5rem;margin-right: 1rem;color: #aaa;}
+.item em{line-height: 3rem;font-size: 1.5rem;margin-right: 1rem;color: #000;}
+.item input{line-height: 3rem;height: 3rem;background: transparent;border: none;outline: none;font-size: 1.5rem;}
+.item strong{font-weight: normal;line-height: 3rem;height: 3rem;background: transparent;font-size: 1.5rem;}
+.butn_code{text-align: center;margin-top: 1.5rem;}
+.butn_code button{width: 90%;background: #ccc;color: #fff;}
+
+
+
+/****  模态框 ****/
+.modal-body {
+    padding: 0;
+}
+.modal-body .detail_tiaoguo {
+    text-align: center;
+    font-size: 2rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+.modal-body .wanshang {
+    text-align: center;
+    font-size: 1.5rem;
+    color: red;
+}
+
+.modal-content{width: 89%;margin: 0 auto;border-radius: 0;}
+.modal-header{height: 4rem;line-height: 4rem;font-size: 2.5rem;text-align: center;border: none;}
+.modal-header .tiaoguo{color: #35AEFF;}
+.modal-header i{color: #2196F3;}
+
+.selectCity {
+    min-height: 16.43px;
+    height: 16.43px;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-open .modal {
+    overflow: hidden; 
+}
+#jump{background: #44bb5c;}
+
+.city-select-content {
+    height: 10rem;
+    overflow: scroll;
+    font-size: 1.6rem;
+}
+.city-select {
+    position: relative;
+}
+
+//jump
+#jumpModal .modal-header .tiaoguo {
+    font-size: 2rem;
+}
+#jumpModal .modal-body .detail_tiaoguo {font-size: 1.5rem;}
+#jumpModal .modal-footer button {
+    width: 30%;
+}
+
+/*********/
+@media (min-width: 321px) {
+    .selBoxList .selCity{margin: 0 3.5%;}
+}
+@media (min-width: 376px) and (max-width: 414px) {
+    .selBoxList .selCity{margin: 0 6%;}
+}

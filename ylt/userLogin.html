@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>医联网科技</title>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/commen.css">
+    <link rel="stylesheet" href="css/userLogin.css">
+</head>
+<body>
+    <div class="wrap">    
+        <div class="content">
+            <div class="return">
+                <a href="userMine.html"><i class="icon-angle-left fl"></i></a>
+            </div>
+            <div class="logo">
+                <img class="img-responsive" src="images/ylw_logo.png" alt=""/>
+            </div>
+            <div class="out">
+                <div><input id="mobile" type="text" maxlength="11" placeholder="输入账号"/></div>
+                <div><input id="pwd" type="password" value="" placeholder="密码"/></div>
+                <div class="userType clear">
+                	<div class="fl">
+                		<input id="member" type="radio" name="userType" checked="checked"><label for="member">我是志愿者</label>
+                	</div>
+                	<div class="fr">
+                		<input id="user" type="radio" name="userType"><label for="user">我是用户</label>
+                	</div>
+               	</div>
+                <div><button class="btn" id="login">登录</button></div>
+                <div><button class="btn" id="signUp">立即注册</button></div>
+                <div class="findPwd"><span onclick="window.location.href='findPwd.html'">忘记密码?</span></div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="third">
+                <p>第三方注册</p>
+                <img src="images/qq_icon.png" alt=""/>
+            </div>
+        </div>
+        <!-- 提示信息 -->
+        <div class="message">
+        	<div class="info"></div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-2.2.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/security.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript" src="js/userLogin.js"></script>
+</html>

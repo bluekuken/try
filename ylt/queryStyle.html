@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>医联网科技</title>
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/queryStyle.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<a href="memberMine.html"><i class="icon-angle-left fl"></i></a>
+			<em>选择业绩查询类型</em>
+		</div>
+
+		<div class="content">
+			<div class="bank_number self" style="margin-bottom: .5rem;">
+				<img class="" src="images/self_performance.png" alt=""/>
+				<i class="icon-angle-right fr"></i>
+				<div>个人业绩</div>
+			</div>
+
+			<div class="bank_number branch_perform">
+				<img class="" src="images/fenzhi_yeji.png" alt=""/>
+				<i class="icon-angle-right fr"></i>
+				<div>分支业绩</div>
+			</div>
+
+			<!--模态框-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--模态框-->
+
+			<!-- 提示信息 -->
+			<div class="out">
+				<div class="reset_success info"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commen.js"></script>
+<script type="text/javascript">
+	$(".content .self").click(function(){
+		window.location.href="queryPerform.html"
+	});
+	$(".content .branch_perform").click(function(){
+		window.location.href="branchPerformance.html"
+	});
+</script>
+</html>
