@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>分享二维码</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.wrap{
+		color: #ccc;
+		min-height: 568px;
+	}
+	.header{
+		height: 35%;
+		background: url(../images/1-26.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		
+	}
+	.content{
+		width: 100%;
+		height: 65%;
+		padding-top: 2rem;
+		overflow: hidden;
+		box-sizing: border-box;
+	}
+	.code{
+		width: 60%;height: 0;
+	    padding-top: 60%;
+		margin: auto;
+		border: 1px solid #aaa;
+		border-radius: 20px;
+		position: relative;
+	}
+	.left,.right,.top,.bottom,.middle{
+		position: absolute;
+	}
+	.left{
+		height: 70%;
+		border-left: 4px solid #fff;
+		top: 15%;
+		left: -2px;
+		
+	}
+	.right{
+		height: 70%;
+		border-left: 4px solid #fff;
+		top: 15%;
+		right: -2px;
+	}
+	.top{
+		width: 70%;
+		border-top: 4px solid #fff;
+		top: -2px;
+		left: 15%;
+	}
+	.bottom{
+		width: 70%;
+		border-top: 4px solid #fff;
+		bottom: -2px;
+		left: 15%;
+	}
+	.middle{
+		width: 100%;
+		border-top: 1px solid #aaa;
+		top: 50%;
+		left: 0;
+	}
+	.codeMa{
+		width: 80%;
+		height: 80%;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.codeMa img{
+		width: 100%;
+		height: 100%;
+	}
+
+	/*提示*/
+	.tips{
+		text-align: center;
+		font-size: 0.9rem;
+		margin-top: 1rem;
+	}
+	.commenBtnOut{
+		margin: 1rem 0;
+	}
+	.defaultBtn{
+		width: 60%;
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div class="header"></div>
+		<div class="content">
+			<div class="code">
+				<div class="left"></div>
+				<div class="right"></div>
+				<div class="top"></div>
+				<div class="bottom"></div>
+				<div class="middle"></div>
+				<div class="codeMa"><img src="../images/code.png" alt="二维码"></div>
+			</div>
+			<div class="tips">长按保存二维码图片</div>
+			<div class="commenBtnOut"><a href="sign.html"><button id="login" class="defaultBtn">注册新账户</button></a></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//差校验
+</script>
+</html>

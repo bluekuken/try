@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>禾中财富</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+	<link rel="stylesheet" href="../css/mine.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="content">
+		<!-- head-start -->
+			<div class="header">
+				<div class="personInfo clear">
+					<div class="message fr" onclick="window.location.href='noticeList.html'"></div>
+					<div class="account">
+						<a href="personInfo.html"><div class="photo"></div></a>
+						<div class="info">
+							<div class="name">Alan</div>
+							<div class="phoneNum">138****2222</div>
+						</div>
+					</div>
+				</div>
+					<div class="accountInfo">
+						<a href="detailIncome.html">
+							<span>总金额(元)</span><br>
+							<em class="accountNum">1.25</em>
+						</a>
+					</div>
+				<div class="detail">
+					<div class="oldIncome">
+						<span>昨日收益(元)</span><br>
+						<em>10.22</em>
+					</div>
+					<span class="separate"></span>
+					<div class="totalIncome">
+						<a href="totalIncome.html">
+							<span>累计收益(元)</span><br>
+							<em>20.00</em>
+						</a>
+					</div>
+				</div>
+			</div>
+		<!-- head-end -->
+
+		<!-- accountDetail-start -->
+			<!-- <div class="accountDetailOut"> -->
+				<div class="accountDetail">
+					
+					<div class="title" style="height: 3rem;line-height: 3rem;">我的资产</div>
+					<!-- 我的活期 -->
+					<div class="accountItem clear huoqi">
+						<div class="fl">
+							<img src="../images/icon_8.png" alt="">
+							<span>我的活期</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<em class="">2000</em>
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+					<!-- 我的定期 -->
+					<div class="accountItem clear dingqi">
+						<div class="fl">
+							<img src="../images/icon_9.png" alt="">
+							<span>我的定期</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<em>100000000</em>
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+					<!-- 申请提现 -->
+					<div class="accountItem clear tixian">
+						<div class="fl">
+							<img src="../images/icon_10.png" alt="">
+							<span>申请提现</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+
+					<!-- 个人信息 -->
+					<div class="title">个人信息</div>
+					<!-- 修改资料 -->
+					<div class="accountItem clear ziliao">
+						<div class="fl">
+							<img src="../images/icon_11.png" alt="">
+							<span>修改资料</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+					<!-- 修改密码 -->
+					<div class="accountItem clear mima">
+						<div class="fl">
+							<img src="../images/icon_12.png" alt="">
+							<span>修改密码</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+					<!-- 二维码推广 -->
+					<div class="accountItem clear erweima">
+						<div class="fl">
+							<img src="../images/icon_13.png" alt="">
+							<span>二维码推广</span>
+							<span class="mask"></span>
+						</div>
+						<div class="fr">
+							<i></i>
+							<span class="mask"></span>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		<!-- accountDetail-end -->
+		</div>
+
+		<!-- footer-start -->
+		<div class="footer">
+			<div class="item" onclick="window.location.href='financing.html'">
+				<div class="position"></div>
+				<img name="home" src="../images/home.png" alt="">
+				<span>首页</span>
+				<div class="position"></div>
+			</div>
+			<div class="item">
+				<div class="position"></div>
+				<img name="money" src="../images/money.png" alt="">
+				<span>理财</span>
+				<div class="position"></div>
+			</div>
+			<div class="item selected"  onclick="window.location.href='mine.html'">
+				<div class="position"></div>
+				<img name="mine" src="../images/mine1.png" alt="">
+				<span>我的</span>
+				<div class="position"></div>
+			</div>
+		</div>
+		<!-- footer-end -->
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	/*主菜单切换*/
+	$(".item").on('touchstart', function(event) {
+        //选中状态的按钮置默认
+        var src_old = "../images/" + $(".selected").find("img").attr('name') + ".png";
+        $(".selected").find("img").attr('src', src_old);
+        $(this).siblings().removeClass('selected');
+
+        //当前点击的按钮变色
+        var src_new = "../images/" + $(this).find("img").attr('name') + "1.png";
+        $(this).find("img").attr('src', src_new);
+        $(this).addClass('selected');
+	});
+</script>
+<script type="text/javascript">
+	// commen.js函数
+	fnSkip(".huoqi","background","rgba(120,120,120,0.3)","#fff","mineCurrent.html");
+	fnSkip(".dingqi","background","rgba(120,120,120,0.3)","#fff","mineFixed.html");
+	fnSkip(".tixian","background","rgba(120,120,120,0.3)","#fff","withdraw.html");
+	fnSkip(".ziliao","background","rgba(120,120,120,0.3)","#fff","personData.html");
+	fnSkip(".mima","background","rgba(120,120,120,0.3)","#fff","editPwd.html");
+	fnSkip(".erweima","background","rgba(120,120,120,0.3)","#fff","codeSpread.html");
+</script>
+</html>

@@ -1,0 +1,201 @@
+.commenBtnOut{
+	height: 15%;
+}
+.defaultBtn{
+	height: 100%;
+}
+/*轮播*/
+.swiper-slide,.swiper-container,.swiper-wrapper{
+	height: 100%;
+}
+
+/*轮播一：广告*/
+.header{
+	height: 30%;
+}
+
+.header .swiper-slide img{
+	width: 100%;
+	height: 100%;
+}
+.swiper-pagination-bullet{
+	border: 1px solid #fff;
+	background: transparent;
+	opacity: 1;
+}
+.swiper-pagination-bullet-active{
+	background: #fff;
+}
+
+/*轮播二：套餐*/
+.content{
+	height: 60%;
+	box-sizing: border-box;
+	background: #f1f1f1;
+	padding: 1rem;
+	padding-bottom: 0;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.loop{
+	height: 90%;
+}
+/*套餐内容*/
+.meal{
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	background: #fff;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+}
+.name{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 2px;
+	position: relative;
+}
+.name span{
+	font-size: 1.5rem;
+	font-weight: bold;
+	font-family: '黑体';
+	color: #4A4A4A;
+}
+.name em{
+	position: absolute;
+	bottom: 3px;
+	right: 0;
+	color: #B8B8B8;
+}
+.deal{
+	text-align: center;
+	color: #b8b8b8;
+	margin-top: 5%;
+}
+.rate{
+	color: #FF3D00;
+	text-align: center;
+}
+.rate span{
+	font-size: 3rem;
+	font-weight: bold;
+}
+.require{
+	color: #FF3D00;
+	text-align: center;
+	margin: 1rem 0;
+}
+.require em{
+	font-size: 12px;
+	display: inline-block;
+	overflow: hidden;
+	height: 10px;
+	line-height: 12px;
+	padding: 0 1.5rem;
+}
+/*协议*/
+/*协议复选框--start*/
+	.proto{
+		margin-top: 1rem;
+		padding-left: 2rem;
+	}
+	.checkboxOut{
+		position: relative;
+	}
+
+	input[type='checkbox'] {
+	  visibility: hidden;
+	  position: absolute;
+	  top: 0;
+	}
+
+	label {
+	  display: inline-block;
+	  width: 16px;
+	  height: 16px;
+	  position: absolute;
+	  top: 0;
+	  background: url(../images/check1.png);
+	  background-size: 100% 100%;
+	  background-repeat: no-repeat;
+	}
+	label:after{
+		content: "同意";
+		display: inline-block;
+		width: 24px;/*content个数乘于font-size*/
+		font-size: 12px;
+		position: absolute;
+		left: 22px;
+		top: 0;
+	}
+
+	input[type='checkbox']:checked+label {
+	  background-image: url(../images/check.png);
+	}
+	.proto a{
+		display: inline-block;
+		margin-left: 45px;
+		font-size: 12px;
+		color: #4A90E2;
+	}
+
+
+
+/*协议复选框--end*/
+/**/
+.tips{
+	height: 10%;
+	color: #aaa;
+	text-align: center;
+}
+.tips span{
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+/*菜单*/
+.footer{
+	height: 10%;
+	display: -webkit-box;
+	background: #f1f1f1;
+	border-top: 1px solid #D8D8D8;
+}
+.footer .item{
+	text-align: center;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.footer .item:nth-child(1){
+	-webkit-box-flex: 1;
+}
+.footer .item:nth-child(2){
+	-webkit-box-flex: 3;
+}
+.footer .item:nth-child(3){
+	-webkit-box-flex: 1;
+}
+.footer .item img{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.footer .item span{
+	display: block;
+	color: #ccc;
+}
+.footer .item .position{
+	-webkit-box-flex: 1;
+}
+.footer .selected span{
+	color: #204ABF;
+}
+
+/*媒体查询*/
+@media screen and (max-width:320px){
+	.checkbox {
+		width: 14px;
+		height: 14px;
+		top: 2px;
+	}
+	.checkbox:after{
+		top: -2px;
+	}
+}

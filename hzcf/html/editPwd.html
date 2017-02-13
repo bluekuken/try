@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>修改密码</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	input{
+		outline: none;
+		-webkit-appearance: none; /*去除系统默认的样式*/
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 点击高亮的颜色*/
+	}
+	.content{
+		height: 100%;
+		box-sizing: border-box;
+		padding-bottom: 50px;
+		position: relative;
+		min-height: 700px;
+	}
+	.title{
+		font-size: 1.5rem;
+		margin-left: 1.5rem;
+		color: #4a4a4a;
+		padding-top: 1.5rem;
+	}
+	.item{
+		height: 3rem;
+		margin: 1rem 1.5rem 0 1.5rem;
+	}
+	.item input{
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		outline: none;
+		border: 1px solid #f1f1f1;
+		border-radius: 5px;
+		font-size: 1.2rem;
+		padding-left: 1rem;
+		color: #ddd;
+		display: inline-block;
+	}
+	.item input::-webkit-input-placeholder{  color: #ddd;}
+	
+	/*按钮*/
+	.commenBtnOut{
+		margin-top: 1rem;
+	}
+	.defaultBtn{
+		font-size: 1rem;
+		font-weight: normal;
+	}
+
+	/*提示*/
+	.warning{
+		position: absolute;
+		bottom: 24px;
+		font-size: 12px;
+		width: 100%;
+		text-align: center;
+		color: #9b9b9b;
+		left: 0;
+	}
+
+		/*成功提示框--layui*/
+		/*alert弹框--start*/
+		#layui-layer1,#layui-layer2,#layui-layer3,#layui-layer4,#layui-layer5,#layui-layer6,#layui-layer7,#layui-layer7,#layui-layer9,#layui-layer10,#layui-layer11,#layui-layer12,#layui-layer13,#layui-layer14,#layui-layer15,#layui-layer16,#layui-layer17,#layui-layer18,#layui-layer19,#layui-layer20,#layui-layer21,#layui-layer22,#layui-layer23,#layui-layer24,#layui-layer25,#layui-layer26,#layui-layer27,#layui-layer28,#layui-layer29{
+			border-radius: 10px;
+			background: url(../images/alert.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			color: #f2f2f2;
+		}
+		.layui-layer,.layui-layer-page,.layer-anim{
+			width: 80%;
+			border-radius: 10px;
+		}
+		/*alert弹框--end*/
+
+		.info{
+			display: none;
+			box-sizing: border-box;
+			height: 12rem;
+			background: url(../images/alert.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			text-align: center;
+			color: #f2f2f2;
+			font-size: 1.2rem;
+			padding: 1rem;
+			padding-top: 2rem;
+			border-radius: 10px;
+		}
+		.info div{
+			margin-bottom: 1rem;
+		}
+		/*勾tick*/
+		.check{
+			width: 2.5rem;
+			height: 2.5rem;
+			background: url(../images/tick.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin: auto;
+		}
+		.count{
+			font-size: 0.8rem;
+		}
+	/*提示 - end*/
+	/*媒体查询*/
+	@media screen and (max-width:320px){
+		.content{
+			min-height: 568px;
+		}
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="title">修改登录密码</div>
+			<div class="item">
+				<input id="pwdDL_old" type="password" autofocus="autofocus" placeholder="输入旧密码" >
+			</div>
+			<div class="item">
+				<input id="pwdDL_new" type="password" placeholder="输入新密码">
+			</div>
+			<div class="item">
+				<input id="pwdDL_sure" type="password" placeholder="确认新密码">
+			</div>
+			<div class="commenBtnOut"><button id="confirmDL" class="defaultBtn">确认修改</button></div>
+
+			<div class="title">修改交易密码</div>
+			<div class="item">
+				<input  id="pwdJY_old" type="password" placeholder="输入旧密码">
+			</div>
+			<div class="item">
+				<input  id="pwdJY_new" type="password" placeholder="输入新密码">
+			</div>
+			<div class="item">
+				<input  id="pwdJY_sure" type="password" placeholder="确认新密码">
+			</div>
+			<div class="commenBtnOut"><button id="confirmJY" class="defaultBtn">确认修改</button></div>
+
+			<div class="warning">投资有风险 理财需谨慎</div>
+		</div>
+	</div>
+	<!-- 模态框 -->
+	<div class="info">
+		<div class="check"></div>
+		<div>修改成功</div>
+		<div class="count">(3s)</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//校验密码:数字+字母，6-10位
+	var re = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/;
+
+	$("#confirmDL").on('click', function(event) {
+		fnCheck("DL");
+	});
+
+	$("#confirmJY").on('click', function(event) {
+		fnCheck("JY");
+	});
+
+
+	function fnCheck(target){
+
+		//登录密码
+		if (target === "DL") {
+			var pwdold = $("#pwdDL_old").val();
+			var pwdnew = $("#pwdDL_new").val();
+			var pwdsure = $("#pwdDL_sure").val();
+		}else{
+			var pwdold = $("#pwdJY_old").val();
+			var pwdnew = $("#pwdJY_new").val();
+			var pwdsure = $("#pwdJY_sure").val();
+		};
+
+
+		//输入为空
+		if(!pwdold || !pwdnew || !pwdsure){
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '输入错误'
+			      ,content: '密码不能为空'
+			    }); 
+			}); 
+
+			return;
+		}
+
+		//新密码格式错误
+		if (!re.test(pwdnew) || !re.test(pwdsure)) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '密码格式错误'
+			      ,content: '请输入6至10位数字+字母组合'
+			    }); 
+			}); 
+
+			return;
+		}else if (pwdnew != pwdsure){
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '密码输入错误'
+			      ,content: '新密码与确认密码不一致'
+			    }); 
+			}); 
+
+			return;
+		};
+
+
+		//修改成功
+		//弹出提示框--使用layui.js插件
+		layui.use('layer', function(){
+		    var layer = layui.layer;
+
+		    var success = layer.open({
+		    	type: 1,
+		    	title: false,//不显示标题
+		    	closeBtn: 0,//不显示右上角关闭的按钮
+		    	// shade: 0.5,
+		    	// shadeClose: true,//点击遮罩层关闭弹窗
+		    	content: $(".info")
+		    })
+
+		    //倒计时结束关闭
+		    var coutTime = 3;//弹窗3s后自动关闭
+		    fnCountTime(coutTime);
+
+		    //倒计时函数 fnCountTime
+		    function fnCountTime(time) {
+		        if (time == 0) {
+		    	     layer.close(success);
+		    	     clearInterval(timer);
+
+		    	     window.location.href = "welcome.html";
+		        }else {
+		            
+		            $(".count").text("("+time+"s)");
+		            time--;
+
+		            var timer = setTimeout(function() {
+		                    fnCountTime(time)
+		            },1000);
+		        }
+		    }
+		}); 
+	}
+</script>
+</html>

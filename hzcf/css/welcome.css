@@ -1,0 +1,89 @@
+.wrap>div{
+	box-sizing: border-box;
+	overflow: hidden;
+}
+/*欢迎页*/
+.wel_area{
+	height: 65%;
+	background: url(../images/deflot_bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/*按钮*/
+.btn_area{
+	height: 28%;
+}
+.commenBtnOut{
+	height: 35%;
+}
+.takePositon{
+	height: 10%;
+}
+.btn_area button{
+	width: 65%;
+	height: 100%;
+}
+#sign{
+	background: #fff;
+	color: rgba(0, 0, 0, 0.3);
+	border: 1px solid #ccc;
+}
+
+/*协议复选框--start*/
+	.proto{
+		text-align: center;
+	}
+	.checkboxOut{
+		position: relative;
+	}
+
+	#checkbox[type='checkbox'] {
+	  visibility: hidden;
+	  position: absolute;
+	  top: 0;
+	}
+
+	.checkbox {
+	  display: inline-block;
+	  width: 16px;
+	  height: 16px;
+	  position: absolute;
+	  top: 0;
+	  background: url(../images/check1.png);
+	  background-size: 100% 100%;
+	  background-repeat: no-repeat;
+	}
+	.checkbox:after{
+		content: "本人已仔细阅读并同意";
+		display: inline-block;
+		width: 120px;/*content个数乘于font-size*/
+		font-size: 12px;
+		position: absolute;
+		left: 22px;
+		top: 0;
+	}
+
+	#checkbox[type='checkbox']:checked+label {
+	  background-image: url(../images/check.png);
+	}
+	.proto a{
+		display: inline-block;
+		margin-left: 140px;
+		font-size: 12px;
+		color: #ED5F33;
+	}
+
+	/*媒体查询*/
+	@media screen and (max-width:320px){
+		.checkbox {
+			width: 14px;
+			height: 14px;
+			top: 2px;
+		}
+		.checkbox:after{
+			top: -2px;
+		}
+	}
+
+/*协议复选框--end*/

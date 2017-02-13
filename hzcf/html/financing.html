@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>禾中财富</title>
+	<link rel="stylesheet" href="../css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+	<link rel="stylesheet" href="../css/financing.css">
+</head>
+<body>
+	<div class="wrap">
+		<!--轮播一：广告-->
+		<!-- 使用swiper.js插件，直接替换图片即可 -->
+		<div class="header">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide">
+			            <img src="../images/1-6.png"  alt="" />
+			        </div>
+			        <div class="swiper-slide">
+			            <img src="../images/1-6.png"  alt="" />
+			        </div>
+			        <div class="swiper-slide">
+			            <img src="../images/1-6.png"  alt="" />
+			        </div>
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<!--轮播一-->
+
+		<!-- 轮播二：理财套餐 -->
+		<div class="content">
+			<div class="loop">
+				<div class="swiper-container">
+				    <div class="swiper-wrapper">
+				    	<!-- 套餐一 -->
+				        <div class="swiper-slide">
+							<div class="meal">
+								<div class="name">
+									<span>灵活理财</span>
+									<em>百元起购，随时赎回</em>
+								</div>
+								<div class="deal">约定年化收益率</div>
+								<div class="rate"><span>9.6</span>%</div>
+								<div class="require">
+									<span>200元起投</span>
+									<em>|</em>
+									<span>无期限</span>
+								</div>
+								<div class="commenBtnOut"><a href="fund_current.html"><button id="login" class="defaultBtn">立即购买</button></a></div>
+								<div class="proto">
+									<div class="checkboxOut">
+										<input id="checkbox1" type="checkbox" checked="checked"><label class="checkbox" for="checkbox1"></label><a href="protoBuy.html">《禾中财富购买协议》</a>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+
+						<!-- 套餐二 -->
+				        <div class="swiper-slide">
+							<div class="meal">
+								<div class="name">
+									<span>固定理财</span>
+									<em>百元起购，锁定一年</em>
+								</div>
+								<div class="deal">约定年化收益率</div>
+								<div class="rate"><span>18.0</span>%</div>
+								<div class="require">
+									<span>封闭期365天</span>
+									<em>|</em>
+									<span>200元起投</span>
+									<em>|</em>
+									<span>无期限</span>
+								</div>
+								<div class="commenBtnOut"><a href="fund_fixed.html"><button id="login" class="defaultBtn">立即购买</button></a></div>
+								<div class="proto">
+									<div class="checkboxOut">
+										<input id="checkbox2" type="checkbox" checked="checked"><label class="checkbox" for="checkbox2"></label><a href="protoBuy.html">《禾中财富购买协议》</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 套餐三 -->
+				        <div class="swiper-slide">
+							<div class="meal">
+								<div class="name">
+									<span>灵活理财</span>
+									<em>百元起购，随时赎回</em>
+								</div>
+								<div class="deal">约定年化收益率</div>
+								<div class="rate"><span>9.6</span>%</div>
+								<div class="require">
+									<span>200元起投</span>
+									<em>|</em>
+									<span>无期限</span>
+								</div>
+								<div class="commenBtnOut"><a href="#"><button id="login" class="defaultBtn">立即购买</button></a></div>
+
+								<div class="proto">
+									<div class="checkboxOut">
+										<input id="checkbox3" type="checkbox" checked="checked"><label class="checkbox" for="checkbox3"></label><a href="protoBuy.html">《禾中财富购买协议》</a>
+									</div>
+								</div>
+							</div>
+						</div>
+				    </div>
+				</div>
+			</div>
+			<div class="tips">投资有风险 理财需谨慎<span></span></div>
+		</div>
+		<!-- 轮播二 -->
+		<div class="footer">
+			<div class="item selected  onclick="window.location.href='financing.html'"">
+				<div class="position"></div>
+				<img name="home" src="../images/home1.png" alt="">
+				<span>首页</span>
+				<div class="position"></div>
+			</div>
+			<div class="item">
+				<div class="position"></div>
+				<img name="money" src="../images/money.png" alt="">
+				<span>理财</span>
+				<div class="position"></div>
+			</div>
+			<div class="item"  onclick="window.location.href='welcome.html'">
+				<div class="position"></div>
+				<img name="mine" src="../images/mine.png" alt="">
+				<span>我的</span>
+				<div class="position"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../js/swiper-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//大图滚动
+	var mySwiper1 = new Swiper ('.header .swiper-container', {
+	    autoplayDisableOnInteraction : false,
+	    autoplay: 2000,
+	    loop: true,
+	    pagination : '.header .swiper-pagination',
+	    paginationElement : 'li'
+	});
+
+	//大图滚动
+	var mySwiper2 = new Swiper ('.content .swiper-container', {
+	    autoplayDisableOnInteraction : false,
+	    // autoplay: 2000,
+	    // loop: false,
+	    pagination : '.content .swiper-pagination',
+	});
+
+	/*主菜单切换*/
+	$(".item").on('touchstart', function(event) {
+        //选中状态的按钮置默认
+        var src_old = "../images/" + $(".selected").find("img").attr('name') + ".png";
+        $(".selected").find("img").attr('src', src_old);
+        $(this).siblings().removeClass('selected');
+
+        //当前点击的按钮变色
+        var src_new = "../images/" + $(this).find("img").attr('name') + "1.png";
+        $(this).find("img").attr('src', src_new);
+        $(this).addClass('selected');
+	});
+
+
+	// $(".checkbox").on('click', function(event) {
+		// console.log("x");
+
+		if ($("#checkbox1").prop("checked")) {
+			console.log("x");
+		};
+
+		if ($("#checkbox2").prop("checked")) {
+			console.log("x");
+		};
+
+		if ($("#checkbox3").prop("checked")) {
+			console.log("x");
+		};
+	// });
+</script>
+</html>

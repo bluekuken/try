@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>个人信息</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.content{
+		height: 100%;
+		box-sizing: border-box;
+		padding-bottom: 50px;
+		position: relative;
+		min-height: 518px;
+	}
+	.info{
+		padding: 1rem 0 0 0.5rem;
+	}
+	.item{
+		height: 3rem;
+		line-height: 3rem;
+		border-bottom: 1px solid #f1f1f1;
+		padding: 0 1.5rem 0 1rem;
+	}
+	.item span{
+		font-size: 1.2rem;
+		color: #a4a4a4;
+	}
+	.item em{
+		color: #ccc;
+	}
+	.photo{
+		display: block;
+		width: 2.5rem;
+		height: 2.5rem;
+		background: url(../images/personInfo.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		border-radius: 100%;
+	}
+	
+	/*按钮*/
+	.commenBtnOut{
+		margin-top: 5rem;
+	}
+	.defaultBtn{
+		font-size: 1rem;
+		font-weight: normal;
+	}
+
+	/*提示*/
+	.warning{
+		position: absolute;
+		bottom: 24px;
+		font-size: 12px;
+		width: 100%;
+		text-align: center;
+		color: #9b9b9b;
+		left: 0;
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="info">
+				<div class="item clear">
+					<span class="fl">头像</span>
+					<em class="photo fr"></em>
+				</div>
+				<div class="item clear">
+					<span class="fl">姓名</span>
+					<em class="fr">Alan</em>
+				</div>
+				<div class="item clear">
+					<span class="fl">手机号码</span>
+					<em class="fr">13800002222</em>
+				</div>
+				<div class="item clear">
+					<span class="fl">开户银行</span>
+					<em class="fr">工商银行</em>
+				</div>
+				<div class="item clear">
+					<span class="fl">开户分行</span>
+					<em class="fr">深圳分行</em>
+				</div>
+				<div class="item clear">
+					<span class="fl">银行账号</span>
+					<em class="fr">000000000000000000000000</em>
+				</div>
+			</div>
+			<div class="commenBtnOut"><a href="welcome.html"><button id="logout" class="defaultBtn">退出</button></a></div>
+			<div class="warning">投资有风险 理财需谨慎</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+</script>
+</html>

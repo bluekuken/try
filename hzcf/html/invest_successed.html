@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>投资成功</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.wrap{
+		color: #ccc;
+	}
+	.content{
+		height: 90%;
+	}
+
+	/*提示*/
+	.tips{
+		height: 10%;
+		text-align: center;
+		font-size: 0.9rem;
+	}
+	.mask{
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	/*弹框*/
+	#layui-layer1,.layui-layer,.layui-layer-page,.layer-anim{
+		width: 80%;
+		background: transparent;
+		border-radius: 10px;
+	}
+	.info{
+		display: none;
+		box-sizing: border-box;
+		height: 12rem;
+		background: url(../images/alert.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: center;
+		color: #fff;
+		font-size: 1.2rem;
+		padding: 1rem;
+		border-radius: 10px;
+	}
+	.info div{
+		margin-bottom: 1rem;
+	}
+	/*勾tick*/
+	.check{
+		width: 2rem;
+		height: 2rem;
+		background: url(../images/tick.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		margin: auto;
+	}
+	.count{
+		font-size: 0.8rem;
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+		</div>
+		<div class="tips">
+			<span>投资有风险 理财需谨慎</span>
+			<span class="mask"></span>
+		</div>
+	</div>
+	<!-- 模态框 -->
+	<div class="info">
+		<div class="check"></div>
+		<!-- <div>请查收手机短信</div> -->
+<!-- 		<div>及时登录修改密码</div> -->
+		<div>投资成功</div>
+		<div class="count">(3s)</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+
+	//弹出提示框--使用layui.js插件
+	layui.use('layer', function(){
+	    var layer = layui.layer;
+	
+		var success = layer.open({
+			type: 1,
+			title: false,//不显示标题
+			closeBtn: 0,//不显示右上角关闭的按钮
+			shade: 0,//蒙版透明度
+			// shadeClose: true,//点击遮罩层关闭弹窗
+			content: $(".info")
+		})
+
+		//倒计时结束关闭
+		var coutTime = 3;//弹窗3s后自动关闭
+		fnCountTime(coutTime);
+
+		//倒计时函数 fnCountTime
+		function fnCountTime(time) {
+		    if (time == 0) {
+			     layer.close(success);
+			     clearInterval(timer);
+
+			     window.location.href = "financing.html";
+		    }else {
+		        
+		        $(".count").text("("+time+"s)");
+		        time--;
+
+		        var timer = setTimeout(function() {
+		                fnCountTime(time)
+		        },1000);
+		    }
+		}
+
+	});
+</script>
+<script type="text/javascript">
+
+</script>
+</html>

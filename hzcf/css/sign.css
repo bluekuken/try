@@ -1,0 +1,186 @@
+.wrap{
+	min-height: 667px;
+}
+.contentOut{
+	height: 90%;
+	overflow: hidden;
+}
+input{border-radius: 5px;}
+.tip,.itemInput,.code{
+	margin: 0 1rem;
+}
+.tip{
+	border: none;
+	padding: 1rem 0;
+	text-align: center;
+	font-size: 1rem;
+}
+.itemInput{
+	height: 3rem;
+	line-height: 3rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 1rem;
+	display: -webkit-box;
+	padding-left: 1rem;
+}
+.itemInput label{
+	width: 5rem;
+	margin-right: 2rem;
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 1.2rem;
+}
+.itemInput input{
+	height: 3rem;
+	display: block;
+	-webkit-box-flex: 1;
+	vertical-align: middle;
+	border: none;
+	font-size: 1.2rem;
+}
+/*验证码*/
+.code{
+	margin-bottom: 1rem;
+	display: -webkit-box;
+}
+.input_code{
+	height: 3rem;
+	line-height: 3rem;
+	padding-left: 1rem;
+	width: 55%;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	display: -webkit-box;
+	font-size: 1rem;
+}
+.input_code label{
+	width: 5rem;
+	margin-right: 2rem;
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 1.2rem;
+}
+.input_code input{
+	display: block;
+	-webkit-box-flex: 1;
+	font-size: 1.2rem;
+	border: none;
+	height: 3rem;
+}
+.btn_code{
+	display: block;
+	width: 45%;
+	-webkit-box-flex: 1;
+	border: none;
+	border-radius: 5px;
+	background: #EE8F00;
+	margin-left: 5%;
+	padding: 0;
+	text-align: center;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1rem;
+}
+/*提示信息*/
+#sign{
+	margin-bottom: 1rem;
+}
+.proto,.warning{
+	text-align: center;
+	font-size: 1rem;
+	color: #bbb;
+}
+.proto{
+	margin-bottom: 1rem;
+}
+.proto a{
+	color: #4A90E2;
+}
+/*菜单*/
+.footer{
+	height: 10%;
+	display: -webkit-box;
+	background: #f1f1f1;
+}
+.footer .item{
+	text-align: center;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.footer .item:nth-child(1){
+	-webkit-box-flex: 1;
+}
+.footer .item:nth-child(2){
+	-webkit-box-flex: 3;
+}
+.footer .item:nth-child(3){
+	-webkit-box-flex: 1;
+}
+.footer .item img{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.footer .item span{
+	display: block;
+	color: #ccc;
+}
+.footer .item .position{
+	-webkit-box-flex: 1;
+}
+.footer .selected span{
+	color: #204ABF;
+}
+
+
+	/*成功提示框--layui*/
+	/*alert弹框--start*/
+	#layui-layer1,#layui-layer2,#layui-layer3,#layui-layer4,#layui-layer5,#layui-layer6,#layui-layer7,#layui-layer7,#layui-layer9,#layui-layer10,#layui-layer11,#layui-layer12,#layui-layer13,#layui-layer14,#layui-layer15,#layui-layer16,#layui-layer17,#layui-layer18,#layui-layer19,#layui-layer20,#layui-layer21,#layui-layer22,#layui-layer23,#layui-layer24,#layui-layer25,#layui-layer26,#layui-layer27,#layui-layer28,#layui-layer29{
+		border-radius: 10px;
+		background: url(../images/alert.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		color: #f2f2f2;
+	}
+	.layui-layer,.layui-layer-page,.layer-anim{
+		width: 80%;
+		border-radius: 10px;
+	}
+	/*alert弹框--end*/
+
+	.info{
+		display: none;
+		box-sizing: border-box;
+		height: 12rem;
+		background: url(../images/alert.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: center;
+		color: #fff;
+		font-size: 1.2rem;
+		padding: 1rem;
+		padding-top: 2rem;
+		border-radius: 10px;
+	}
+	.info div{
+		margin-bottom: 1rem;
+	}
+	/*勾tick*/
+	.check{
+		width: 2.5rem;
+		height: 2.5rem;
+		background: url(../images/tick.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		margin: auto;
+	}
+	.count{
+		font-size: 0.8rem;
+	}
+/*提示 - end*/
+/*媒体查询*/
+@media screen and (max-width:320px){
+	.wrap{
+		min-height: 568px;
+	}
+}

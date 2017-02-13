@@ -1,0 +1,85 @@
+.contentOut{
+	height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 50px;
+	position: relative;
+	min-height: 518px;
+
+}
+.content{
+	padding: 2rem 2rem 0 2rem;
+}
+/*下拉框*/
+.select_main,.select_list {
+	border: none;
+}
+.select_content {
+	padding-left: 0;
+}
+.select_list > .select_list_body ul li {
+	text-indent: 0;
+}
+/*手机号码*/
+.phoneNum{
+	border-bottom: 1px solid #ccc;
+	padding: 0.5rem 0 0.2rem 0;
+	margin-bottom: 10rem;
+	height: 3rem;
+	line-height: 3rem;
+}
+.phoneNum input{
+	display: block;
+	border: none;
+	width: 100%;
+	height: 3rem;
+	font-size: 1.2rem;
+}
+#login{
+	margin-bottom: 1rem;
+}
+
+.warning{
+	position: absolute;
+	bottom: 24px;
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	color: #9b9b9b;
+	left: 0;
+}
+/*提示 - start*/
+/*成功提示框--layui*/
+#layui-layer1,.layui-layer,.layui-layer-page,.layer-anim{
+	background: transparent;
+	border-radius: 10px;
+}
+.info{
+	display: none;
+	box-sizing: border-box;
+	width: 18rem;
+	height: 12rem;
+	background: url(../images/alert.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #fff;
+	font-size: 1.2rem;
+	padding: 1rem;
+	border-radius: 10px;
+}
+.info div{
+	margin-bottom: 1rem;
+}
+/*勾tick*/
+.check{
+	width: 2rem;
+	height: 2rem;
+	background: url(../images/tick.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: auto;
+}
+.count{
+	font-size: 0.8rem;
+}
+/*提示 - start*/

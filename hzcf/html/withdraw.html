@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>我的提现</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.wrap{
+		color: #ccc;
+	}
+	.content{
+		height: 100%;
+		box-sizing: border-box;
+		padding-bottom: 50px;
+		position: relative;
+		min-height: 518px;
+	}
+	/**/
+	.deal{
+		padding: 1.5rem;
+		padding-bottom: 0;
+	}
+	.money{
+		font-size: 1.2rem;
+		color: #4a4a4a;
+	}
+	.countNum{
+		margin: 1rem 0 0.5rem 0;
+	}
+	.countNum input{
+		display: block;
+		width: 100%;
+		height: 3rem;
+		border-radius: 5px;
+		padding: 0;
+		outline: 0;
+		border: 1px solid #ddd;
+		padding-left: 1rem;
+		font-size: 1.2rem;
+		box-sizing: border-box;
+	}
+	/*可赎回本金*/
+	.callable{
+		font-size: 1rem;
+	}
+	.callable span{
+		margin-right: 5px;
+	}
+
+	/*提醒*/
+	.warn{
+		margin-top: 1rem;
+	}
+	.warn img{
+		width: 1rem;
+		height: 1rem;
+		vertical-align: middle;
+		margin-right: 0.5rem;
+	}
+	.warn span{
+		color: #FF4307;
+		vertical-align: middle;
+	}
+
+	/*按钮*/
+	.commenBtnOut{
+		margin-top: 5rem;
+	}
+	.defaultBtn{
+		width: 100%;
+		font-size: 1rem;
+	}
+	.defaultBtn{
+		font-weight: normal;
+	}
+
+	/*提示*/
+	.warning{
+		position: absolute;
+		bottom: 24px;
+		font-size: 12px;
+		width: 100%;
+		text-align: center;
+		color: #9b9b9b;
+		left: 0;
+	}
+
+
+	/*成功提示框--layui*/
+			/*alert弹框--start*/
+			#layui-layer1,#layui-layer2,#layui-layer3,#layui-layer4,#layui-layer5,#layui-layer6,#layui-layer7,#layui-layer7,#layui-layer9,#layui-layer10,#layui-layer11,#layui-layer12,#layui-layer13,#layui-layer14,#layui-layer15,#layui-layer16,#layui-layer17,#layui-layer18,#layui-layer19,#layui-layer20,#layui-layer21,#layui-layer22,#layui-layer23,#layui-layer24,#layui-layer25,#layui-layer26,#layui-layer27,#layui-layer28,#layui-layer29{
+				border-radius: 10px;
+				background: url(../images/alert.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				color: #f2f2f2;
+			}
+			.layui-layer,.layui-layer-page,.layer-anim{
+				width: 80%;
+				border-radius: 10px;
+			}
+			/*alert弹框--end*/
+
+			.info{
+				display: none;
+				box-sizing: border-box;
+				height: 12rem;
+				background: url(../images/alert.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				text-align: center;
+				color: #fff;
+				font-size: 1.2rem;
+				padding: 1rem;
+				padding-top: 2rem;
+				border-radius: 10px;
+			}
+			.info div{
+				margin-bottom: 1rem;
+			}
+			/*勾tick*/
+			.check{
+				width: 2.5rem;
+				height: 2.5rem;
+				background: url(../images/tick.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				margin: auto;
+			}
+			.count{
+				font-size: 0.8rem;
+			}
+		/*提示 - end*/
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="deal">
+				<div class="money">提现金额</div>
+				<div class="countNum"><input id="countNum" type="text" placeholder="请输入提现金额(元)"></div>
+				<div class="callable">
+					<span>可用余额</span>
+					<em id="callableNum">4769.21</em>
+				</div>
+				<div class="warn">
+					<img src="../images/warn.png" alt="">
+					<span>T+2到账(T为工作日，周六日及节假日顺延)</span>
+				</div>
+				<div class="commenBtnOut"><button id="callback" class="defaultBtn">确认提现</button></div>
+			</div>
+			<div class="warning">投资有风险 理财需谨慎</div>
+		</div>
+	</div>
+	<!-- 模态框 -->
+	<div class="info">
+		<div class="check"></div>
+		<div>提现成功</div>
+		<div class="count">(3s)</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//校验
+	$("#callback").on('click', function(event) {
+
+		var countNum = $("#countNum").val();
+		var callableNum = $("#callableNum").text();
+
+		var flag_1 = (countNum < 100)?true:false;//输入金额小于100
+		var flag_2 = (countNum % 100 != 0)?true:false;//输入不是100的整数倍
+		var mark = (Math.floor(countNum) > Math.floor(callableNum))?true:false;//输入金额大于可赎回金额
+
+
+		//输入为空
+		if (!countNum) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '请输入购买金额'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		//赎回金额小于100
+		if (flag_1) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '购买金额不能小于100'
+			    }); 
+			});
+			
+			return; 
+		};
+
+
+		//赎回金额非100整数倍
+		if (flag_2) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '购买金额必须为100的整数倍'
+			    }); 
+			});
+			
+			return; 
+		};
+
+
+		//赎回金额大于可赎回金额
+		if (mark) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '可赎回余额不足'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		//赎回成功
+		layui.use('layer', function(){
+		    var layer = layui.layer;
+
+	    	var success = layer.open({
+	    		type: 1,
+	    		title: false,//不显示标题
+	    		closeBtn: 0,//不显示右上角关闭的按钮
+	    		// shade: 0.5,
+	    		// shadeClose: true,//点击遮罩层关闭弹窗
+	    		content: $(".info")
+	    	})
+
+	    	//倒计时结束关闭
+	    	var coutTime = 3;//弹窗3s后自动关闭
+	    	fnCountTime(coutTime);
+
+	    	//倒计时函数 fnCountTime
+	    	function fnCountTime(time) {
+	    	    if (time == 0) {
+	    		     layer.close(success);
+	    		     clearInterval(timer);
+
+	    		     //赎回成功后挑战的页面
+	    		     window.location.href = "detailIncome.html";
+	    	    }else {
+	    	        
+	    	        $(".count").text("("+time+"s)");
+	    	        time--;
+
+	    	        var timer = setTimeout(function() {
+	    	                fnCountTime(time)
+	    	        },1000);
+	    	    }
+	    	}
+		});
+	});
+
+</script>
+</html>

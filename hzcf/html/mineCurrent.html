@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>财务明细</title>
+	<link rel="stylesheet" href="../css/pullToRefresh.css"/>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.wrap{
+		background: #fff;
+	}
+	#wrapper {
+		box-sizing: border-box;
+	}
+	.content ul{
+		min-height: 100%;
+		padding: 1rem 1.5rem;
+		overflow: scroll;
+		box-sizing: border-box;
+		padding-bottom: 7rem;
+		position: relative;
+		background: #fff;
+		min-height: 518px;
+	}
+
+	.scroller li {
+	     min-height: 0px; 
+	     background-color: #fff; 
+	     padding: 0px; 
+	     font-size: 10px;
+	}
+	/*item*/
+	.content .item{
+		background: #fff;
+		padding: 0.5rem 0rem;
+		border-bottom: 1px solid #ccc;
+	}
+	.item:first-child{
+		margin-top: 0;
+	}
+	.income{
+		margin-bottom: 0.5rem;
+	}
+	.income span{
+		font-size: 1.2rem;
+		float: left;
+
+	}
+
+	.income em{
+		color: #FF4300;
+		float: right;
+		font-size: 0.9rem;
+		font-weight: bold;
+	}
+	.date{
+		color: #ccc;
+	}
+
+	/*提示*/
+	.tips{
+		width: 100%;
+		height: 7rem;
+		/*line-height: 3rem;*/
+		text-align: center;
+		font-size: 0.9rem;
+		color: #bbb;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	.commenBtnOut{
+		margin: 1rem 0;
+	}
+	.defaultBtn{
+		font-size: 1rem;
+		font-weight: normal;
+	}
+	
+	/*下拉加载跟多模块--没有更多*/
+	.nomore{
+		line-height: 40px;
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div id="wrapper" class="content">
+			<ul>
+				<li>
+					<div class="item">
+						<div class="income clear">
+							<span>灵活理财</span>
+							<em>+20000.00</em>
+						</div>
+						<span class="date">
+							<span>购买日期：</span>
+							<em>2017.01.09 21:21:12</em>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="item">
+						<div class="income clear">
+							<span>灵活理财</span>
+							<em>+20000.00</em>
+						</div>
+						<span class="date">
+							<span>购买日期：</span>
+							<em>2017.01.09 21:21:12</em>
+						</span>
+					</div>
+				</li>
+
+				
+				<div class="tips">
+					<div class="commenBtnOut"><a href="ransom.html"><button id="sign" class="defaultBtn">赎回本金</button></a></div>
+					<span>投资有风险 理财需谨慎</span>
+				</div>
+			</ul>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script src="../js/iscroll.js"></script>
+<script src="../js/pullToRefresh.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	refresher.init({
+		id:"wrapper",
+		pullDownAction:Refresh,                                                         
+		pullUpAction:Load			
+	});	
+
+
+	var noMore = 0;//没有更多-标记
+
+	//模拟请求的数据
+	var str = '<div class="item">\
+					<div class="income clear">\
+						<span>灵活理财</span>\
+						<em>+20000.00</em>\
+					</div>\
+					<span class="date">\
+						<span>购买日期：</span>\
+						<em>2017.01.09 21:21:12</em>\
+					</span>\
+				</div>';	
+
+	//下拉刷新，请求最初的两条initNum = 2;
+	var initNum = 2;
+
+	function Refresh() {
+
+		//模拟请求的数据---恢复数据
+		str = '<div class="item">\
+					<div class="income clear">\
+						<span>灵活理财</span>\
+						<em>+20000.00</em>\
+					</div>\
+					<span class="date">\
+						<span>购买日期：</span>\
+						<em>2017.01.09 21:21:12</em>\
+					</span>\
+				</div>';
+
+		//重置没有更多标记
+		noMore = 0;
+
+		setTimeout(function () {
+
+			//刷新后显示“加载更多”，隐藏“没有更多了”
+			$(".nomore").remove();
+			$(".pullUp").css('display', 'block');
+			$(".pullUpLabel").css('display', 'block');
+
+
+			var el, li, i;																		
+			el =document.querySelector("#wrapper ul");									
+			el.innerHTML='';																
+			for (i=0; i<initNum; i++) {																		 
+				li = document.createElement('li');													
+				li.innerHTML = str;				
+			el.insertBefore(li, el.childNodes[0]);														
+			}	
+
+			//加回提示
+			var tips = '<div class="tips">\
+							<div class="commenBtnOut"><a href="ransom.html"><button id="sign" class="defaultBtn">赎回本金</button></a></div>\
+							<span>投资有风险 理财需谨慎</span>\
+						</div>'
+			el.innerHTML += tips;
+
+			wrapper.refresh();
+
+		}, 1000);
+
+	}
+
+	//上拉加载更多，加载两条 addNum = 2;
+	var addNum = 2;
+
+	function Load() {
+
+		setTimeout(function () {
+
+			//可以在这里放置需要的下拉加载函数执行完的操作
+			// console.log("x");
+			// 比如在这里放置后台请求函数--start
+			// $.ajax({
+			// 	url: '/path/to/file',
+			// 	type: 'default GET (Other values: POST)',
+			// 	dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+			// 	data: {param1: 'value1'},
+			// })
+			// .done(function() {
+			// 	var el, li, i;
+			// 	el =document.querySelector("#wrapper ul");
+
+			// 	for (i=0; i<addNum; i++) {
+			// 		li = document.createElement('li');
+			// 		li.innerHTML = str;
+
+			// 		$(".warning").before(li);
+			// 	}
+
+			// 	wrapper.refresh();
+			// })
+			// 比如在这里放置后台请求函数--end
+
+			//没有更多了
+			if (noMore == 2) {
+
+				str = null;
+
+				//隐藏“加载更多”
+				$(".pullUp").css('display', 'none');
+				$(".pullUpLabel").css('display', 'none');
+
+				//显示“没有更多”
+				var _div = $('<div class="nomore">没有更多了</div>');
+				$(".pullUp").append(_div);
+
+			};
+
+			var el, li, i;
+			el =document.querySelector("#wrapper ul");
+
+			for (i=0; i<addNum; i++) {
+				li = document.createElement('li');
+				li.innerHTML = str;
+
+				$(".tips").before(li);
+			}
+
+
+			//加载标记，可以根据请求的结果构造
+			noMore++;
+
+			wrapper.refresh();
+
+		}, 1000);	
+	}
+</script>
+</html>

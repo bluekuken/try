@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>立即投资</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+	.wrap{
+		color: #ccc;
+	}
+	.content{
+		height: 100%;
+		padding-bottom: 50px;
+		position: relative;
+		min-height: 518px;
+		box-sizing: border-box;
+	}
+	.header{
+		height: 30%;
+		background: url(../images/1-10.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;	
+		color: #fff;
+		padding: 1rem;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+	/**/
+	.name i{
+		font-style: normal;
+		margin: 0 0.5rem;
+	}
+	.name i,.name span,.name em,.name strong{
+		color: rgba(255,255,255,0.8);
+	}
+	.situation {
+		color: rgba(255,255,255,0.8);
+	}
+	/**/
+	.rateOut{
+		text-align: center;
+		-webkit-box-flex: 1;
+		position: relative;		
+	}
+	.rate{
+		width: 7rem;
+		height: 7rem;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: url(../images/1-10-2.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		overflow: hidden;
+		border-radius: 100%;
+		text-align: center;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+
+	.position{
+		-webkit-box-flex: 1;
+	}
+	.rate span{
+		font-size: 1rem;
+	}
+	.rate em{
+		font-size: 2rem;
+	}
+	/**/
+	.deal{
+		padding: 1.5rem;
+		padding-bottom: 0;
+	}
+	.money{
+		font-size: 1.2rem;
+		color: #a4a4a4;
+	}
+	.countNum{
+		margin: 1.5rem 0;
+		position: relative;
+	}
+	.sign{
+		position: absolute;
+		font-size: 2rem;
+		left: 2px;
+		top: 0.2rem;
+		color: #4a4a4a;
+	}
+	.countNum input{
+		display: block;
+		width: 100%;
+		height: 3rem;
+		border-radius: 5px;
+		padding: 0;
+		outline: 0;
+		border: 1px solid #ddd;
+		padding-left: 2rem;
+		font-size: 1.2rem;
+		box-sizing: border-box;
+		color: #9b9b9b;
+	}
+
+
+	/*协议*/
+
+	/*协议复选框--start*/
+		.proto{
+			/*text-align: center;*/
+		}
+		.checkboxOut{
+			position: relative;
+		}
+
+		#checkbox[type='checkbox'] {
+		  visibility: hidden;
+		  position: absolute;
+		  top: 0;
+		}
+
+		.checkbox {
+		  display: inline-block;
+		  width: 16px;
+		  height: 16px;
+		  position: absolute;
+		  top: 2px;
+		  background: url(../images/check1.png);
+		  background-size: 100% 100%;
+		  background-repeat: no-repeat;
+		}
+		.checkbox:after{
+			content: "";
+			display: inline-block;
+			width: 300px;/*content个数乘于font-size*/
+			font-size: 12px;
+			position: absolute;
+			left: 22px;
+			top: -2px;
+		}
+
+		#checkbox[type='checkbox']:checked+label {
+		  background-image: url(../images/check.png);
+		}
+		.checkboxOut span{
+			display: inline-block;
+			margin-left: 1.5rem;
+			font-size: 0.9rem;
+		}
+
+		/*媒体查询*/
+		@media screen and (max-width:320px){
+			.checkbox {
+				width: 14px;
+				height: 14px;
+				top: 2px;
+			}
+			.checkbox:after{
+				top: -2px;
+			}
+
+			.checkbox:after{
+				width: 255px;
+			}
+		}
+
+	/*协议复选框--end*/
+
+	/*按钮*/
+	.commenBtnOut{
+		margin-top: 1.5rem;
+	}
+	.defaultBtn{
+		width: 100%;
+		font-size: 1rem;
+		color: #f2f2f2;
+		font-weight: normal;
+	}
+
+	/*提示*/
+	.warning{
+		position: absolute;
+		bottom: 24px;
+		font-size: 12px;
+		width: 100%;
+		text-align: center;
+		color: #9b9b9b;
+		left: 0;
+	}
+
+		/*成功提示框--layui*/
+		/*alert弹框--start*/
+		#layui-layer1,#layui-layer2,#layui-layer3,#layui-layer4,#layui-layer5,#layui-layer6,#layui-layer7,#layui-layer7,#layui-layer9,#layui-layer10,#layui-layer11,#layui-layer12,#layui-layer13,#layui-layer14,#layui-layer15,#layui-layer16,#layui-layer17,#layui-layer18,#layui-layer19,#layui-layer20,#layui-layer21,#layui-layer22,#layui-layer23,#layui-layer24,#layui-layer25,#layui-layer26,#layui-layer27,#layui-layer28,#layui-layer29{
+			border-radius: 10px;
+			background: url(../images/alert.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			color: #f2f2f2;
+		}
+		.layui-layer,.layui-layer-page,.layer-anim{
+			width: 80%;
+			border-radius: 10px;
+		}
+		/*alert弹框--end*/
+
+		.info{
+			display: none;
+			box-sizing: border-box;
+			height: 12rem;
+			background: url(../images/alert.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			text-align: center;
+			color: #fff;
+			font-size: 1.2rem;
+			padding: 1rem;
+			padding-top: 2rem;
+			border-radius: 10px;
+		}
+		.info div{
+			margin-bottom: 1rem;
+		}
+		/*勾tick*/
+		.check{
+			width: 2.5rem;
+			height: 2.5rem;
+			background: url(../images/tick.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin: auto;
+		}
+		.count{
+			font-size: 0.8rem;
+		}
+	/*提示 - end*/
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="header">
+				<div class="name"><span>瑞奇财富壹号私募证券基金</span><i>|</i><strong>基金编号：</strong><em>S67134</em></div>
+				<div class="rateOut">
+					<div class="rate">
+						<div class="position"></div>
+						<span>年化收益</span><br>
+						<em>9.6%</em>
+						<div class="position"></div>
+					</div>
+				</div>
+				<div class="situation clear"><span class="fl">起投200元</span><em class="fr">投入条件100元整数倍</em></div>
+			</div>
+			<div class="deal">
+				<div class="money">
+					<span>可用金额</span>
+					<em id="money">2000.00</em>
+				</div>
+				<div class="countNum"><div class="sign">￥</div><input id="countNum" type="text" placeholder="金额(元)"></div>
+
+				<div class="proto">
+					<div class="checkboxOut">
+						<input id="checkbox" type="checkbox" checked="checked"><label class="checkbox" for="checkbox"></label><span>本人已经充分了解并清楚知晓本产品的属性，愿意承担相关风险。</span>
+					</div>
+				</div>
+
+				<div class="commenBtnOut"><button id="buy" class="defaultBtn">同意协议并立即购买</button></div>
+			</div>
+			<div class="warning">投资有风险 理财需谨慎</div>
+		</div>
+	</div>
+	<!-- 模态框 -->
+	<div class="info">
+		<div class="check"></div>
+		<div>投资成功</div>
+		<div class="count">(3s)</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//当购买产品时的余额不足提示，余额不足
+	$("#buy").on('click', function(event) {
+
+		var num = $("#countNum").val();
+		var flag_1 = (num < 200)?true:false;
+		var flag_2 = (num % 100 != 0)?true:false;
+		var mark = (Math.floor($("#countNum").val()) > Math.floor($("#money").text()))?true:false;
+
+		if (!num) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '请输入购买金额'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		if (flag_1) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '购买金额不能低于200'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		if (flag_2) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '购买金额必须为100的整数倍'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		if (mark) {
+			//弹出提示框--使用layui.js插件
+			layui.use('layer', function(){
+			    var layer = layui.layer;
+
+			    layer.open({
+			      title: '提示信息'
+			      ,content: '可用余额不足'
+			    }); 
+			});
+			
+			return; 
+		};
+
+		//弹出提示框--使用layui.js插件
+		layui.use('layer', function(){
+		    var layer = layui.layer;
+		
+			var success = layer.open({
+				type: 1,
+				title: false,//不显示标题
+				closeBtn: 0,//不显示右上角关闭的按钮
+				// shade: 0,//蒙版透明度
+				// shadeClose: true,//点击遮罩层关闭弹窗
+				content: $(".info")
+			})
+
+			//倒计时结束关闭
+			var coutTime = 3;//弹窗3s后自动关闭
+			fnCountTime(coutTime);
+
+			//倒计时函数 fnCountTime
+			function fnCountTime(time) {
+			    if (time == 0) {
+				     layer.close(success);
+				     clearInterval(timer);
+
+				     // window.location.href = "financing.html";
+			    }else {
+			        
+			        $(".count").text("("+time+"s)");
+			        time--;
+
+			        var timer = setTimeout(function() {
+			                fnCountTime(time)
+			        },1000);
+			    }
+			}
+
+		});
+
+	});
+</script>
+</html>

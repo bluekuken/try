@@ -1,0 +1,196 @@
+/*content*/
+ 	.wrap{
+ 		overflow: hidden;
+ 	}
+	.content{
+		height: 90%;
+		overflow-y: scroll;
+		width: 100%;
+	}
+/*header--start*/
+	.header{
+		height: 38%;
+		background: url(../images/1-13.png);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		padding: 1rem;
+		box-sizing: border-box;
+	}
+	/*个人信息*/
+	.message{
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.5rem;
+		background: url(../images/message.png);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	.photo{
+		width: 3rem;
+		height: 3rem;
+		border-radius: 100%;
+		background: url(../images/personInfo.png);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		float: left;
+		margin-right: 1rem;
+	}
+	.info{
+		line-height: 1rem;
+		padding-top: 0.5rem;
+		color: #f2f2f2;
+	}
+
+	/*金额信息*/
+	.detail,.accountInfo{
+		color: #f2f2f2;
+	}
+	.accountInfo{
+		text-align: center;
+	}
+	.accountInfo a{
+		color: #f2f2f2;
+		display: block;
+		width: 5rem;
+		height: 100%;
+		margin: auto;
+	}
+	.accountNum{
+		color: #fff;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	.detail{
+		display: -webkit-box;
+	}
+	.oldIncome,.totalIncome{
+		-webkit-box-flex: 1;
+		text-align: center;
+		line-height: 1.5rem;
+
+	}
+	.oldIncome em,.totalIncome em{
+		font-weight: bold;
+		font-size: 1.2rem;
+	}
+	.separate{
+		border-left: 1px solid #f1f1f1;
+		height: 2rem;
+		margin-top: 0.5rem;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.totalIncome a{
+		display: block;
+		width: 100%;
+		height: 100%;
+		color: #f2f2f2;
+	}
+/*header--end*/
+
+/*accountDetail--start*/
+	/*账户详细信息*/
+	.accountDetail{
+		padding-left: 0.5rem;
+		height: 62%;
+	}
+	.title,.accountItem{
+		height: 4rem;
+		line-height: 4rem;
+		border-bottom: 1px solid #f1f1f1;
+		font-size: 1.2rem;
+		padding-left: 1.2rem;
+	}
+	.title{
+		color: #1C47BE;
+		font-weight: bold;
+	}
+	.accountItem{
+		overflow: hidden;
+		padding-right: 1.2rem;
+	}
+	.accountItem:last-child{
+		border-bottom: none;
+	}
+	.accountItem>div{
+		line-height: 4rem;
+	}
+	.accountItem img{
+		width: 1.2rem;
+		height: 1.2rem;
+		vertical-align: middle;
+		margin-right: 0.5rem;
+	}
+	.accountItem span{
+		vertical-align: middle;
+		color: #4A4A4A;
+	}
+	.accountItem .fr em{
+		vertical-align: middle;
+		color: #ddd;
+	}
+	.accountItem i{
+		vertical-align: middle;
+		display: inline-block;
+		width: 1rem;
+		height: 1.5rem;
+		background: url(../images/arrow-right.png);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		margin-left: 0.2rem;
+		font-style: normal;
+	}
+	.accountItem a{
+		color: #ddd;
+	}
+	
+	.mask{
+		height: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+/*accountDetail--end
+	
+/*alert弹框*/
+#layui-layer1,.layui-layer,.layui-layer-page,.layer-anim{
+	width: 80%;
+	background: #fff;
+	border-radius: 10px;
+}
+
+
+
+/*菜单*/
+.footer{
+	height: 10%;
+	display: -webkit-box;
+	background: #f1f1f1;
+}
+.footer .item{
+	text-align: center;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.footer .item:nth-child(1){
+	-webkit-box-flex: 1;
+}
+.footer .item:nth-child(2){
+	-webkit-box-flex: 3;
+}
+.footer .item:nth-child(3){
+	-webkit-box-flex: 1;
+}
+.footer .item img{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.footer .item span{
+	display: block;
+	color: #ccc;
+}
+.footer .item .position{
+	-webkit-box-flex: 1;
+}
+.footer .selected span{
+	color: #204ABF;
+}

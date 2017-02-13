@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禾中财富</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link href="../css/select.css" rel="stylesheet" />
+	<link href="../css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+	<link rel="stylesheet" href="../css/forgetPwd.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="dropdown">
+				<select id="mySelect">
+					<option value="china" selected="selected">中国（China）</option>
+					<option value="america">美国（America）</option>
+				</select>
+			</div>
+			<div class="phoneNum">
+				<input type="text" placeholder="  请输入手机号码">
+			</div>
+		</div>
+		<div class="commenBtnOut"><button id="login" class="defaultBtn">提交</button></div>
+		<div class="warning">投资有风险 理财需谨慎</div>
+
+	</div>
+	<!-- 模态框 -->
+	<div class="info">
+		<div class="check"></div>
+		<div>请查收手机短信</div>
+		<div>及时登录修改密码</div>
+		<div class="count">(3s)</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/jquery.select.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	//使用插件 select.js,concat.min.js
+	$("#mySelect").select({
+		width: "170px"
+	});
+
+	//弹出提示框--使用layui.js插件
+	layui.use('layer', function(){
+	    var layer = layui.layer;
+	}); 
+
+	$("#login").on('click', function(event) {
+		var success = layer.open({
+			type: 1,
+			title: false,//不显示标题
+			closeBtn: 0,//不显示右上角关闭的按钮
+			// shadeClose: true,//点击遮罩层关闭弹窗
+			content: $(".info")
+		})
+
+		//倒计时结束关闭
+		var coutTime = 3;//弹窗3s后自动关闭
+		fnCountTime(coutTime);
+
+		//倒计时函数 fnCountTime
+		function fnCountTime(time) {
+		    if (time == 0) {
+			     layer.close(success);
+			     clearInterval(timer);
+
+			     window.location.href = "welcome.html";
+		    }else {
+		        
+		        $(".count").text("("+time+"s)");
+		        time--;
+
+		        var timer = setTimeout(function() {
+		                fnCountTime(time)
+		        },1000);
+		    }
+		}
+	});
+</script>
+</html>

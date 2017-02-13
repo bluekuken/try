@@ -1,0 +1,86 @@
+.wrap{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	color: #4a4a4a;
+	overflow: scroll;
+}
+.content{
+	min-height: 100%;
+	overflow: scroll;
+	position: relative;
+	background: #fff;
+	padding-bottom: 5rem;
+	box-sizing: border-box;
+}
+/*基金信息*/
+
+.fundInfo{
+	padding: 1.2rem;
+	background: #fff;
+	border-bottom: 5px solid #f1f1f1;
+}
+.name{
+	font-size: 1.2rem;
+	margin-bottom: 0.3rem;
+	color: #1c47be;
+	margin-bottom: 0.5rem;
+}
+.number{
+	font-size: 0.8rem;
+}
+.detail{
+	margin-top: 1rem;
+}
+.detail>div{
+	width: 50%;
+}
+.detail>div span{
+	font-size: 1rem;
+}
+.detail>div em{
+	font-size: 2rem;
+}
+.rate em{
+	margin-top: 12px;
+	display: inline-block;
+	color: #FF3d00;
+	font-weight: bold;
+	font-family: "黑体";
+}
+.require em{
+	color: black;
+	margin-top: 12px;
+	display: inline-block;
+	font-weight: bold;
+	font-family: "黑体";
+}
+/*基金特点*/
+.feature{
+	background: #fff;
+	font-size: 0.8rem;
+}
+.title,.item{
+	border-bottom: 1px solid #eee;
+	padding: 1rem 1.2rem;
+}
+.title{
+	color: #1c47be;
+	font-size: 1.2rem;
+}
+.title em,.item em{
+	display: inline-block;
+	width: 5rem;
+	margin-right: 4rem;
+}
+.introduction{
+	padding: 0 1.2rem;
+	line-height: 1.2rem;
+}
+.area{
+	margin: 0.5rem 0;
+}
+.commenBtnOut{
+	position: absolute;
+	bottom: 1rem;
+	width: 100%;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>禾中财富</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/commen.css">
+</head>
+<style type="text/css">
+/*content*/
+ 	.wrap{
+ 		overflow: hidden;
+ 		display: -webkit-box;
+ 		-webkit-box-orient: vertical;
+ 	}
+	.content{
+		-webkit-box-flex: 1;
+		overflow-y: scroll;
+		width: 100%;
+		background: #fff;
+		padding: 1rem;
+		box-sizing: border-box;
+	}
+	.title{
+		font-size: 1rem;
+		font-weight: bold;
+		text-align: center;
+	}
+	.content p{
+		text-align:justify;
+		line-height: 1.2rem;
+		color: #4a4a4a;
+		margin-top: 1rem;
+	}
+
+	/*菜单*/
+	.footer{
+		height: 10%;
+		display: -webkit-box;
+		background: #f1f1f1;
+	}
+	.footer .item{
+		text-align: center;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+	.footer .item:nth-child(1){
+		-webkit-box-flex: 1;
+	}
+	.footer .item:nth-child(2){
+		-webkit-box-flex: 3;
+	}
+	.footer .item:nth-child(3){
+		-webkit-box-flex: 1;
+	}
+	.footer .item img{
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+	.footer .item span{
+		display: block;
+		color: #ccc;
+	}
+	.footer .item .position{
+		-webkit-box-flex: 1;
+	}
+	.footer .selected span{
+		color: #204ABF;
+	}
+	/*媒体查询*/
+	@media screen and (max-width:320px){
+		.content p{
+			line-height: 1.5rem;
+		}
+	}
+
+</style>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="title">风险揭示书</div>
+			<p>本风险揭示书的揭示事项仅为列举性质，未能详尽列明投资本基金的所有风险。</p>
+			<p>投资者同意本风险揭示书即表明:</p>
+			<p>1、投资者已仔细阅读本风险揭示书、基金合同等法律文件，充分理解相关权利、义务、本基金运作方式及风险收益特征，愿意承担相应的投资风险，委托事项符合投资者业务决策程序的要求;投资者声明其符合相关法律法规、证监会及本合同规定的关于私募基金合格投资者的相关标准;投资者承诺向基金管理人提供的有关投资目的、投资偏好、投资限制和风险承受能力等情况真实合法、完整有效，不存在任何重大遗漏或误导性陈述，前述信息资料如发生任何实质性变更，投资者应当及时书面告知基金管理人或销售机构。</p>
+			<p>2、投资者声明用于认购/申购基金份额的财产为投资者拥有合法所有权或处分权的资产，保证该等财产的来源及用途符合法律法规和相关政策规定，不存在非法汇集他人资金投资的情形，不存在洗钱等情况，投资者保证有完全及合法的权利委托基金管理人和基金托管人进行基金财产的投资管理和托管业务。</p>
+			<p>3、投资者承认，基金管理人、基金托管人未对基金财产的收益状况作出任何承诺或担保，基金的业绩比较基准、年化收益(率)等类似表述仅是投资目标而不是基金管理人的保证。</p>
+			<p>4、投资者已充分了解并谨慎评估自身风险承受能力，自愿自行承担投资本基金所面临的风险。基金管理人以及代销机构已就基金情况向投资者作出了详细说明。</p>
+			<p>本人/本机构保证，本人/本机构是具有完全民事行为能力的自然人/法人或者依法成立的其他组织，并且符合法律法规及本基金合同中关于私募基金合格投资者的条件，是合格投资者。</p>
+		</div>
+		<!-- footer-start -->
+		<div class="footer">
+			<div class="item" onclick="window.location.href='financing.html'">
+				<div class="position"></div>
+				<img name="home" src="../images/home.png" alt="">
+				<span>首页</span>
+				<div class="position"></div>
+			</div>
+			<div class="item">
+				<div class="position"></div>
+				<img name="money" src="../images/money.png" alt="">
+				<span>理财</span>
+				<div class="position"></div>
+			</div>
+			<div class="item selected"  onclick="window.location.href='welcome.html'">
+				<div class="position"></div>
+				<img name="mine" src="../images/mine1.png" alt="">
+				<span>我的</span>
+				<div class="position"></div>
+			</div>
+		</div>
+		<!-- footer-end -->
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script type="text/javascript">
+	/*主菜单切换*/
+	$(".item").on('touchstart', function(event) {
+        //选中状态的按钮置默认
+        var src_old = "../images/" + $(".selected").find("img").attr('name') + ".png";
+        $(".selected").find("img").attr('src', src_old);
+        $(this).siblings().removeClass('selected');
+
+        //当前点击的按钮变色
+        var src_new = "../images/" + $(this).find("img").attr('name') + "1.png";
+        $(this).find("img").attr('src', src_new);
+        $(this).addClass('selected');
+	});
+
+	//noticeList按钮变色
+	fnSkip(".itemNotice","background","#f1f1f1","#fff");
+</script>
+</html>
